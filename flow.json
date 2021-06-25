@@ -62,8 +62,8 @@
             "37f1ba8b.669dd6",
             "662a9b9d.ee6c94"
         ],
-        "x": 1914,
-        "y": 599,
+        "x": 1534,
+        "y": 619,
         "w": 692,
         "h": 562
     },
@@ -237,20 +237,6 @@
         ]
     },
     {
-        "id": "8dbd5f4.b87dfa",
-        "type": "link in",
-        "z": "f679c5ec.fb0428",
-        "name": "Smart Metering Data",
-        "links": [
-            "e3b00dfb.9718"
-        ],
-        "x": 275,
-        "y": 980,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
@@ -261,11 +247,12 @@
         "timer": "",
         "oldrc": false,
         "name": "run CASTLEGUARD with exampledata",
-        "x": 610,
+        "x": 670,
         "y": 920,
         "wires": [
             [
-                "cf0b65f9.007318"
+                "cf0b65f9.007318",
+                "9ac6163.941a0e8"
             ],
             [
                 "cf0b65f9.007318"
@@ -287,7 +274,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
+        "x": 1330,
         "y": 920,
         "wires": []
     },
@@ -295,7 +282,7 @@
         "id": "b61e65dd.8c1408",
         "type": "inject",
         "z": "f679c5ec.fb0428",
-        "name": "start",
+        "name": "not the start",
         "props": [
             {
                 "p": "payload"
@@ -312,7 +299,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 330,
+        "x": 210,
         "y": 920,
         "wires": [
             [
@@ -335,8 +322,8 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 600,
-        "y": 820,
+        "x": 580,
+        "y": 840,
         "wires": [
             [
                 "cb546c79.86a36"
@@ -348,13 +335,13 @@
         "type": "file in",
         "z": "ed02ca62.53a888",
         "name": "load file example csv",
-        "filename": "G:\\Uni\\Peng\\data\\Electric_Vehicle_Charging_Station_Energy_Consumption (1).csv",
+        "filename": "Electric_Vehicle_Charging_Station_Energy_Consumption (1).csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 360,
-        "y": 820,
+        "x": 340,
+        "y": 840,
         "wires": [
             [
                 "37891673.84bf2a"
@@ -382,8 +369,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
-        "y": 820,
+        "x": 130,
+        "y": 840,
         "wires": [
             [
                 "49c088f6.9ba0c8"
@@ -406,8 +393,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 640,
+        "x": 1800,
+        "y": 660,
         "wires": [
             [
                 "e037e8eb.0ee838"
@@ -561,8 +548,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 27,
-        "x": 1650,
-        "y": 820,
+        "x": 1250,
+        "y": 840,
         "wires": [
             [
                 "e40e3cc8.f834a"
@@ -626,8 +613,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2420,
-        "y": 640,
+        "x": 2040,
+        "y": 660,
         "wires": []
     },
     {
@@ -642,29 +629,13 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 420,
+        "x": 130,
         "y": 560,
         "wires": [
             [
                 "27eaa992.590db6"
             ]
         ]
-    },
-    {
-        "id": "3b23a87d.ceba08",
-        "type": "debug",
-        "z": "540182c4.0cacec",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1220,
-        "y": 560,
-        "wires": []
     },
     {
         "id": "1254bb0d.f4bed5",
@@ -682,8 +653,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 700,
+        "x": 1800,
+        "y": 720,
         "wires": [
             [
                 "64956d74.3c8114"
@@ -705,8 +676,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2410,
-        "y": 700,
+        "x": 2030,
+        "y": 720,
         "wires": []
     },
     {
@@ -725,8 +696,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 760,
+        "x": 1800,
+        "y": 780,
         "wires": [
             [
                 "dea57652.5dd918"
@@ -748,8 +719,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2410,
-        "y": 760,
+        "x": 2030,
+        "y": 780,
         "wires": []
     },
     {
@@ -768,8 +739,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 820,
+        "x": 1800,
+        "y": 840,
         "wires": [
             [
                 "af7a7e82.6723"
@@ -791,8 +762,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2410,
-        "y": 820,
+        "x": 2030,
+        "y": 840,
         "wires": []
     },
     {
@@ -803,12 +774,10 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 870,
+        "x": 330,
         "y": 560,
         "wires": [
-            [
-                "3b23a87d.ceba08"
-            ]
+            []
         ]
     },
     {
@@ -827,8 +796,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 640,
+        "x": 1610,
+        "y": 660,
         "wires": [
             [
                 "35d218ec.92f1a8"
@@ -851,8 +820,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 700,
+        "x": 1610,
+        "y": 720,
         "wires": [
             [
                 "1254bb0d.f4bed5"
@@ -875,8 +844,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 760,
+        "x": 1610,
+        "y": 780,
         "wires": [
             [
                 "7cd7f126.df78f"
@@ -899,8 +868,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 820,
+        "x": 1610,
+        "y": 840,
         "wires": [
             [
                 "30d43126.1cfa7e"
@@ -923,8 +892,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 880,
+        "x": 1800,
+        "y": 900,
         "wires": [
             [
                 "c31fb50a.688e08"
@@ -946,8 +915,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2420,
-        "y": 880,
+        "x": 2040,
+        "y": 900,
         "wires": []
     },
     {
@@ -966,8 +935,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 880,
+        "x": 1610,
+        "y": 900,
         "wires": [
             [
                 "3265ef6c.64d51"
@@ -990,8 +959,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 940,
+        "x": 1800,
+        "y": 960,
         "wires": [
             [
                 "ba07826a.d32f7"
@@ -1013,8 +982,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2440,
-        "y": 940,
+        "x": 2060,
+        "y": 960,
         "wires": []
     },
     {
@@ -1033,8 +1002,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 940,
+        "x": 1610,
+        "y": 960,
         "wires": [
             [
                 "654f3a99.58aee4"
@@ -1057,8 +1026,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 1000,
+        "x": 1800,
+        "y": 1020,
         "wires": [
             [
                 "a959b3c1.798d9"
@@ -1080,8 +1049,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2440,
-        "y": 1000,
+        "x": 2060,
+        "y": 1020,
         "wires": []
     },
     {
@@ -1100,8 +1069,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 1000,
+        "x": 1610,
+        "y": 1020,
         "wires": [
             [
                 "229b79e8.7b8126"
@@ -1124,8 +1093,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 1060,
+        "x": 1800,
+        "y": 1080,
         "wires": [
             [
                 "e09eb717.fa45b8"
@@ -1147,8 +1116,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2440,
-        "y": 1060,
+        "x": 2060,
+        "y": 1080,
         "wires": []
     },
     {
@@ -1167,8 +1136,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 1060,
+        "x": 1610,
+        "y": 1080,
         "wires": [
             [
                 "641acf84.f005d"
@@ -1191,8 +1160,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 2180,
-        "y": 1120,
+        "x": 1800,
+        "y": 1140,
         "wires": [
             [
                 "37f1ba8b.669dd6"
@@ -1214,8 +1183,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2440,
-        "y": 1120,
+        "x": 2060,
+        "y": 1140,
         "wires": []
     },
     {
@@ -1234,8 +1203,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1990,
-        "y": 1120,
+        "x": 1610,
+        "y": 1140,
         "wires": [
             [
                 "823ba3c8.21647"
@@ -1349,8 +1318,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 970,
-        "y": 820,
+        "x": 950,
+        "y": 840,
         "wires": [
             [
                 "c26eb7cb.5e5418"
@@ -1433,6 +1402,174 @@
         "info": "",
         "x": 240,
         "y": 440,
+        "wires": []
+    },
+    {
+        "id": "daf32e0d.4e388",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 720,
+        "wires": [
+            [
+                "927d9d9b.c3e63"
+            ]
+        ]
+    },
+    {
+        "id": "a78b2856.660da8",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 760,
+        "wires": [
+            [
+                "927d9d9b.c3e63"
+            ]
+        ]
+    },
+    {
+        "id": "f85dabf2.464b98",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 800,
+        "wires": [
+            [
+                "927d9d9b.c3e63"
+            ]
+        ]
+    },
+    {
+        "id": "927d9d9b.c3e63",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "9ac6163.941a0e8",
+        "type": "csv",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 890,
+        "y": 760,
+        "wires": [
+            [
+                "f85dabf2.464b98",
+                "a78b2856.660da8",
+                "daf32e0d.4e388"
+            ]
+        ]
+    },
+    {
+        "id": "bcab5cd0.2e945",
+        "type": "mqtt in",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "topic": "BOULDER/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "261b9b5a.56f684",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 170,
+        "y": 840,
+        "wires": [
+            [
+                "412a7a0a.4480b4"
+            ]
+        ]
+    },
+    {
+        "id": "412a7a0a.4480b4",
+        "type": "json",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 310,
+        "y": 840,
+        "wires": [
+            [
+                "a50558b1.62fbe8"
+            ]
+        ]
+    },
+    {
+        "id": "a50558b1.62fbe8",
+        "type": "file",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "filename": "output",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 450,
+        "y": 840,
+        "wires": [
+            [
+                "59a8db21.f64004"
+            ]
+        ]
+    },
+    {
+        "id": "59a8db21.f64004",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 840,
         "wires": []
     }
 ]
