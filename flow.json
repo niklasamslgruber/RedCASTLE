@@ -21,6 +21,13 @@
         "info": ""
     },
     {
+        "id": "44f2dba4.713184",
+        "type": "tab",
+        "label": "Statistics Test",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "19ca91ba.af4a0e",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -63,9 +70,7 @@
             "662a9b9d.ee6c94"
         ],
         "x": 1534,
-        "y": 619,
-        "w": 692,
-        "h": 562
+        "y": 619
     },
     {
         "id": "e18cf721.789868",
@@ -83,9 +88,7 @@
             "d12d92da.acfee"
         ],
         "x": 54,
-        "y": 579,
-        "w": 872,
-        "h": 122
+        "y": 579
     },
     {
         "id": "bb4f1610.11fe18",
@@ -106,9 +109,7 @@
             "32b22e53.929182"
         ],
         "x": 54,
-        "y": 399,
-        "w": 452,
-        "h": 122
+        "y": 399
     },
     {
         "id": "261b9b5a.56f684",
@@ -1571,5 +1572,88 @@
         "x": 650,
         "y": 840,
         "wires": []
+    },
+    {
+        "id": "afcb8dcd.5148c",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "discernibility_metric",
+        "func": "metric = 0;\nk = msg.payload.k;\nquasi_identifiers = msg.payload.quasi_identifiers;\nequivalence_class_column = msg.payload.equivalence_class_column;\ndata_frame = msg.payload.data_frame\n\nfor (var value in data_frame[equivalence_class_column]){\n    eq_class_size = data_frame[data_frame[equivalence_class_column] == value].lenght\n    if (eq_class_size >= k){\n        metric += math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += len(dataframe) * eq_class_size\n    }\n}\n\nreturn { payload: metric} ;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 400,
+        "wires": [
+            [
+                "b69cba0d.89a368"
+            ]
+        ]
+    },
+    {
+        "id": "a9c0de1.34c292",
+        "type": "inject",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\t    \"Nachricht\": \"Test\"\t}",
+        "payloadType": "jsonata",
+        "x": 510,
+        "y": 400,
+        "wires": [
+            [
+                "940cf07b.c7c35"
+            ]
+        ]
+    },
+    {
+        "id": "b69cba0d.89a368",
+        "type": "debug",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "940cf07b.c7c35",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "categorize columns",
+        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"pin\", \"job\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [\"TGT1\", 49, 132042, 1],\n    [\"PGT1\", 40, 132021, 0], \n    [\"PPRT1\", 44, 132024, 0], \n    [\"TGT\", 48, 132046, 1],\n    [\"PPRT\", 45, 132045, 1],\n    [\"PGT\", 43, 132027, 0],\n    [\"PGT\", 49, 132046, 0]\n    ];\n\n\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = dataframeRowUniqueArray.indexOf(dataframe_t[row][col]);\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": categorizedDataframe_t, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nreturn {\"payload\": categorizedDataframe};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 540,
+        "wires": [
+            [
+                "b69cba0d.89a368"
+            ]
+        ]
     }
 ]
