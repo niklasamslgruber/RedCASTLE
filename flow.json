@@ -70,7 +70,9 @@
             "662a9b9d.ee6c94"
         ],
         "x": 1534,
-        "y": 619
+        "y": 619,
+        "w": 692,
+        "h": 562
     },
     {
         "id": "e18cf721.789868",
@@ -88,7 +90,9 @@
             "d12d92da.acfee"
         ],
         "x": 54,
-        "y": 579
+        "y": 579,
+        "w": 872,
+        "h": 122
     },
     {
         "id": "bb4f1610.11fe18",
@@ -109,7 +113,34 @@
             "32b22e53.929182"
         ],
         "x": 54,
-        "y": 399
+        "y": 399,
+        "w": 452,
+        "h": 122
+    },
+    {
+        "id": "e68402fe.4fdb1",
+        "type": "group",
+        "z": "f679c5ec.fb0428",
+        "name": "Reduce",
+        "style": {
+            "label": true,
+            "stroke": "#0070c0",
+            "fill": "#7fb7df",
+            "color": "#ffffff"
+        },
+        "nodes": [
+            "90b35571.f8d888",
+            "df294483.fe09f8",
+            "68b4cef9.78d8a",
+            "fab68f12.e9ea8",
+            "a5b2d809.243ba8",
+            "f960e58b.28ccf8",
+            "3fd6dcd1.eb1a14"
+        ],
+        "x": 624,
+        "y": 179,
+        "w": 1122,
+        "h": 262
     },
     {
         "id": "261b9b5a.56f684",
@@ -135,107 +166,6 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
-    },
-    {
-        "id": "92cced2f.5395",
-        "type": "exec",
-        "z": "f679c5ec.fb0428",
-        "command": "",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 510,
-        "y": 320,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "2097ef3.1882b9",
-        "type": "json",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 190,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "232c3c76.a9359c",
-        "type": "batch",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "mode": "count",
-        "count": 10,
-        "overlap": 0,
-        "interval": 10,
-        "allowEmptySequence": false,
-        "topics": [
-            {
-                "topic": ""
-            }
-        ],
-        "x": 670,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "451e0ea.47d637",
-        "type": "batch",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "mode": "count",
-        "count": 10,
-        "overlap": 0,
-        "interval": 10,
-        "allowEmptySequence": false,
-        "topics": [
-            {
-                "topic": ""
-            }
-        ],
-        "x": 350,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "29e1f3f2.349704",
-        "type": "complete",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 830,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f9c74a41.24ba2",
-        "type": "catch",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 670,
-        "y": 380,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "f6fed640.1136b8",
@@ -275,7 +205,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1330,
+        "x": 1350,
         "y": 920,
         "wires": []
     },
@@ -370,7 +300,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 110,
         "y": 840,
         "wires": [
             [
@@ -1474,7 +1404,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1340,
+        "x": 1350,
         "y": 780,
         "wires": []
     },
@@ -1508,18 +1438,18 @@
         "type": "mqtt in",
         "z": "f679c5ec.fb0428",
         "name": "",
-        "topic": "BOULDER/#",
+        "topic": "BOULDER/ANNEX_ST1",
         "qos": "2",
         "datatype": "auto",
         "broker": "261b9b5a.56f684",
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 170,
+        "x": 210,
         "y": 840,
         "wires": [
             [
-                "412a7a0a.4480b4"
+                "3f3e43a1.ef80bc"
             ]
         ]
     },
@@ -1531,11 +1461,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 310,
+        "x": 470,
         "y": 840,
         "wires": [
             [
-                "a50558b1.62fbe8"
+                "59a8db21.f64004"
             ]
         ]
     },
@@ -1549,12 +1479,10 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 450,
-        "y": 840,
+        "x": 630,
+        "y": 760,
         "wires": [
-            [
-                "59a8db21.f64004"
-            ]
+            []
         ]
     },
     {
@@ -1578,14 +1506,14 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "discernibility_metric",
-        "func": "metric = 0;\nk = msg.payload.k;\nquasi_identifiers = msg.payload.quasi_identifiers;\nequivalence_class_column = msg.payload.equivalence_class_column;\ndata_frame = msg.payload.data_frame\n\nfor (var value in data_frame[equivalence_class_column]){\n    eq_class_size = data_frame[data_frame[equivalence_class_column] == value].lenght\n    if (eq_class_size >= k){\n        metric += math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += len(dataframe) * eq_class_size\n    }\n}\n\nreturn { payload: metric} ;",
+        "func": "metric = 0;\nk = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\nfor (var value of new Set(dataframe_t[equivalenceClassColumnIndex].slice(1))){\n    counter = 0;\n    for (var entry of dataframe_t[equivalenceClassColumnIndex].slice(1)) {\n        \n        if(entry == value) {\n            counter++;\n        }\n    }\n    \n    eq_class_size = counter;\n    node.warn({\"eq_class_size\": eq_class_size, \"msg\":msg});\n    if (eq_class_size >= k){\n        metric += Math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += dataframe.length * eq_class_size\n    }\n}\n\n//msg.payload.discernibilityMetric = metric;\n\nmsg = {payload: new Object()};\nmsg.payload.discernibilityMetric = metric;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
-        "y": 400,
+        "x": 1050,
+        "y": 420,
         "wires": [
             [
                 "b69cba0d.89a368"
@@ -1611,10 +1539,10 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\t    \"Nachricht\": \"Test\"\t}",
+        "payload": "{\t    \"Nachricht\": \"Test\", \t    \"equivalenceClassColumn\":\"equivalenceClass\",\t    \"k\": 3,\t    \"quasiIdentifiers\": [\"job\", \"age\", \"pin\"]\t}",
         "payloadType": "jsonata",
-        "x": 510,
-        "y": 400,
+        "x": 410,
+        "y": 540,
         "wires": [
             [
                 "940cf07b.c7c35"
@@ -1633,8 +1561,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 400,
+        "x": 1470,
+        "y": 540,
         "wires": []
     },
     {
@@ -1642,18 +1570,240 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "categorize columns",
-        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"pin\", \"job\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [\"TGT1\", 49, 132042, 1],\n    [\"PGT1\", 40, 132021, 0], \n    [\"PPRT1\", 44, 132024, 0], \n    [\"TGT\", 48, 132046, 1],\n    [\"PPRT\", 45, 132045, 1],\n    [\"PGT\", 43, 132027, 0],\n    [\"PGT\", 49, 132046, 0]\n    ];\n\n\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = dataframeRowUniqueArray.indexOf(dataframe_t[row][col]);\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": categorizedDataframe_t, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nreturn {\"payload\": categorizedDataframe};",
+        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"pin\", \"job\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [\"TGT1\", 49, 132042, 1],\n    [\"PGT1\", 40, 132021, 0], \n    [\"PPRT1\", 44, 132024, 0], \n    [\"TGT\", 48, 132046, 1],\n    [\"PPRT\", 45, 132045, 1],\n    [\"PGT\", 43, 132027, 0],\n    [\"PGT\", 49, 132046, 0]\n    ];\n\n\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = (dataframeRowUniqueArray.indexOf(dataframe_t[row][col])) + 1;\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": categorizedDataframe_t, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nmsg.payload.categorizedDataframe = categorizedDataframe;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
+        "x": 590,
         "y": 540,
+        "wires": [
+            [
+                "8a307ca1.e69e3",
+                "5db08302.ab82ac",
+                "afcb8dcd.5148c"
+            ]
+        ]
+    },
+    {
+        "id": "5db08302.ab82ac",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "average_class_size",
+        "func": "k = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n// get number of unique equivalenceclasses and calculate with them \n// slice because first entry is name\naverageClassSize = (dataframe.length-1) / (new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\nmsg = {payload: {}};\nmsg.payload.averageClassSize = averageClassSize;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 480,
         "wires": [
             [
                 "b69cba0d.89a368"
             ]
         ]
+    },
+    {
+        "id": "8a307ca1.e69e3",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "generalized_information_loss",
+        "func": "metric = 0;\nk = msg.payload.k;\nquasiIdentifiers = msg.payload.quasiIdentifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"msg\": msg});\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"quasiIdentifiers\": quasiIdentifiers});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\nnode.warn({\"dataframe_t\": dataframe_t});\n\ninformationLoss = 0;\n\neqClasses = new Set(dataframe_t[equivalenceClassColumnIndex].slice(1));\n\n\nvar ui = [];\nvar li = [];\n\n// get the min and max values per categorie. Skip the first as its the name in the transposed array.\nfor (var i = 0; i < dataframe_t.length; i++) { \n    ui[i] = Math.max.apply(Math, dataframe_t[i].slice(1));\n    li[i] = Math.min.apply(Math, dataframe_t[i].slice(1));\n    /*\n    if(dataframe_t[i][0] != \"age\") {\n        ui[i] += 1;\n        li[i] += 1;\n    }\n    */\n}\n\n//node.warn({\"ui\":ui});\n//node.warn({\"li\":li});\n\nfor (var eqClass of eqClasses) {\n\n    entriesWithEqClass = dataframe.filter(([age, job, pin, equivalenceClass]) => equivalenceClass == eqClass);\n    entriesWithEqClass_t = entriesWithEqClass[0].map((_, colIndex) => entriesWithEqClass.map(row => row[colIndex]));\n    \n    //node.warn({\"entriesWithEqClass_t\":entriesWithEqClass_t});\n    \n    var uij = [];\n    var lij = [];\n    \n    // the transposed array contain all values of one categorie in a line. \n    // dataframe_t.length == entriesWithEqClass_t.length because its transposed so its the number of the categories.\n    // dataframe_t.length - 1 because last categorie is equivalenceClass\n    for (var j = 0; j < dataframe_t.length - 1; j++) {\n        uij[j] = Math.max.apply(Math, entriesWithEqClass_t[j]);\n        lij[j] = Math.min.apply(Math, entriesWithEqClass_t[j]);\n        \n        informationLoss += ((uij[j] - lij[j]) / (ui[j] - li[j])) * (entriesWithEqClass.length)\n        //node.warn({\" Math.max(entriesWithEqClass_t[j])\":  Math.max.apply(Math, entriesWithEqClass_t[j])});\n    }\n}\n/*\nfor (var i = 0; i < dataframe.length; i++) {\n        for (var j = 0; j < dataframe[i].length) {\n            informationLoss += ((uij[j] - lij[j]) / (ui[j] - li[j]))\n            node.warn({\" Math.max(entriesWithEqClass_t[j])\":  Math.max.apply(Math, entriesWithEqClass_t[j])});\n        }\n    }\n*/\nfactor = 1 / (quasiIdentifiers.length * dataframe.length)\nresult = factor * informationLoss\n\nnode.warn({\"informationLoss\": informationLoss});\nnode.warn({\"generalized_information_loss\": result});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [
+                "b69cba0d.89a368"
+            ]
+        ]
+    },
+    {
+        "id": "71a629df.3215c8",
+        "type": "comment",
+        "z": "f679c5ec.fb0428",
+        "name": "TODO: filter, reduce, statistiken",
+        "info": "",
+        "x": 170,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "90b35571.f8d888",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "disallowed_columns",
+                "pt": "flow",
+                "to": "payload.disallowed_columns",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 280,
+        "wires": [
+            [
+                "df294483.fe09f8"
+            ]
+        ]
+    },
+    {
+        "id": "df294483.fe09f8",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "",
+        "func": "return {payload : flow.get('disallowed_columns')};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 280,
+        "wires": [
+            [
+                "fab68f12.e9ea8"
+            ]
+        ]
+    },
+    {
+        "id": "68b4cef9.78d8a",
+        "type": "inject",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "set disallowed columns",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"disallowed_columns\":[\"ObjectId\",\"Address\",\"City\"]}",
+        "payloadType": "json",
+        "x": 770,
+        "y": 280,
+        "wires": [
+            [
+                "90b35571.f8d888"
+            ]
+        ]
+    },
+    {
+        "id": "fab68f12.e9ea8",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a5b2d809.243ba8",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "e7a2278.10e2fd8",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "3f3e43a1.ef80bc",
+        "type": "json",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 540,
+        "wires": [
+            [
+                "f960e58b.28ccf8"
+            ]
+        ]
+    },
+    {
+        "id": "f960e58b.28ccf8",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "remove disallowed columns / properties from messages",
+        "func": "for (var [id, blacklistedProperty] of Object.entries(flow.get(\"disallowed_columns\"))) {\n    delete msg.payload[blacklistedProperty];\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 400,
+        "wires": [
+            [
+                "a5b2d809.243ba8"
+            ]
+        ]
+    },
+    {
+        "id": "3fd6dcd1.eb1a14",
+        "type": "comment",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "Send json with array msg payload property \"disallowed_columns\" to this node or modifie the previous node accordingly",
+        "info": "",
+        "x": 1320,
+        "y": 220,
+        "wires": []
     }
 ]
