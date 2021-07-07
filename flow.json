@@ -202,8 +202,7 @@
         "y": 920,
         "wires": [
             [
-                "cf0b65f9.007318",
-                "9ac6163.941a0e8"
+                "cf0b65f9.007318"
             ],
             [
                 "cf0b65f9.007318"
@@ -1356,104 +1355,6 @@
         "wires": []
     },
     {
-        "id": "daf32e0d.4e388",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 720,
-        "wires": [
-            [
-                "927d9d9b.c3e63"
-            ]
-        ]
-    },
-    {
-        "id": "a78b2856.660da8",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 760,
-        "wires": [
-            [
-                "927d9d9b.c3e63"
-            ]
-        ]
-    },
-    {
-        "id": "f85dabf2.464b98",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 800,
-        "wires": [
-            [
-                "927d9d9b.c3e63"
-            ]
-        ]
-    },
-    {
-        "id": "927d9d9b.c3e63",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1350,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "9ac6163.941a0e8",
-        "type": "csv",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "sep": ",",
-        "hdrin": "",
-        "hdrout": "none",
-        "multi": "one",
-        "ret": "\\n",
-        "temp": "",
-        "skip": "0",
-        "strings": true,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 890,
-        "y": 760,
-        "wires": [
-            [
-                "f85dabf2.464b98",
-                "a78b2856.660da8",
-                "daf32e0d.4e388"
-            ]
-        ]
-    },
-    {
         "id": "bcab5cd0.2e945",
         "type": "mqtt in",
         "z": "f679c5ec.fb0428",
@@ -1465,61 +1366,13 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 210,
-        "y": 840,
+        "x": 150,
+        "y": 540,
         "wires": [
             [
                 "3f3e43a1.ef80bc"
             ]
         ]
-    },
-    {
-        "id": "412a7a0a.4480b4",
-        "type": "json",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 470,
-        "y": 840,
-        "wires": [
-            [
-                "59a8db21.f64004"
-            ]
-        ]
-    },
-    {
-        "id": "a50558b1.62fbe8",
-        "type": "file",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "filename": "output",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 630,
-        "y": 760,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "59a8db21.f64004",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 650,
-        "y": 840,
-        "wires": []
     },
     {
         "id": "afcb8dcd.5148c",
@@ -1533,7 +1386,7 @@
         "finalize": "",
         "libs": [],
         "x": 1050,
-        "y": 420,
+        "y": 480,
         "wires": [
             [
                 "b69cba0d.89a368"
@@ -1596,7 +1449,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
+        "x": 710,
         "y": 540,
         "wires": [
             [
@@ -1618,7 +1471,7 @@
         "finalize": "",
         "libs": [],
         "x": 1050,
-        "y": 480,
+        "y": 540,
         "wires": [
             [
                 "b69cba0d.89a368"
@@ -1730,7 +1583,8 @@
         "y": 540,
         "wires": [
             [
-                "6f6c2af1.9f6e64"
+                "6f6c2af1.9f6e64",
+                "f960e58b.28ccf8"
             ]
         ]
     },
@@ -1873,6 +1727,16 @@
         "statusType": "auto",
         "x": 1910,
         "y": 520,
+        "wires": []
+    },
+    {
+        "id": "ff6c83ab.d82a1",
+        "type": "comment",
+        "z": "f679c5ec.fb0428",
+        "name": "todo: aggregation, replace (mit autopreisen), autopreise",
+        "info": "letzten 12 Autos preise suchen\nARX - benchmark\nVisualizierung",
+        "x": 240,
+        "y": 600,
         "wires": []
     }
 ]
