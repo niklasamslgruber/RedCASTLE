@@ -132,15 +132,35 @@
             "90b35571.f8d888",
             "df294483.fe09f8",
             "68b4cef9.78d8a",
-            "fab68f12.e9ea8",
-            "a5b2d809.243ba8",
             "f960e58b.28ccf8",
             "3fd6dcd1.eb1a14"
         ],
-        "x": 624,
-        "y": 179,
-        "w": 1122,
+        "x": 604,
+        "y": 39,
+        "w": 1062,
         "h": 262
+    },
+    {
+        "id": "cd180a4c.27e908",
+        "type": "group",
+        "z": "f679c5ec.fb0428",
+        "name": "Filter",
+        "style": {
+            "stroke": "#92d04f",
+            "fill": "#c8e7a7",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "b973b317.c2e26",
+            "21d4f981.c1b826",
+            "24cd0779.af3658",
+            "6f6c2af1.9f6e64"
+        ],
+        "x": 604,
+        "y": 419,
+        "w": 922,
+        "h": 162
     },
     {
         "id": "261b9b5a.56f684",
@@ -1625,21 +1645,11 @@
         ]
     },
     {
-        "id": "71a629df.3215c8",
-        "type": "comment",
-        "z": "f679c5ec.fb0428",
-        "name": "TODO: filter, reduce, statistiken",
-        "info": "",
-        "x": 170,
-        "y": 360,
-        "wires": []
-    },
-    {
         "id": "90b35571.f8d888",
         "type": "change",
         "z": "f679c5ec.fb0428",
         "g": "e68402fe.4fdb1",
-        "name": "",
+        "name": "set flow variable",
         "rules": [
             {
                 "t": "set",
@@ -1654,8 +1664,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1050,
-        "y": 280,
+        "x": 1180,
+        "y": 140,
         "wires": [
             [
                 "df294483.fe09f8"
@@ -1667,18 +1677,18 @@
         "type": "function",
         "z": "f679c5ec.fb0428",
         "g": "e68402fe.4fdb1",
-        "name": "",
+        "name": "debug",
         "func": "return {payload : flow.get('disallowed_columns')};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1260,
-        "y": 280,
+        "x": 1450,
+        "y": 140,
         "wires": [
             [
-                "fab68f12.e9ea8"
+                "13e41266.74b74e"
             ]
         ]
     },
@@ -1687,7 +1697,7 @@
         "type": "inject",
         "z": "f679c5ec.fb0428",
         "g": "e68402fe.4fdb1",
-        "name": "set disallowed columns",
+        "name": "set disallowed columns / properties",
         "props": [
             {
                 "p": "payload"
@@ -1700,64 +1710,13 @@
         "topic": "",
         "payload": "{\"disallowed_columns\":[\"ObjectId\",\"Address\",\"City\"]}",
         "payloadType": "json",
-        "x": 770,
-        "y": 280,
+        "x": 790,
+        "y": 140,
         "wires": [
             [
                 "90b35571.f8d888"
             ]
         ]
-    },
-    {
-        "id": "fab68f12.e9ea8",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "g": "e68402fe.4fdb1",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1410,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "a5b2d809.243ba8",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "g": "e68402fe.4fdb1",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1420,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "e7a2278.10e2fd8",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 620,
-        "wires": []
     },
     {
         "id": "3f3e43a1.ef80bc",
@@ -1771,7 +1730,7 @@
         "y": 540,
         "wires": [
             [
-                "f960e58b.28ccf8"
+                "6f6c2af1.9f6e64"
             ]
         ]
     },
@@ -1787,11 +1746,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
-        "y": 400,
+        "x": 850,
+        "y": 260,
         "wires": [
             [
-                "a5b2d809.243ba8"
+                "13e41266.74b74e"
             ]
         ]
     },
@@ -1800,10 +1759,120 @@
         "type": "comment",
         "z": "f679c5ec.fb0428",
         "g": "e68402fe.4fdb1",
-        "name": "Send json with array msg payload property \"disallowed_columns\" to this node or modifie the previous node accordingly",
+        "name": "Send json with array msg payload property \"disallowed_columns\" to the \"set flow variable\" node or modifie the previous node accordingly",
         "info": "",
-        "x": 1320,
-        "y": 220,
+        "x": 1190,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b973b317.c2e26",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "debug",
+        "func": "return {payload : flow.get('filterCondition')};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 460,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "21d4f981.c1b826",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "set flow variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "flow",
+                "to": "payload.filterCondition",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 460,
+        "wires": [
+            [
+                "b973b317.c2e26"
+            ]
+        ]
+    },
+    {
+        "id": "24cd0779.af3658",
+        "type": "inject",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "set filter parameters",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"filterCondition\":{\"rangeFilter\":{\"columnName\":\"ObjectId\",\"minValue\":10000,\"maxValue\":30000},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}}",
+        "payloadType": "json",
+        "x": 740,
+        "y": 460,
+        "wires": [
+            [
+                "21d4f981.c1b826"
+            ]
+        ]
+    },
+    {
+        "id": "6f6c2af1.9f6e64",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "apply filterCondtion",
+        "func": "filterCondition = flow.get(\"filterCondition\");\n\nvar isInFilterCounter = 0;\nfor (var prop in filterCondition) {\n    var currentFilter = filterCondition[prop]\n    if(prop === \"rangeFilter\") {\n        if( msg.payload[currentFilter.columnName] >= currentFilter.minValue && msg.payload[currentFilter.columnName] <= currentFilter.maxValue) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"whitelistFilter\") {\n        if(currentFilter.whitelistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"blacklistFilter\") {\n        if(!currentFilter.blacklistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n}\n\n\nif (isInFilterCounter == Object.keys(filterCondition).length) {\n    return msg;\n}\nelse {\n    return;\n}\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 540,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "13e41266.74b74e",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1910,
+        "y": 520,
         "wires": []
     }
 ]
