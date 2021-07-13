@@ -163,6 +163,50 @@
         "h": 162
     },
     {
+        "id": "9029df9a.ca41e",
+        "type": "group",
+        "z": "f679c5ec.fb0428",
+        "name": "Change",
+        "style": {
+            "stroke": "#6f2fa0",
+            "fill": "#b797cf",
+            "label": true,
+            "color": "#ffffff"
+        },
+        "nodes": [
+            "e4fef193.908c4",
+            "65a9438e.e1670c",
+            "6e1058da.f93e98",
+            "237de14.1b4921e"
+        ],
+        "x": 604,
+        "y": 699,
+        "w": 872,
+        "h": 162
+    },
+    {
+        "id": "544ad840.3bf3a8",
+        "type": "group",
+        "z": "ed02ca62.53a888",
+        "name": "Change",
+        "style": {
+            "stroke": "#6f2fa0",
+            "fill": "#b797cf",
+            "label": true,
+            "color": "#ffffff"
+        },
+        "nodes": [
+            "706d2b2e.060114",
+            "8b5d2b5f.6a3758",
+            "36a1d79b.ecb2c8",
+            "1274355f.feba9b"
+        ],
+        "x": 254,
+        "y": 1039,
+        "w": 862,
+        "h": 162
+    },
+    {
         "id": "261b9b5a.56f684",
         "type": "mqtt-broker",
         "name": "fog_emulator_broker",
@@ -198,8 +242,8 @@
         "timer": "",
         "oldrc": false,
         "name": "run CASTLEGUARD with exampledata",
-        "x": 670,
-        "y": 920,
+        "x": 690,
+        "y": 1340,
         "wires": [
             [
                 "cf0b65f9.007318"
@@ -224,8 +268,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1350,
-        "y": 920,
+        "x": 1370,
+        "y": 1340,
         "wires": []
     },
     {
@@ -249,8 +293,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 920,
+        "x": 230,
+        "y": 1340,
         "wires": [
             [
                 "f6fed640.1136b8"
@@ -272,7 +316,7 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 580,
+        "x": 540,
         "y": 840,
         "wires": [
             [
@@ -290,7 +334,7 @@
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 340,
+        "x": 300,
         "y": 840,
         "wires": [
             [
@@ -596,7 +640,7 @@
         "pauseType": "rate",
         "timeout": "10",
         "timeoutUnits": "milliseconds",
-        "rate": "5",
+        "rate": "30",
         "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
@@ -835,7 +879,7 @@
         "pauseType": "rate",
         "timeout": "10",
         "timeoutUnits": "milliseconds",
-        "rate": "5",
+        "rate": "30",
         "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
@@ -1268,11 +1312,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 950,
+        "x": 910,
         "y": 840,
         "wires": [
             [
-                "c26eb7cb.5e5418"
+                "706d2b2e.060114"
             ]
         ]
     },
@@ -1359,18 +1403,18 @@
         "type": "mqtt in",
         "z": "f679c5ec.fb0428",
         "name": "",
-        "topic": "BOULDER/ANNEX_ST1",
+        "topic": "TOPIC/CASTLE_OUTPUT",
         "qos": "2",
         "datatype": "auto",
         "broker": "261b9b5a.56f684",
         "nl": false,
-        "rap": true,
+        "rap": false,
         "rh": 0,
         "x": 150,
-        "y": 540,
+        "y": 780,
         "wires": [
             [
-                "3f3e43a1.ef80bc"
+                "7b7bd8aa.432ac8"
             ]
         ]
     },
@@ -1572,23 +1616,6 @@
         ]
     },
     {
-        "id": "3f3e43a1.ef80bc",
-        "type": "json",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 390,
-        "y": 540,
-        "wires": [
-            [
-                "6f6c2af1.9f6e64",
-                "f960e58b.28ccf8"
-            ]
-        ]
-    },
-    {
         "id": "f960e58b.28ccf8",
         "type": "function",
         "z": "f679c5ec.fb0428",
@@ -1733,10 +1760,304 @@
         "id": "ff6c83ab.d82a1",
         "type": "comment",
         "z": "f679c5ec.fb0428",
-        "name": "todo: aggregation, replace (mit autopreisen), autopreise",
-        "info": "letzten 12 Autos preise suchen\nARX - benchmark\nVisualizierung",
-        "x": 240,
+        "name": "todo: aggregation,",
+        "info": "ARX - benchmark\nVisualizierung",
+        "x": 130,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "e4fef193.908c4",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "9029df9a.ca41e",
+        "name": "apply change conditions",
+        "func": "changeCondition = flow.get(\"changeConditions\");\n\n\nnode.warn({\"changeCondition\": changeCondition})\n\n\nfor (var change of changeCondition.change) {\n    if(msg.payload[changeCondition.sourceAttributeName] == change.conditionStringEqual) {\n        msg.payload[changeCondition.changeAttributeName] = change.valueForChangeAttributeName;\n            node.warn({\"change made\": change})\n        return msg;\n    }\n}\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 820,
+        "wires": [
+            [
+                "39b786d4.4294fa"
+            ]
+        ]
+    },
+    {
+        "id": "65a9438e.e1670c",
+        "type": "inject",
+        "z": "f679c5ec.fb0428",
+        "g": "9029df9a.ca41e",
+        "name": "set change parameters",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"changeConditions\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
+        "payloadType": "json",
+        "x": 750,
+        "y": 740,
+        "wires": [
+            [
+                "6e1058da.f93e98"
+            ]
+        ]
+    },
+    {
+        "id": "6e1058da.f93e98",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "g": "9029df9a.ca41e",
+        "name": "set changeConditions variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "changeConditions",
+                "pt": "flow",
+                "to": "payload.changeConditions",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 740,
+        "wires": [
+            [
+                "237de14.1b4921e"
+            ]
+        ]
+    },
+    {
+        "id": "237de14.1b4921e",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "9029df9a.ca41e",
+        "name": "debug",
+        "func": "return {payload : flow.get('changeConditions')};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 740,
+        "wires": [
+            [
+                "39b786d4.4294fa"
+            ]
+        ]
+    },
+    {
+        "id": "39b786d4.4294fa",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1860,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "706d2b2e.060114",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "g": "544ad840.3bf3a8",
+        "name": "apply change conditions",
+        "func": "changeCondition = flow.get(\"changeConditions\");\n\n\n//node.warn({\"changeCondition\": changeCondition})\n\n\nfor (var change of changeCondition.change) {\n    if(msg.payload[changeCondition.sourceAttributeName] == change.conditionStringEqual) {\n        msg.payload[changeCondition.changeAttributeName] = change.valueForChangeAttributeName;\n            //node.warn({\"change made\": change})\n            //node.warn(msg)\n        return msg;\n    }\n}\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1160,
+        "wires": [
+            [
+                "c26eb7cb.5e5418"
+            ]
+        ]
+    },
+    {
+        "id": "8b5d2b5f.6a3758",
+        "type": "inject",
+        "z": "ed02ca62.53a888",
+        "g": "544ad840.3bf3a8",
+        "name": "set change parameters",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"changeConditions\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
+        "payloadType": "json",
+        "x": 400,
+        "y": 1080,
+        "wires": [
+            [
+                "36a1d79b.ecb2c8"
+            ]
+        ]
+    },
+    {
+        "id": "36a1d79b.ecb2c8",
+        "type": "change",
+        "z": "ed02ca62.53a888",
+        "g": "544ad840.3bf3a8",
+        "name": "set changeConditions variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "changeConditions",
+                "pt": "flow",
+                "to": "payload.changeConditions",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 1080,
+        "wires": [
+            [
+                "1274355f.feba9b"
+            ]
+        ]
+    },
+    {
+        "id": "1274355f.feba9b",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "g": "544ad840.3bf3a8",
+        "name": "debug",
+        "func": "return {payload : flow.get('changeConditions')};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34525d91.940a12",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "632b2112.8cbef",
+        "type": "json",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 900,
+        "wires": [
+            [
+                "eb697a48.ed8c28"
+            ]
+        ]
+    },
+    {
+        "id": "7b7bd8aa.432ac8",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "msg.payload = msg.payload.replace(/'/g,'\"');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 680,
+        "wires": [
+            [
+                "632b2112.8cbef"
+            ]
+        ]
+    },
+    {
+        "id": "eb697a48.ed8c28",
+        "type": "csv",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 800,
+        "y": 1100,
+        "wires": [
+            [
+                "34525d91.940a12",
+                "85605a5e.e5e3b8"
+            ]
+        ]
+    },
+    {
+        "id": "85605a5e.e5e3b8",
+        "type": "file",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "filename": "anonymized_tuples.csv",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1390,
+        "y": 1100,
+        "wires": [
+            []
+        ]
     }
 ]

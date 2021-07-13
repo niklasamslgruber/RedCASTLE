@@ -15,8 +15,10 @@ def handler(value: pd.Series):
     cluster_id = value.parent.identifier
     value.data["createdAt"] = value.timestamp
     value.data["outputAt"] = datetime.now()
-    value.data["delay"] = (value.data["outputAt"] - value.data["createdAt"]).total_seconds()
+    value.data["delay"] = str((value.data["outputAt"] - value.data["createdAt"]).total_seconds())
     value.data["cluster"] = cluster_id.hex
+    value.data["outputAt"] = str(value.data["outputAt"])
+    value.data["createdAt"] = str(value.data["createdAt"])
 
     global publisher
     publisher.publish(value.data.to_dict())
