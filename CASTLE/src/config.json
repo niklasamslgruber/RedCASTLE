@@ -1,0 +1,22 @@
+{
+  "params": {
+    "k": 5,
+    "delta": 10,
+    "beta": 5,
+    "mu": 5,
+    "seed": 5,
+    "sensitive_attribute": "Energy__kWh_",
+    "quasi_identifiers": ["car_brand", "car_modell", "Start_Date___Time", "End_Date___Time", "Address", "Station_Name", "customer_id", "allow_dynamic_charging"],
+    "pid_column": "ObjectId",
+    "history": true,
+    "graph": false
+  },
+
+  "io": {
+    "output_file":"anonymized_tuples.csv",
+    "host": "localhost",
+    "port": 1883,
+    "mqtt_topics_in": ["BOULDER/BASELINE_ST1", "BOULDER/ALPINE_ST1"],
+    "mqtt_topic_out": "TOPIC/CASTLE_OUTPUT"
+  }
+}
