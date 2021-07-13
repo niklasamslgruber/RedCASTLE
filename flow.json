@@ -62,9 +62,9 @@
             "37f1ba8b.669dd6",
             "662a9b9d.ee6c94"
         ],
-        "x": 1534,
+        "x": 1524,
         "y": 619,
-        "w": 692,
+        "w": 702,
         "h": 562
     },
     {
@@ -134,6 +134,22 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
+    },
+    {
+        "id": "e8afc08f.033aa8",
+        "type": "socketio-config",
+        "port": "5000",
+        "sendClient": "true",
+        "path": "",
+        "bindToNode": true
+    },
+    {
+        "id": "82fcc13d.d54cd8",
+        "type": "socketio-config",
+        "port": "80",
+        "sendClient": "true",
+        "path": "/socket.io",
+        "bindToNode": false
     },
     {
         "id": "92cced2f.5395",
@@ -1570,6 +1586,43 @@
         "statusType": "auto",
         "x": 650,
         "y": 840,
+        "wires": []
+    },
+    {
+        "id": "20c4ef6.cb2559",
+        "type": "mqtt in",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "topic": "TOPIC/CASTLE_OUTPUT",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "261b9b5a.56f684",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 220,
+        "y": 1120,
+        "wires": [
+            [
+                "9b19a192.82731"
+            ]
+        ]
+    },
+    {
+        "id": "9b19a192.82731",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "test123",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 1120,
         "wires": []
     }
 ]
