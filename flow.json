@@ -21,6 +21,13 @@
         "info": ""
     },
     {
+        "id": "44f2dba4.713184",
+        "type": "tab",
+        "label": "Statistics Test",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "19ca91ba.af4a0e",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -62,9 +69,9 @@
             "37f1ba8b.669dd6",
             "662a9b9d.ee6c94"
         ],
-        "x": 1524,
+        "x": 1534,
         "y": 619,
-        "w": 702,
+        "w": 692,
         "h": 562
     },
     {
@@ -111,6 +118,51 @@
         "h": 122
     },
     {
+        "id": "e68402fe.4fdb1",
+        "type": "group",
+        "z": "f679c5ec.fb0428",
+        "name": "Reduce",
+        "style": {
+            "label": true,
+            "stroke": "#0070c0",
+            "fill": "#7fb7df",
+            "color": "#ffffff"
+        },
+        "nodes": [
+            "90b35571.f8d888",
+            "df294483.fe09f8",
+            "68b4cef9.78d8a",
+            "f960e58b.28ccf8",
+            "3fd6dcd1.eb1a14"
+        ],
+        "x": 604,
+        "y": 39,
+        "w": 1062,
+        "h": 262
+    },
+    {
+        "id": "cd180a4c.27e908",
+        "type": "group",
+        "z": "f679c5ec.fb0428",
+        "name": "Filter",
+        "style": {
+            "stroke": "#92d04f",
+            "fill": "#c8e7a7",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "b973b317.c2e26",
+            "21d4f981.c1b826",
+            "24cd0779.af3658",
+            "6f6c2af1.9f6e64"
+        ],
+        "x": 604,
+        "y": 419,
+        "w": 922,
+        "h": 162
+    },
+    {
         "id": "261b9b5a.56f684",
         "type": "mqtt-broker",
         "name": "fog_emulator_broker",
@@ -136,123 +188,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "e8afc08f.033aa8",
-        "type": "socketio-config",
-        "port": "5000",
-        "sendClient": "true",
-        "path": "",
-        "bindToNode": true
-    },
-    {
-        "id": "82fcc13d.d54cd8",
-        "type": "socketio-config",
-        "port": "80",
-        "sendClient": "true",
-        "path": "/socket.io",
-        "bindToNode": false
-    },
-    {
-        "id": "92cced2f.5395",
-        "type": "exec",
-        "z": "f679c5ec.fb0428",
-        "command": "",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "",
-        "x": 510,
-        "y": 320,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "2097ef3.1882b9",
-        "type": "json",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 190,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "232c3c76.a9359c",
-        "type": "batch",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "mode": "count",
-        "count": 10,
-        "overlap": 0,
-        "interval": 10,
-        "allowEmptySequence": false,
-        "topics": [
-            {
-                "topic": ""
-            }
-        ],
-        "x": 670,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "451e0ea.47d637",
-        "type": "batch",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "mode": "count",
-        "count": 10,
-        "overlap": 0,
-        "interval": 10,
-        "allowEmptySequence": false,
-        "topics": [
-            {
-                "topic": ""
-            }
-        ],
-        "x": 350,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "29e1f3f2.349704",
-        "type": "complete",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 830,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f9c74a41.24ba2",
-        "type": "catch",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 670,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
@@ -267,8 +202,7 @@
         "y": 920,
         "wires": [
             [
-                "cf0b65f9.007318",
-                "9ac6163.941a0e8"
+                "cf0b65f9.007318"
             ],
             [
                 "cf0b65f9.007318"
@@ -290,7 +224,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1330,
+        "x": 1350,
         "y": 920,
         "wires": []
     },
@@ -385,7 +319,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 110,
         "y": 840,
         "wires": [
             [
@@ -1421,66 +1355,77 @@
         "wires": []
     },
     {
-        "id": "daf32e0d.4e388",
-        "type": "function",
+        "id": "bcab5cd0.2e945",
+        "type": "mqtt in",
         "z": "f679c5ec.fb0428",
         "name": "",
-        "func": "\nreturn msg;",
+        "topic": "BOULDER/ANNEX_ST1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "261b9b5a.56f684",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "3f3e43a1.ef80bc"
+            ]
+        ]
+    },
+    {
+        "id": "afcb8dcd.5148c",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "discernibility_metric",
+        "func": "metric = 0;\nk = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\nfor (var value of new Set(dataframe_t[equivalenceClassColumnIndex].slice(1))){\n    counter = 0;\n    for (var entry of dataframe_t[equivalenceClassColumnIndex].slice(1)) {\n        \n        if(entry == value) {\n            counter++;\n        }\n    }\n    \n    eq_class_size = counter;\n    node.warn({\"eq_class_size\": eq_class_size, \"msg\":msg});\n    if (eq_class_size >= k){\n        metric += Math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += dataframe.length * eq_class_size\n    }\n}\n\n//msg.payload.discernibilityMetric = metric;\n\nmsg = {payload: new Object()};\nmsg.payload.discernibilityMetric = metric;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1060,
-        "y": 720,
+        "x": 1050,
+        "y": 480,
         "wires": [
             [
-                "927d9d9b.c3e63"
+                "b69cba0d.89a368"
             ]
         ]
     },
     {
-        "id": "a78b2856.660da8",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
+        "id": "a9c0de1.34c292",
+        "type": "inject",
+        "z": "44f2dba4.713184",
         "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 760,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\t    \"Nachricht\": \"Test\", \t    \"equivalenceClassColumn\":\"equivalenceClass\",\t    \"k\": 3,\t    \"quasiIdentifiers\": [\"job\", \"age\", \"pin\"]\t}",
+        "payloadType": "jsonata",
+        "x": 410,
+        "y": 540,
         "wires": [
             [
-                "927d9d9b.c3e63"
+                "940cf07b.c7c35"
             ]
         ]
     },
     {
-        "id": "f85dabf2.464b98",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 800,
-        "wires": [
-            [
-                "927d9d9b.c3e63"
-            ]
-        ]
-    },
-    {
-        "id": "927d9d9b.c3e63",
+        "id": "b69cba0d.89a368",
         "type": "debug",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1489,91 +1434,287 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1340,
-        "y": 780,
+        "x": 1470,
+        "y": 540,
         "wires": []
     },
     {
-        "id": "9ac6163.941a0e8",
-        "type": "csv",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "sep": ",",
-        "hdrin": "",
-        "hdrout": "none",
-        "multi": "one",
-        "ret": "\\n",
-        "temp": "",
-        "skip": "0",
-        "strings": true,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 890,
-        "y": 760,
+        "id": "940cf07b.c7c35",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "categorize columns",
+        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"pin\", \"job\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [\"TGT1\", 49, 132042, 1],\n    [\"PGT1\", 40, 132021, 0], \n    [\"PPRT1\", 44, 132024, 0], \n    [\"TGT\", 48, 132046, 1],\n    [\"PPRT\", 45, 132045, 1],\n    [\"PGT\", 43, 132027, 0],\n    [\"PGT\", 49, 132046, 0]\n    ];\n\n\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = (dataframeRowUniqueArray.indexOf(dataframe_t[row][col])) + 1;\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": categorizedDataframe_t, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nmsg.payload.categorizedDataframe = categorizedDataframe;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 540,
         "wires": [
             [
-                "f85dabf2.464b98",
-                "a78b2856.660da8",
-                "daf32e0d.4e388"
+                "8a307ca1.e69e3",
+                "5db08302.ab82ac",
+                "afcb8dcd.5148c"
             ]
         ]
     },
     {
-        "id": "bcab5cd0.2e945",
-        "type": "mqtt in",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "topic": "BOULDER/#",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "261b9b5a.56f684",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "x": 170,
-        "y": 840,
+        "id": "5db08302.ab82ac",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "average_class_size",
+        "func": "k = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n// get number of unique equivalenceclasses and calculate with them \n// slice because first entry is name\naverageClassSize = (dataframe.length-1) / (new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\nmsg = {payload: {}};\nmsg.payload.averageClassSize = averageClassSize;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 540,
         "wires": [
             [
-                "412a7a0a.4480b4"
+                "b69cba0d.89a368"
             ]
         ]
     },
     {
-        "id": "412a7a0a.4480b4",
+        "id": "8a307ca1.e69e3",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "generalized_information_loss",
+        "func": "metric = 0;\nk = msg.payload.k;\nquasiIdentifiers = msg.payload.quasiIdentifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"msg\": msg});\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"quasiIdentifiers\": quasiIdentifiers});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\nnode.warn({\"dataframe_t\": dataframe_t});\n\ninformationLoss = 0;\n\neqClasses = new Set(dataframe_t[equivalenceClassColumnIndex].slice(1));\n\n\nvar ui = [];\nvar li = [];\n\n// get the min and max values per categorie. Skip the first as its the name in the transposed array.\nfor (var i = 0; i < dataframe_t.length; i++) { \n    ui[i] = Math.max.apply(Math, dataframe_t[i].slice(1));\n    li[i] = Math.min.apply(Math, dataframe_t[i].slice(1));\n    /*\n    if(dataframe_t[i][0] != \"age\") {\n        ui[i] += 1;\n        li[i] += 1;\n    }\n    */\n}\n\n//node.warn({\"ui\":ui});\n//node.warn({\"li\":li});\n\nfor (var eqClass of eqClasses) {\n\n    entriesWithEqClass = dataframe.filter(([age, job, pin, equivalenceClass]) => equivalenceClass == eqClass);\n    entriesWithEqClass_t = entriesWithEqClass[0].map((_, colIndex) => entriesWithEqClass.map(row => row[colIndex]));\n    \n    //node.warn({\"entriesWithEqClass_t\":entriesWithEqClass_t});\n    \n    var uij = [];\n    var lij = [];\n    \n    // the transposed array contain all values of one categorie in a line. \n    // dataframe_t.length == entriesWithEqClass_t.length because its transposed so its the number of the categories.\n    // dataframe_t.length - 1 because last categorie is equivalenceClass\n    for (var j = 0; j < dataframe_t.length - 1; j++) {\n        uij[j] = Math.max.apply(Math, entriesWithEqClass_t[j]);\n        lij[j] = Math.min.apply(Math, entriesWithEqClass_t[j]);\n        \n        informationLoss += ((uij[j] - lij[j]) / (ui[j] - li[j])) * (entriesWithEqClass.length)\n        //node.warn({\" Math.max(entriesWithEqClass_t[j])\":  Math.max.apply(Math, entriesWithEqClass_t[j])});\n    }\n}\n/*\nfor (var i = 0; i < dataframe.length; i++) {\n        for (var j = 0; j < dataframe[i].length) {\n            informationLoss += ((uij[j] - lij[j]) / (ui[j] - li[j]))\n            node.warn({\" Math.max(entriesWithEqClass_t[j])\":  Math.max.apply(Math, entriesWithEqClass_t[j])});\n        }\n    }\n*/\nfactor = 1 / (quasiIdentifiers.length * dataframe.length)\nresult = factor * informationLoss\n\nnode.warn({\"informationLoss\": informationLoss});\nnode.warn({\"generalized_information_loss\": result});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [
+                "b69cba0d.89a368"
+            ]
+        ]
+    },
+    {
+        "id": "90b35571.f8d888",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "set flow variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "disallowed_columns",
+                "pt": "flow",
+                "to": "payload.disallowed_columns",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 140,
+        "wires": [
+            [
+                "df294483.fe09f8"
+            ]
+        ]
+    },
+    {
+        "id": "df294483.fe09f8",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "debug",
+        "func": "return {payload : flow.get('disallowed_columns')};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 140,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "68b4cef9.78d8a",
+        "type": "inject",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "set disallowed columns / properties",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"disallowed_columns\":[\"ObjectId\",\"Address\",\"City\"]}",
+        "payloadType": "json",
+        "x": 790,
+        "y": 140,
+        "wires": [
+            [
+                "90b35571.f8d888"
+            ]
+        ]
+    },
+    {
+        "id": "3f3e43a1.ef80bc",
         "type": "json",
         "z": "f679c5ec.fb0428",
         "name": "",
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 310,
-        "y": 840,
+        "x": 390,
+        "y": 540,
         "wires": [
             [
-                "a50558b1.62fbe8"
+                "6f6c2af1.9f6e64",
+                "f960e58b.28ccf8"
             ]
         ]
     },
     {
-        "id": "a50558b1.62fbe8",
-        "type": "file",
+        "id": "f960e58b.28ccf8",
+        "type": "function",
         "z": "f679c5ec.fb0428",
-        "name": "",
-        "filename": "output",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 450,
-        "y": 840,
+        "g": "e68402fe.4fdb1",
+        "name": "remove disallowed columns / properties from messages",
+        "func": "for (var [id, blacklistedProperty] of Object.entries(flow.get(\"disallowed_columns\"))) {\n    delete msg.payload[blacklistedProperty];\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 260,
         "wires": [
             [
-                "59a8db21.f64004"
+                "13e41266.74b74e"
             ]
         ]
     },
     {
-        "id": "59a8db21.f64004",
+        "id": "3fd6dcd1.eb1a14",
+        "type": "comment",
+        "z": "f679c5ec.fb0428",
+        "g": "e68402fe.4fdb1",
+        "name": "Send json with array msg payload property \"disallowed_columns\" to the \"set flow variable\" node or modifie the previous node accordingly",
+        "info": "",
+        "x": 1190,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b973b317.c2e26",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "debug",
+        "func": "return {payload : flow.get('filterCondition')};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 460,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "21d4f981.c1b826",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "set flow variable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "flow",
+                "to": "payload.filterCondition",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 460,
+        "wires": [
+            [
+                "b973b317.c2e26"
+            ]
+        ]
+    },
+    {
+        "id": "24cd0779.af3658",
+        "type": "inject",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "set filter parameters",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"filterCondition\":{\"rangeFilter\":{\"columnName\":\"ObjectId\",\"minValue\":10000,\"maxValue\":30000},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}}",
+        "payloadType": "json",
+        "x": 740,
+        "y": 460,
+        "wires": [
+            [
+                "21d4f981.c1b826"
+            ]
+        ]
+    },
+    {
+        "id": "6f6c2af1.9f6e64",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "g": "cd180a4c.27e908",
+        "name": "apply filterCondtion",
+        "func": "filterCondition = flow.get(\"filterCondition\");\n\nvar isInFilterCounter = 0;\nfor (var prop in filterCondition) {\n    var currentFilter = filterCondition[prop]\n    if(prop === \"rangeFilter\") {\n        if( msg.payload[currentFilter.columnName] >= currentFilter.minValue && msg.payload[currentFilter.columnName] <= currentFilter.maxValue) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"whitelistFilter\") {\n        if(currentFilter.whitelistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"blacklistFilter\") {\n        if(!currentFilter.blacklistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n}\n\n\nif (isInFilterCounter == Object.keys(filterCondition).length) {\n    return msg;\n}\nelse {\n    return;\n}\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 540,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "13e41266.74b74e",
         "type": "debug",
         "z": "f679c5ec.fb0428",
         "name": "",
@@ -1584,45 +1725,18 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 650,
-        "y": 840,
+        "x": 1910,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "20c4ef6.cb2559",
-        "type": "mqtt in",
+        "id": "ff6c83ab.d82a1",
+        "type": "comment",
         "z": "f679c5ec.fb0428",
-        "name": "",
-        "topic": "TOPIC/CASTLE_OUTPUT",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "261b9b5a.56f684",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "x": 220,
-        "y": 1120,
-        "wires": [
-            [
-                "9b19a192.82731"
-            ]
-        ]
-    },
-    {
-        "id": "9b19a192.82731",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "test123",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 450,
-        "y": 1120,
+        "name": "todo: aggregation, replace (mit autopreisen), autopreise",
+        "info": "letzten 12 Autos preise suchen\nARX - benchmark\nVisualizierung",
+        "x": 240,
+        "y": 600,
         "wires": []
     }
 ]
