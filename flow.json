@@ -28,6 +28,13 @@
         "info": ""
     },
     {
+        "id": "60da4e27.9e901",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "19ca91ba.af4a0e",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -69,7 +76,7 @@
             "37f1ba8b.669dd6",
             "662a9b9d.ee6c94"
         ],
-        "x": 1534,
+        "x": 2234,
         "y": 619,
         "w": 692,
         "h": 562
@@ -163,28 +170,6 @@
         "h": 162
     },
     {
-        "id": "9029df9a.ca41e",
-        "type": "group",
-        "z": "f679c5ec.fb0428",
-        "name": "Change",
-        "style": {
-            "stroke": "#6f2fa0",
-            "fill": "#b797cf",
-            "label": true,
-            "color": "#ffffff"
-        },
-        "nodes": [
-            "e4fef193.908c4",
-            "65a9438e.e1670c",
-            "6e1058da.f93e98",
-            "237de14.1b4921e"
-        ],
-        "x": 604,
-        "y": 699,
-        "w": 872,
-        "h": 162
-    },
-    {
         "id": "544ad840.3bf3a8",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -201,9 +186,9 @@
             "36a1d79b.ecb2c8",
             "1274355f.feba9b"
         ],
-        "x": 254,
-        "y": 1039,
-        "w": 862,
+        "x": 1174,
+        "y": 719,
+        "w": 672,
         "h": 162
     },
     {
@@ -232,17 +217,142 @@
         "sessionExpiry": ""
     },
     {
+        "id": "a1625557.3ff658",
+        "type": "ui_group",
+        "name": "Standard",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "144804ba.ddd68b",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "b23cfab0.cda678",
+        "type": "ui_tab",
+        "name": "Test Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "18d0f143.d267bf",
+        "type": "ui_group",
+        "name": "Test UI",
+        "tab": "b23cfab0.cda678",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
-        "command": "python3 \"C:\\Users\\Roschy\\Downloads\\CASTLEGUARD-master\\src\\main.py\"  ",
+        "command": "python \"C:\\Users\\Roschy\\.node-red\\projects\\k-anonymity\\CASTLE\\src\\main.py\"  ",
         "addpay": "",
-        "append": " --filename \"C:\\Users\\Roschy\\Downloads\\CASTLEGUARD-master\\example.csv\" --sample-size 1000 --k 10 --l 5 --delta 200 --seed 42 --disable-dp --display --history",
-        "useSpawn": "true",
+        "append": "",
+        "useSpawn": "false",
         "timer": "",
         "oldrc": false,
-        "name": "run CASTLEGUARD with exampledata",
-        "x": 690,
+        "name": "run CASTLEGUARD ",
+        "x": 640,
         "y": 1340,
         "wires": [
             [
@@ -387,7 +497,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 660,
         "wires": [
             [
@@ -542,7 +652,7 @@
         "checkall": "false",
         "repair": false,
         "outputs": 27,
-        "x": 1250,
+        "x": 1950,
         "y": 840,
         "wires": [
             [
@@ -607,7 +717,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2040,
+        "x": 2740,
         "y": 660,
         "wires": []
     },
@@ -647,7 +757,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 720,
         "wires": [
             [
@@ -670,7 +780,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2030,
+        "x": 2730,
         "y": 720,
         "wires": []
     },
@@ -690,7 +800,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 780,
         "wires": [
             [
@@ -713,7 +823,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2030,
+        "x": 2730,
         "y": 780,
         "wires": []
     },
@@ -733,7 +843,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 840,
         "wires": [
             [
@@ -756,7 +866,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2030,
+        "x": 2730,
         "y": 840,
         "wires": []
     },
@@ -790,7 +900,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 660,
         "wires": [
             [
@@ -814,7 +924,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 720,
         "wires": [
             [
@@ -838,7 +948,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 780,
         "wires": [
             [
@@ -862,7 +972,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 840,
         "wires": [
             [
@@ -886,7 +996,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 900,
         "wires": [
             [
@@ -909,7 +1019,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2040,
+        "x": 2740,
         "y": 900,
         "wires": []
     },
@@ -929,7 +1039,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 900,
         "wires": [
             [
@@ -953,7 +1063,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 960,
         "wires": [
             [
@@ -976,7 +1086,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2060,
+        "x": 2760,
         "y": 960,
         "wires": []
     },
@@ -996,7 +1106,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 960,
         "wires": [
             [
@@ -1020,7 +1130,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 1020,
         "wires": [
             [
@@ -1043,7 +1153,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2060,
+        "x": 2760,
         "y": 1020,
         "wires": []
     },
@@ -1063,7 +1173,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 1020,
         "wires": [
             [
@@ -1087,7 +1197,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 1080,
         "wires": [
             [
@@ -1110,7 +1220,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2060,
+        "x": 2760,
         "y": 1080,
         "wires": []
     },
@@ -1130,7 +1240,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 1080,
         "wires": [
             [
@@ -1154,7 +1264,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1800,
+        "x": 2500,
         "y": 1140,
         "wires": [
             [
@@ -1177,7 +1287,7 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 2060,
+        "x": 2760,
         "y": 1140,
         "wires": []
     },
@@ -1197,7 +1307,7 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1610,
+        "x": 2310,
         "y": 1140,
         "wires": [
             [
@@ -1306,7 +1416,7 @@
         "type": "function",
         "z": "ed02ca62.53a888",
         "name": "assign car owner from flow.owner_data to each charge position",
-        "func": "\n\nowner_data = flow.get('owner_data')\nif (owner_data.lenght <= 0) {\n    node.error(\"owner_data list not set!\");\n}\n\n\n\nowner = owner_data[Math.floor(Math.random()*owner_data.length)]\nfor (var attrname in owner) \n{ \n    msg.payload[attrname] = owner[attrname]; \n}\nreturn msg;",
+        "func": "\n\nowner_data = flow.get('owner_data')\nif (owner_data.length <= 0) {\n    node.error(\"owner_data list not set!\");\n}\n\n\n\nowner = owner_data[Math.floor(Math.random()*owner_data.length)]\nfor (var attrname in owner) \n{ \n    msg.payload[attrname] = owner[attrname]; \n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1410,8 +1520,8 @@
         "nl": false,
         "rap": false,
         "rh": 0,
-        "x": 150,
-        "y": 780,
+        "x": 190,
+        "y": 900,
         "wires": [
             [
                 "7b7bd8aa.432ac8"
@@ -1763,118 +1873,7 @@
         "name": "todo: aggregation,",
         "info": "ARX - benchmark\nVisualizierung",
         "x": 130,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "e4fef193.908c4",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "g": "9029df9a.ca41e",
-        "name": "apply change conditions",
-        "func": "changeCondition = flow.get(\"changeConditions\");\n\n\nnode.warn({\"changeCondition\": changeCondition})\n\n\nfor (var change of changeCondition.change) {\n    if(msg.payload[changeCondition.sourceAttributeName] == change.conditionStringEqual) {\n        msg.payload[changeCondition.changeAttributeName] = change.valueForChangeAttributeName;\n            node.warn({\"change made\": change})\n        return msg;\n    }\n}\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 750,
-        "y": 820,
-        "wires": [
-            [
-                "39b786d4.4294fa"
-            ]
-        ]
-    },
-    {
-        "id": "65a9438e.e1670c",
-        "type": "inject",
-        "z": "f679c5ec.fb0428",
-        "g": "9029df9a.ca41e",
-        "name": "set change parameters",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"changeConditions\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
-        "payloadType": "json",
-        "x": 750,
-        "y": 740,
-        "wires": [
-            [
-                "6e1058da.f93e98"
-            ]
-        ]
-    },
-    {
-        "id": "6e1058da.f93e98",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "g": "9029df9a.ca41e",
-        "name": "set changeConditions variable",
-        "rules": [
-            {
-                "t": "set",
-                "p": "changeConditions",
-                "pt": "flow",
-                "to": "payload.changeConditions",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1160,
-        "y": 740,
-        "wires": [
-            [
-                "237de14.1b4921e"
-            ]
-        ]
-    },
-    {
-        "id": "237de14.1b4921e",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "g": "9029df9a.ca41e",
-        "name": "debug",
-        "func": "return {payload : flow.get('changeConditions')};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1400,
-        "y": 740,
-        "wires": [
-            [
-                "39b786d4.4294fa"
-            ]
-        ]
-    },
-    {
-        "id": "39b786d4.4294fa",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1860,
-        "y": 800,
+        "y": 460,
         "wires": []
     },
     {
@@ -1889,8 +1888,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 1160,
+        "x": 1310,
+        "y": 840,
         "wires": [
             [
                 "c26eb7cb.5e5418"
@@ -1915,8 +1914,8 @@
         "topic": "",
         "payload": "{\"changeConditions\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
         "payloadType": "json",
-        "x": 400,
-        "y": 1080,
+        "x": 1320,
+        "y": 760,
         "wires": [
             [
                 "36a1d79b.ecb2c8"
@@ -1943,8 +1942,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 800,
-        "y": 1080,
+        "x": 1570,
+        "y": 760,
         "wires": [
             [
                 "1274355f.feba9b"
@@ -1963,27 +1962,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 1080,
+        "x": 1770,
+        "y": 760,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "34525d91.940a12",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1130,
-        "y": 1040,
-        "wires": []
     },
     {
         "id": "632b2112.8cbef",
@@ -1993,11 +1976,13 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 350,
+        "x": 530,
         "y": 900,
         "wires": [
             [
-                "eb697a48.ed8c28"
+                "eb697a48.ed8c28",
+                "8b75bda1.b3a17",
+                "27ab429d.f6275e"
             ]
         ]
     },
@@ -2012,8 +1997,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 350,
-        "y": 680,
+        "x": 400,
+        "y": 900,
         "wires": [
             [
                 "632b2112.8cbef"
@@ -2039,7 +2024,6 @@
         "y": 1100,
         "wires": [
             [
-                "34525d91.940a12",
                 "85605a5e.e5e3b8"
             ]
         ]
@@ -2059,5 +2043,307 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "cd504496.a36a98",
+        "type": "ui_chart",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "group": "18d0f143.d267bf",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Delay in seconds",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1010,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b75bda1.b3a17",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.delay",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 880,
+        "wires": [
+            [
+                "cd504496.a36a98",
+                "879390c9.9afcc"
+            ]
+        ]
+    },
+    {
+        "id": "7a11bd0a.384864",
+        "type": "ui_button",
+        "z": "60da4e27.9e901",
+        "name": "",
+        "group": "18d0f143.d267bf",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start Simulation and Castleguard",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 580,
+        "y": 600,
+        "wires": [
+            [
+                "750a44e0.0e6acc"
+            ]
+        ]
+    },
+    {
+        "id": "750a44e0.0e6acc",
+        "type": "link out",
+        "z": "60da4e27.9e901",
+        "name": "",
+        "links": [
+            "e8dbc9d1.defd58",
+            "f916c6f6.ace1e8"
+        ],
+        "x": 775,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e8dbc9d1.defd58",
+        "type": "link in",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "links": [
+            "750a44e0.0e6acc"
+        ],
+        "x": 215,
+        "y": 1300,
+        "wires": [
+            [
+                "f6fed640.1136b8",
+                "aabba82d.226dd8"
+            ]
+        ]
+    },
+    {
+        "id": "f916c6f6.ace1e8",
+        "type": "link in",
+        "z": "ed02ca62.53a888",
+        "name": "",
+        "links": [
+            "750a44e0.0e6acc"
+        ],
+        "x": 135,
+        "y": 960,
+        "wires": [
+            [
+                "49c088f6.9ba0c8"
+            ]
+        ]
+    },
+    {
+        "id": "27ab429d.f6275e",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cluster",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 940,
+        "wires": [
+            [
+                "c61ee392.484ab",
+                "69af811a.f8918"
+            ]
+        ]
+    },
+    {
+        "id": "c61ee392.484ab",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "count messages",
+        "func": "messageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 940,
+        "wires": [
+            [
+                "ea9baaab.93d988"
+            ]
+        ]
+    },
+    {
+        "id": "ea9baaab.93d988",
+        "type": "ui_text",
+        "z": "f679c5ec.fb0428",
+        "group": "18d0f143.d267bf",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "generated output",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1310,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "aabba82d.226dd8",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "messageCounter",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69af811a.f8918",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "clusterCounterSet = flow.get('clusterCounterSet') || new Set()\n\nclusterCounterSet.add(msg.payload);\n\nflow.set('clusterCounterSet', clusterCounterSet)\n\nreturn {payload: clusterCounterSet.size};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 1000,
+        "wires": [
+            [
+                "3f81e4c1.20ca6c"
+            ]
+        ]
+    },
+    {
+        "id": "3f81e4c1.20ca6c",
+        "type": "ui_text",
+        "z": "f679c5ec.fb0428",
+        "group": "18d0f143.d267bf",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "generated clusters",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1310,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "879390c9.9afcc",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "maxDelay = flow.get('maxDelay') || 0\n\nif( maxDelay < msg.payload) {\n    flow.set('maxDelay', msg.payload)\n    return {payload: msg.payload};\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 800,
+        "wires": [
+            [
+                "5f1b98d6.05e408"
+            ]
+        ]
+    },
+    {
+        "id": "5f1b98d6.05e408",
+        "type": "ui_text",
+        "z": "f679c5ec.fb0428",
+        "group": "18d0f143.d267bf",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "max delay",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1290,
+        "y": 800,
+        "wires": []
     }
 ]
