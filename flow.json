@@ -348,7 +348,7 @@
         "command": "python \"C:\\Users\\Roschy\\.node-red\\projects\\k-anonymity\\CASTLE\\src\\main.py\"  ",
         "addpay": "",
         "append": "",
-        "useSpawn": "false",
+        "useSpawn": "true",
         "timer": "",
         "oldrc": false,
         "name": "run CASTLEGUARD ",
@@ -372,13 +372,14 @@
         "z": "f679c5ec.fb0428",
         "name": "",
         "active": true,
-        "tosidebar": true,
+        "tosidebar": false,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1370,
+        "x": 1230,
         "y": 1340,
         "wires": []
     },
@@ -403,7 +404,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
+        "x": 210,
         "y": 1340,
         "wires": [
             [
@@ -1524,7 +1525,8 @@
         "y": 900,
         "wires": [
             [
-                "7b7bd8aa.432ac8"
+                "7b7bd8aa.432ac8",
+                "cfe57a06.b97168"
             ]
         ]
     },
@@ -1870,9 +1872,9 @@
         "id": "ff6c83ab.d82a1",
         "type": "comment",
         "z": "f679c5ec.fb0428",
-        "name": "todo: aggregation,",
-        "info": "ARX - benchmark\nVisualizierung",
-        "x": 130,
+        "name": "todo: aggregation, performance benchmark",
+        "info": "",
+        "x": 200,
         "y": 460,
         "wires": []
     },
@@ -2038,7 +2040,7 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 1390,
+        "x": 1190,
         "y": 1100,
         "wires": [
             []
@@ -2081,7 +2083,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1010,
+        "x": 1210,
         "y": 880,
         "wires": [
             []
@@ -2247,7 +2249,7 @@
         "label": "generated output",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1310,
+        "x": 1210,
         "y": 940,
         "wires": []
     },
@@ -2287,7 +2289,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 990,
+        "x": 980,
         "y": 1000,
         "wires": [
             [
@@ -2307,7 +2309,7 @@
         "label": "generated clusters",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1310,
+        "x": 1210,
         "y": 1000,
         "wires": []
     },
@@ -2322,7 +2324,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 990,
+        "x": 980,
         "y": 800,
         "wires": [
             [
@@ -2342,8 +2344,24 @@
         "label": "max delay",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1290,
+        "x": 1230,
         "y": 800,
+        "wires": []
+    },
+    {
+        "id": "cfe57a06.b97168",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 780,
         "wires": []
     }
 ]
