@@ -54,7 +54,7 @@ class Subscriber:
         json_dict = json.loads(payload)
         series = pd.Series(json_dict)
         for key in series.keys():
-            if key in self.castle.headers:
+            if key in self.castle.headers and key in self.castle.params.non_categorized_columns:
                 if key in self.categories and series[key] not in self.categories[key]:
                     self.categories[key].append(series[key])
                 elif key not in self.categories:

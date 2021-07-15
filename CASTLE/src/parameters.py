@@ -29,6 +29,7 @@ class Parameters:
             self.mu = self.required(params.get("mu"))
             self.sensitive_attribute = self.required(params.get("sensitive_attribute"))
             self.quasi_identifiers = self.required(params.get("quasi_identifiers"))
+            self.non_categorized_columns = self.required(params.get("non_categorized_columns"))
             self.pid = self.required(params.get("pid_column"))
 
             self.seed = self.optional(params.get("seed"), np.random.randint(1e6))
