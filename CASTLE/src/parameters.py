@@ -12,7 +12,7 @@ class Parameters:
             args: The CLI arguments for the program
 
         """
-        config_path = "config.json"
+        config_path = "CASTLE/src/config.json"
 
         if not os.path.exists(config_path):
             quit("Project needs to include a config.json at source")

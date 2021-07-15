@@ -45,6 +45,6 @@ def main():
     print(f'Average Delay: {round(frame["delay"].mean(), 4)}s')
     print(f'Number of total generated clusters: {len(set(frame["cluster"]))}')
 
+
 if __name__ == "__main__":
     main()
-    test_with_sample()
