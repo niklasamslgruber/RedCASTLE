@@ -20,21 +20,24 @@ Example Dataset
 
 Additionally a few functionalities where added to assist further to achieve privacy when working with personal data. Fro this a filter and a reduce function are implemented.
 
-These functions can be configured via a json object.
+These functions can be configured via a json object. This configuration object has to be added to the message object, not the msg.payload object.
 
 Example configurations for filter and reduce:
 --------
-Reduce the columns / attributes
+Suppressed specific properties:
 ```json
 {
-    "disallowed_columns": [
+    "suppressed_properties": [
         "ObjectId",
         "Address",
         "City"
     ]
 }
 ```
-Filter for specfic conditions. Currenty supported are range filtering as well as whitelist and blacklist filtering. A entry has to pass all filter conditions, otherwise the entry is removed from the set. 
+message object structure for this example: msg.suppressed_properties.suppressed_properties (array[3])
+
+
+Filter for specfic conditions. Currenty supported are range filtering as well as whitelist and blacklist filtering. A entry has to pass all filter conditions, otherwise the entry is removed from the set. You could also use only one or two of the filter conditions.
 ```json
 {
     "filterCondition": {
@@ -61,3 +64,50 @@ Filter for specfic conditions. Currenty supported are range filtering as well as
     }
 }
 ```
+message object structure for this example: msg.filterCondition.rangeFilter (object) ...
+
+Change or append new properties based on existing properties. 
+
+Add a car_price property based on a given mapping of car_modell names and prices.
+```json
+{
+    "changeStringEqual": {
+        "sourceAttributeName": "car_modell",
+        "changeAttributeName": "car_price",
+        "change": [
+            {
+                "conditionStringEqual": "e-tron 55",
+                "valueForChangeAttributeName": 84459
+            },
+            {
+                "conditionStringEqual": "e-tron 50",
+                "valueForChangeAttributeName": 69100
+            }
+        ]
+    }
+}
+```
+message object structure for this example: msg.changeConditions.changeStringEqual (object)
+
+Add a alternative way to interpret the car prices by adding car_price_alt which sets different values depending on if the car_price is in a specific range.
+```json
+{
+    "changeRangeBased": {
+        "sourceAttributeName": "car_price",
+        "changeAttributeName": "car_price_alt",
+        "change": [
+            {
+                "conditionMin": 40000,
+                "conditionMax": 120000,
+                "valueForChangeAttributeName": "expensive"
+            },
+            {
+                "conditionMin": 0,
+                "conditionMax": 39999,
+                "valueForChangeAttributeName": "cheap"
+            }
+        ]
+    }
+}
+```
+message object structure for this example: msg.changeConditions.changeRangeBased (object)
