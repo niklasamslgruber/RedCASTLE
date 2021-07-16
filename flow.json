@@ -101,6 +101,39 @@
         "color": "#DDAA99"
     },
     {
+        "id": "19a47153.1035df",
+        "type": "subflow",
+        "name": "Suppress Properties",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "f960e58b.28ccf8"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1300,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "f960e58b.28ccf8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "19ca91ba.af4a0e",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -191,29 +224,6 @@
         "h": 122
     },
     {
-        "id": "e68402fe.4fdb1",
-        "type": "group",
-        "z": "f679c5ec.fb0428",
-        "name": "Reduce",
-        "style": {
-            "label": true,
-            "stroke": "#0070c0",
-            "fill": "#7fb7df",
-            "color": "#ffffff"
-        },
-        "nodes": [
-            "90b35571.f8d888",
-            "df294483.fe09f8",
-            "68b4cef9.78d8a",
-            "f960e58b.28ccf8",
-            "3fd6dcd1.eb1a14"
-        ],
-        "x": 604,
-        "y": 39,
-        "w": 1062,
-        "h": 262
-    },
-    {
         "id": "cd180a4c.27e908",
         "type": "group",
         "z": "60904c4d.0104c4",
@@ -290,6 +300,26 @@
         "y": 699,
         "w": 672,
         "h": 82
+    },
+    {
+        "id": "e68402fe.4fdb1",
+        "type": "group",
+        "z": "19a47153.1035df",
+        "name": "Reduce",
+        "style": {
+            "label": true,
+            "stroke": "#0070c0",
+            "fill": "#7fb7df",
+            "color": "#ffffff"
+        },
+        "nodes": [
+            "f960e58b.28ccf8",
+            "3fd6dcd1.eb1a14"
+        ],
+        "x": 214,
+        "y": 219,
+        "w": 952,
+        "h": 122
     },
     {
         "id": "261b9b5a.56f684",
@@ -1754,108 +1784,32 @@
         ]
     },
     {
-        "id": "90b35571.f8d888",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "g": "e68402fe.4fdb1",
-        "name": "set flow variable",
-        "rules": [
-            {
-                "t": "set",
-                "p": "disallowed_columns",
-                "pt": "flow",
-                "to": "payload.disallowed_columns",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1180,
-        "y": 140,
-        "wires": [
-            [
-                "df294483.fe09f8"
-            ]
-        ]
-    },
-    {
-        "id": "df294483.fe09f8",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "g": "e68402fe.4fdb1",
-        "name": "debug",
-        "func": "return {payload : flow.get('disallowed_columns')};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1450,
-        "y": 140,
-        "wires": [
-            [
-                "13e41266.74b74e"
-            ]
-        ]
-    },
-    {
-        "id": "68b4cef9.78d8a",
-        "type": "inject",
-        "z": "f679c5ec.fb0428",
-        "g": "e68402fe.4fdb1",
-        "name": "set disallowed columns / properties",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"disallowed_columns\":[\"ObjectId\",\"Address\",\"City\"]}",
-        "payloadType": "json",
-        "x": 790,
-        "y": 140,
-        "wires": [
-            [
-                "90b35571.f8d888"
-            ]
-        ]
-    },
-    {
         "id": "f960e58b.28ccf8",
         "type": "function",
-        "z": "f679c5ec.fb0428",
+        "z": "19a47153.1035df",
         "g": "e68402fe.4fdb1",
         "name": "remove disallowed columns / properties from messages",
-        "func": "for (var [id, blacklistedProperty] of Object.entries(flow.get(\"disallowed_columns\"))) {\n    delete msg.payload[blacklistedProperty];\n}\nreturn msg;",
+        "func": "for (var [id, blacklistedProperty] of Object.entries(msg.suppressed_properties.suppressed_properties)) {\n    delete msg.payload[blacklistedProperty];\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 850,
-        "y": 260,
+        "x": 450,
+        "y": 300,
         "wires": [
-            [
-                "13e41266.74b74e"
-            ]
+            []
         ]
     },
     {
         "id": "3fd6dcd1.eb1a14",
         "type": "comment",
-        "z": "f679c5ec.fb0428",
+        "z": "19a47153.1035df",
         "g": "e68402fe.4fdb1",
         "name": "Send json with array msg payload property \"disallowed_columns\" to the \"set flow variable\" node or modifie the previous node accordingly",
         "info": "",
-        "x": 1190,
-        "y": 80,
+        "x": 690,
+        "y": 260,
         "wires": []
     },
     {
@@ -1885,11 +1839,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1910,
-        "y": 520,
+        "x": 1870,
+        "y": 320,
         "wires": []
     },
     {
@@ -1945,7 +1900,8 @@
                 "eb697a48.ed8c28",
                 "8b75bda1.b3a17",
                 "27ab429d.f6275e",
-                "f139e0c7.a58c8"
+                "f139e0c7.a58c8",
+                "191a3997.1bd366"
             ]
         ]
     },
@@ -2411,7 +2367,7 @@
         "y": 480,
         "wires": [
             [
-                "13e41266.74b74e"
+                "67429175.6c3cf"
             ]
         ]
     },
@@ -2466,5 +2422,63 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "735d2a1a.515c14",
+        "type": "subflow:19a47153.1035df",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "env": [],
+        "x": 1230,
+        "y": 320,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "191a3997.1bd366",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "name": "append suppressed properties to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "suppressed_properties",
+                "pt": "msg",
+                "to": "{\"suppressed_properties\":[\"ObjectId\",\"Address\",\"City\"]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 320,
+        "wires": [
+            [
+                "735d2a1a.515c14"
+            ]
+        ]
+    },
+    {
+        "id": "67429175.6c3cf",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1880,
+        "y": 480,
+        "wires": []
     }
 ]
