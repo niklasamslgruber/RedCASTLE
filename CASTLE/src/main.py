@@ -31,8 +31,6 @@ def main():
     print(f"Starting CASTLE with seed {params.seed}")
 
     # Init output file
-    global output_file
-    output_file = params.output_file
     global publisher
     publisher = Publisher(params.host, params.port, params.output_topic)
     stream = CASTLE(handler, params)

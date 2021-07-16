@@ -34,9 +34,7 @@ class Parameters:
 
             self.seed = self.optional(params.get("seed"), np.random.randint(1e6))
             self.history = self.optional(params.get("history"), False)
-            self.graph = self.optional(params.get("graph"), False)
 
-            self.output_file = self.required(io.get("output_file"))
             self.host = self.optional(io.get("host"), "localhost")
             self.port = self.optional(io.get("port"), 1883)
             self.mqtt_topics = self.required(io.get("mqtt_topics_in"))

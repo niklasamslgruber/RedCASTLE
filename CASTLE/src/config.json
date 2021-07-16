@@ -10,11 +10,9 @@
         "non_categorized_columns": ["car_brand", "car_modell", "Address", "Station_Name", "Start_Date___Time", "End_Date___Time"],
         "pid_column": "ObjectId",
         "history": true,
-        "graph": false
     },
 
     "io": {
-        "output_file": "anonymized_tuples.csv",
         "host": "localhost",
         "port": 1883,
         "mqtt_topics_in": ["BOULDER/ALPINE_ST1"],
