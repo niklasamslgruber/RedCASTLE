@@ -11,8 +11,8 @@ The used validation use case is a dataset with electric vehicle charging data. T
 
 Dependencies
 -------
-In order to run the Node-RED nodes it is required that Python (>= 3.6) is installed on all machines running the nodes.
-The additional required Python packages can be installed with `pip install -r requirements.txt`
+In order to run the Node-RED nodes it is required that Python (>= 3.6) is installed on all machines running the nodes. A MQTT Broker should also be installed.
+The additional required Python packages can be installed with `pip install -r requirements.txt`.
 
 Running
 -------
@@ -28,6 +28,11 @@ The config.json file is split into two parts (`params` and `io`).
 
 Example Dataset
 --------
+The example setup can be run using Docker. Simply build a Docker image from the `DOCKERFILE` or pull the latest Docker image from [Docker Hub](https://hub.docker.com/r/niklasamslgruber/node-red-castle).
+
+Run the Docker image with `docker run -ti -p 1883:1883 -p 1880:1880 niklasamslgruber/node-red-castle` and navigate to `localhost:1880` to see Node-RED.
+
+
 | Station Name           | Address          | Zip/Postal Code | Start Date & Time | End Date & Time | Total Duration (hh:mm:ss) | Charging Time (hh:mm:ss) | Energy (kWh) | GHG Savings (kg) | Gasoline Savings (gallons) | customer id | allow dynamic charging | car brand | car modell |
 |------------------------|------------------|-----------------|-------------------|-----------------|---------------------------|--------------------------|--------------|------------------|----------------------------|-------------|------------------------|-----------|------------|
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/1/2018 17:49    | 1/1/2018 19:52  | 2:03:02                   | 2:02:44                  | 6.504        | 2.732            | 0.816                      | 1006        | true                   | Tesla     | Model Y    |

@@ -14,7 +14,7 @@ class Publisher:
         self.client.connect(self.host, self.port, 60)
 
     def publish(self, payload: dict):
-        self.client.publish(self.output_topic, payload)
+        self.client.publish(self.output_topic, str(payload))
 
 
 class Subscriber:

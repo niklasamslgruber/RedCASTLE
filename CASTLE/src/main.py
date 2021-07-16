@@ -4,7 +4,7 @@ from datetime import datetime
 from parameters import Parameters
 from castle import CASTLE, Item, Cluster
 from visualisations import display_visualisation
-from statistics import Statistics, test_with_sample
+from statistics import Statistics
 from subscriber import Subscriber, Publisher
 
 publisher = None
@@ -39,11 +39,6 @@ def main():
 
     _ = Subscriber(params.host, params.port, stream)
 
-    if params.graph:
-        display_visualisation(stream)
-
-    print(f'Average Delay: {round(frame["delay"].mean(), 4)}s')
-    print(f'Number of total generated clusters: {len(set(frame["cluster"]))}')
 
 
 if __name__ == "__main__":
