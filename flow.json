@@ -35,6 +35,72 @@
         "info": ""
     },
     {
+        "id": "2bd5e7f7.0b5858",
+        "type": "subflow",
+        "name": "Conditional Changes",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 680,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "faddfcbc.ef93f"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1020,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "faddfcbc.ef93f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "60904c4d.0104c4",
+        "type": "subflow",
+        "name": "Conditional Filter",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 200,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "6f6c2af1.9f6e64"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 540,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "6f6c2af1.9f6e64",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "19ca91ba.af4a0e",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -150,7 +216,7 @@
     {
         "id": "cd180a4c.27e908",
         "type": "group",
-        "z": "f679c5ec.fb0428",
+        "z": "60904c4d.0104c4",
         "name": "Filter",
         "style": {
             "stroke": "#92d04f",
@@ -159,20 +225,37 @@
             "color": "#000000"
         },
         "nodes": [
-            "b973b317.c2e26",
-            "21d4f981.c1b826",
-            "24cd0779.af3658",
             "6f6c2af1.9f6e64"
         ],
-        "x": 604,
-        "y": 419,
-        "w": 922,
-        "h": 162
+        "x": 254,
+        "y": 119,
+        "w": 232,
+        "h": 82
     },
     {
-        "id": "544ad840.3bf3a8",
+        "id": "b1ae5997.ec6898",
         "type": "group",
         "z": "ed02ca62.53a888",
+        "name": "Change car price class",
+        "style": {
+            "stroke": "#6f2fa0",
+            "fill": "#b797cf",
+            "label": true,
+            "color": "#ffffff"
+        },
+        "nodes": [
+            "2d317e08.e1f652",
+            "42403d84.0c7cd4"
+        ],
+        "x": 1154,
+        "y": 879,
+        "w": 732,
+        "h": 82
+    },
+    {
+        "id": "8f7d71c7.eca34",
+        "type": "group",
+        "z": "2bd5e7f7.0b5858",
         "name": "Change",
         "style": {
             "stroke": "#6f2fa0",
@@ -181,15 +264,32 @@
             "color": "#ffffff"
         },
         "nodes": [
-            "706d2b2e.060114",
-            "8b5d2b5f.6a3758",
+            "faddfcbc.ef93f"
+        ],
+        "x": 714,
+        "y": 239,
+        "w": 272,
+        "h": 82
+    },
+    {
+        "id": "75d75513.333d1c",
+        "type": "group",
+        "z": "ed02ca62.53a888",
+        "name": "Change car prices",
+        "style": {
+            "stroke": "#6f2fa0",
+            "fill": "#b797cf",
+            "label": true,
+            "color": "#ffffff"
+        },
+        "nodes": [
             "36a1d79b.ecb2c8",
-            "1274355f.feba9b"
+            "4439c462.3a2c8c"
         ],
         "x": 1174,
-        "y": 719,
+        "y": 699,
         "w": 672,
-        "h": 162
+        "h": 82
     },
     {
         "id": "261b9b5a.56f684",
@@ -348,7 +448,7 @@
         "command": "python \"C:\\Users\\Roschy\\.node-red\\projects\\k-anonymity\\CASTLE\\src\\main.py\"  ",
         "addpay": "",
         "append": "",
-        "useSpawn": "true",
+        "useSpawn": "false",
         "timer": "",
         "oldrc": false,
         "name": "run CASTLEGUARD ",
@@ -1427,7 +1527,7 @@
         "y": 840,
         "wires": [
             [
-                "706d2b2e.060114"
+                "36a1d79b.ecb2c8"
             ]
         ]
     },
@@ -1759,97 +1859,21 @@
         "wires": []
     },
     {
-        "id": "b973b317.c2e26",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "g": "cd180a4c.27e908",
-        "name": "debug",
-        "func": "return {payload : flow.get('filterCondition')};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1450,
-        "y": 460,
-        "wires": [
-            [
-                "13e41266.74b74e"
-            ]
-        ]
-    },
-    {
-        "id": "21d4f981.c1b826",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "g": "cd180a4c.27e908",
-        "name": "set flow variable",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filterCondition",
-                "pt": "flow",
-                "to": "payload.filterCondition",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1180,
-        "y": 460,
-        "wires": [
-            [
-                "b973b317.c2e26"
-            ]
-        ]
-    },
-    {
-        "id": "24cd0779.af3658",
-        "type": "inject",
-        "z": "f679c5ec.fb0428",
-        "g": "cd180a4c.27e908",
-        "name": "set filter parameters",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"filterCondition\":{\"rangeFilter\":{\"columnName\":\"ObjectId\",\"minValue\":10000,\"maxValue\":30000},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}}",
-        "payloadType": "json",
-        "x": 740,
-        "y": 460,
-        "wires": [
-            [
-                "21d4f981.c1b826"
-            ]
-        ]
-    },
-    {
         "id": "6f6c2af1.9f6e64",
         "type": "function",
-        "z": "f679c5ec.fb0428",
+        "z": "60904c4d.0104c4",
         "g": "cd180a4c.27e908",
         "name": "apply filterCondtion",
-        "func": "filterCondition = flow.get(\"filterCondition\");\n\nvar isInFilterCounter = 0;\nfor (var prop in filterCondition) {\n    var currentFilter = filterCondition[prop]\n    if(prop === \"rangeFilter\") {\n        if( msg.payload[currentFilter.columnName] >= currentFilter.minValue && msg.payload[currentFilter.columnName] <= currentFilter.maxValue) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"whitelistFilter\") {\n        if(currentFilter.whitelistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"blacklistFilter\") {\n        if(!currentFilter.blacklistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n}\n\n\nif (isInFilterCounter == Object.keys(filterCondition).length) {\n    return msg;\n}\nelse {\n    return;\n}\n\n\n\n",
+        "func": "filterCondition = msg.filterCondition;\n\nvar isInFilterCounter = 0;\nfor (var prop in filterCondition) {\n    var currentFilter = filterCondition[prop]\n    if(prop === \"rangeFilter\") {\n        if( msg.payload[currentFilter.columnName] >= currentFilter.minValue && msg.payload[currentFilter.columnName] <= currentFilter.maxValue) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"whitelistFilter\") {\n        if(currentFilter.whitelistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n    if (prop === \"blacklistFilter\") {\n        if(!currentFilter.blacklistValues.includes(msg.payload[currentFilter.columnName])) {\n            isInFilterCounter += 1;\n        }\n    }\n}\n\n\nif (isInFilterCounter == Object.keys(filterCondition).length) {\n    return msg;\n}\nelse {\n    return;\n}\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 540,
+        "x": 370,
+        "y": 160,
         "wires": [
-            [
-                "13e41266.74b74e"
-            ]
+            []
         ]
     },
     {
@@ -1879,64 +1903,18 @@
         "wires": []
     },
     {
-        "id": "706d2b2e.060114",
-        "type": "function",
-        "z": "ed02ca62.53a888",
-        "g": "544ad840.3bf3a8",
-        "name": "apply change conditions",
-        "func": "changeCondition = flow.get(\"changeConditions\");\n\n\n//node.warn({\"changeCondition\": changeCondition})\n\n\nfor (var change of changeCondition.change) {\n    if(msg.payload[changeCondition.sourceAttributeName] == change.conditionStringEqual) {\n        msg.payload[changeCondition.changeAttributeName] = change.valueForChangeAttributeName;\n            //node.warn({\"change made\": change})\n            //node.warn(msg)\n        return msg;\n    }\n}\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1310,
-        "y": 840,
-        "wires": [
-            [
-                "c26eb7cb.5e5418"
-            ]
-        ]
-    },
-    {
-        "id": "8b5d2b5f.6a3758",
-        "type": "inject",
-        "z": "ed02ca62.53a888",
-        "g": "544ad840.3bf3a8",
-        "name": "set change parameters",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"changeConditions\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
-        "payloadType": "json",
-        "x": 1320,
-        "y": 760,
-        "wires": [
-            [
-                "36a1d79b.ecb2c8"
-            ]
-        ]
-    },
-    {
         "id": "36a1d79b.ecb2c8",
         "type": "change",
         "z": "ed02ca62.53a888",
-        "g": "544ad840.3bf3a8",
-        "name": "set changeConditions variable",
+        "g": "75d75513.333d1c",
+        "name": "append changeConditions to message",
         "rules": [
             {
                 "t": "set",
                 "p": "changeConditions",
-                "pt": "flow",
-                "to": "payload.changeConditions",
-                "tot": "msg"
+                "pt": "msg",
+                "to": "{\"changeStringEqual\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
+                "tot": "json"
             }
         ],
         "action": "",
@@ -1944,30 +1922,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1570,
-        "y": 760,
+        "x": 1350,
+        "y": 740,
         "wires": [
             [
-                "1274355f.feba9b"
+                "4439c462.3a2c8c"
             ]
-        ]
-    },
-    {
-        "id": "1274355f.feba9b",
-        "type": "function",
-        "z": "ed02ca62.53a888",
-        "g": "544ad840.3bf3a8",
-        "name": "debug",
-        "func": "return {payload : flow.get('changeConditions')};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1770,
-        "y": 760,
-        "wires": [
-            []
         ]
     },
     {
@@ -1984,7 +1944,8 @@
             [
                 "eb697a48.ed8c28",
                 "8b75bda1.b3a17",
-                "27ab429d.f6275e"
+                "27ab429d.f6275e",
+                "f139e0c7.a58c8"
             ]
         ]
     },
@@ -2363,5 +2324,147 @@
         "x": 450,
         "y": 780,
         "wires": []
+    },
+    {
+        "id": "2d317e08.e1f652",
+        "type": "change",
+        "z": "ed02ca62.53a888",
+        "g": "b1ae5997.ec6898",
+        "name": "append changeConditions to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "changeConditions",
+                "pt": "msg",
+                "to": "{\"changeRangeBased\":{\"sourceAttributeName\":\"car_price\",\"changeAttributeName\":\"car_price_alt\",\"change\":[{\"conditionMin\":40000,\"conditionMax\":120000,\"valueForChangeAttributeName\":\"expensive\"},{\"conditionMin\":0,\"conditionMax\":39999,\"valueForChangeAttributeName\":\"cheap\"}]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1330,
+        "y": 920,
+        "wires": [
+            [
+                "42403d84.0c7cd4"
+            ]
+        ]
+    },
+    {
+        "id": "faddfcbc.ef93f",
+        "type": "function",
+        "z": "2bd5e7f7.0b5858",
+        "g": "8f7d71c7.eca34",
+        "name": "apply change conditions",
+        "func": "changeCondition = msg.changeConditions;\n\n\n//node.warn({\"changeCondition\": changeCondition})\n\n\n \nfor (var currentChangeConditionType in changeCondition) {\n    \n    //node.warn({\"currentChangeConditionType\": currentChangeConditionType});\n    //node.warn({\"currentChangeConditionType == 'changeStringEqual'\": currentChangeConditionType == \"changeStringEqual\"});\n    //node.warn({\"currentChangeConditionType == 'changeRangeBased'\": currentChangeConditionType == \"changeRangeBased\"});\n    //node.warn({\"changeCondition[currentChangeConditionType]\": changeCondition[currentChangeConditionType]});\n    \n    for (var change of changeCondition[currentChangeConditionType].change) {\n        currentChangeCondition = changeCondition[currentChangeConditionType]\n        if(currentChangeConditionType == \"changeStringEqual\") {\n            // node.warn({\"change.conditionStringEqual\": change.conditionStringEqual});\n            // node.warn({\"msg.payload[currentChangeCondition.sourceAttributeName]\": msg.payload[currentChangeCondition.sourceAttributeName]});\n            if(msg.payload[currentChangeCondition.sourceAttributeName] == change.conditionStringEqual) {\n                msg.payload[currentChangeCondition.changeAttributeName] = change.valueForChangeAttributeName;\n                //node.warn({\"change made\": change})\n                //node.warn(msg.payload)\n                break;\n            }\n        }\n        if(currentChangeConditionType == \"changeRangeBased\") {\n            if(msg.payload[currentChangeCondition.sourceAttributeName] > change.conditionMin && \n               msg.payload[currentChangeCondition.sourceAttributeName] <= change.conditionMax) {\n                msg.payload[currentChangeCondition.changeAttributeName] = change.valueForChangeAttributeName;\n                //node.warn({\"change made\": change})\n                //node.warn(msg.payload)\n                break;\n            }\n        }\n    }\n} \n\nreturn msg;\n\n\n\n ",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4439c462.3a2c8c",
+        "type": "subflow:2bd5e7f7.0b5858",
+        "z": "ed02ca62.53a888",
+        "g": "75d75513.333d1c",
+        "name": "change car prices based on car models ",
+        "env": [],
+        "x": 1670,
+        "y": 740,
+        "wires": [
+            [
+                "2d317e08.e1f652"
+            ]
+        ]
+    },
+    {
+        "id": "42403d84.0c7cd4",
+        "type": "subflow:2bd5e7f7.0b5858",
+        "z": "ed02ca62.53a888",
+        "g": "b1ae5997.ec6898",
+        "name": "change car price class based on car price range",
+        "env": [],
+        "x": 1680,
+        "y": 920,
+        "wires": [
+            [
+                "c26eb7cb.5e5418"
+            ]
+        ]
+    },
+    {
+        "id": "67337a86.61f764",
+        "type": "subflow:60904c4d.0104c4",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "env": [],
+        "x": 1240,
+        "y": 480,
+        "wires": [
+            [
+                "13e41266.74b74e"
+            ]
+        ]
+    },
+    {
+        "id": "f139e0c7.a58c8",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "name": "append filterCondition to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "msg",
+                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 480,
+        "wires": [
+            [
+                "67337a86.61f764"
+            ]
+        ]
+    },
+    {
+        "id": "d4b8115.09962f",
+        "type": "change",
+        "z": "f679c5ec.fb0428",
+        "name": "append filterCondition to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "msg",
+                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 540,
+        "wires": [
+            []
+        ]
     }
 ]
