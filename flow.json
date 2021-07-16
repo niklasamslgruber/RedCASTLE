@@ -184,44 +184,18 @@
         "id": "e18cf721.789868",
         "type": "group",
         "z": "ed02ca62.53a888",
-        "name": "generate car owner persona list once",
+        "name": "generate car owner persona list",
         "style": {
             "label": true
         },
         "nodes": [
             "9aa878b2.7e4fc8",
-            "635f82f5.5031ec",
-            "e0245f42.72c66",
-            "8b59e67.5003e18",
-            "d12d92da.acfee"
+            "8b59e67.5003e18"
         ],
-        "x": 54,
-        "y": 579,
-        "w": 872,
-        "h": 122
-    },
-    {
-        "id": "bb4f1610.11fe18",
-        "type": "group",
-        "z": "ed02ca62.53a888",
-        "style": {
-            "stroke": "#999999",
-            "stroke-opacity": "1",
-            "fill": "none",
-            "fill-opacity": "1",
-            "label": true,
-            "label-position": "nw",
-            "color": "#a4a4a4"
-        },
-        "nodes": [
-            "ae590747.f884b8",
-            "bf7b10fd.4b39",
-            "32b22e53.929182"
-        ],
-        "x": 54,
-        "y": 399,
-        "w": 452,
-        "h": 122
+        "x": 374,
+        "y": 699,
+        "w": 472,
+        "h": 82
     },
     {
         "id": "cd180a4c.27e908",
@@ -557,11 +531,11 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 540,
+        "x": 400,
         "y": 840,
         "wires": [
             [
-                "cb546c79.86a36"
+                "9aa878b2.7e4fc8"
             ]
         ]
     },
@@ -575,7 +549,7 @@
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 300,
+        "x": 160,
         "y": 840,
         "wires": [
             [
@@ -605,7 +579,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 840,
+        "y": 720,
         "wires": [
             [
                 "49c088f6.9ba0c8"
@@ -1458,61 +1432,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 660,
+        "x": 500,
+        "y": 740,
         "wires": [
             [
                 "8b59e67.5003e18"
             ]
         ]
-    },
-    {
-        "id": "635f82f5.5031ec",
-        "type": "inject",
-        "z": "ed02ca62.53a888",
-        "g": "e18cf721.789868",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\t    \"Nachricht\": \"Test\"\t}",
-        "payloadType": "jsonata",
-        "x": 150,
-        "y": 660,
-        "wires": [
-            [
-                "9aa878b2.7e4fc8"
-            ]
-        ]
-    },
-    {
-        "id": "e0245f42.72c66",
-        "type": "debug",
-        "z": "ed02ca62.53a888",
-        "g": "e18cf721.789868",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 810,
-        "y": 660,
-        "wires": []
     },
     {
         "id": "8b59e67.5003e18",
@@ -1534,11 +1460,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 540,
-        "y": 660,
+        "x": 720,
+        "y": 740,
         "wires": [
             [
-                "e0245f42.72c66"
+                "cb546c79.86a36"
             ]
         ]
     },
@@ -1560,84 +1486,6 @@
                 "36a1d79b.ecb2c8"
             ]
         ]
-    },
-    {
-        "id": "ae590747.f884b8",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "bb4f1610.11fe18",
-        "name": "remove owner_data list",
-        "rules": [
-            {
-                "t": "set",
-                "p": "owner_data",
-                "pt": "flow",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 370,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bf7b10fd.4b39",
-        "type": "inject",
-        "z": "ed02ca62.53a888",
-        "g": "bb4f1610.11fe18",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 480,
-        "wires": [
-            [
-                "ae590747.f884b8"
-            ]
-        ]
-    },
-    {
-        "id": "d12d92da.acfee",
-        "type": "comment",
-        "z": "ed02ca62.53a888",
-        "g": "e18cf721.789868",
-        "name": "This need to be executed once. Afterwards the owner array is saved as a consistent flow variable",
-        "info": "",
-        "x": 410,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "32b22e53.929182",
-        "type": "comment",
-        "z": "ed02ca62.53a888",
-        "g": "bb4f1610.11fe18",
-        "name": "This can be used to reset the owner array",
-        "info": "",
-        "x": 240,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "bcab5cd0.2e945",
