@@ -345,7 +345,7 @@
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
-        "command": "python \"C:\\Users\\Roschy\\.node-red\\projects\\k-anonymity\\CASTLE\\src\\main.py\"  ",
+        "command": "python3 CASTLE/src/main.py",
         "addpay": "",
         "append": "",
         "useSpawn": "true",
