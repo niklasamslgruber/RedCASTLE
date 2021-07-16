@@ -7,25 +7,23 @@ This is a project work done during the Summer Semester 2021 at the Technical Uni
 The used k-Anonymity Algorithm is [CASTLEGUARD](https://github.com/hallnath1/CASTLEGUARD), which based on the [CASTLE (Continuously Anonymizing STreaming data via adaptive cLustEring)](https://ieeexplore.ieee.org/abstract/document/5374415) by J. Cao, B. Carminati, E. Ferrari and K. Tan. 
 The CASTLEGUARD algorithm has been modified to work with MQTT for input and output data as well as several other modification options.
 
-Dependencies
--------
-In order to run the Node-RED nodes it is required that Python (>= 3.6) is installed on all machines running the nodes. A MQTT Broker should also be installed.
-The additional required Python packages can be installed with `pip install -r requirements.txt`.
-
 Running
 -------
-#### Manual
+### Manual
 To run the project you need to install these dependencies:
 * Node-Red
-* MQTT broker (e.g. MQTT Eclipse)
+* MQTT Mosquitto
 * Python (>= 3.6)
 * pandas, numpy, paho-mqtt, matplotlib
 
+The required Python packages can be installed automatically with `pip install -r requirements.txt`.
 To pass and retrieve data from the component, you need to specify the host and port of your MQTT server in the `config.json` or use the default configuration on `localhost:1883`.
+
+For starting both Mosquitto and Node-Red you can simple execute the `setup.sh` script *(macOS & Linux only)*
 You can access Node-RED on `localhost:1880`.
 In order to inject external data in 
 
-#### Docker
+### Docker
 The example setup can also be run using Docker. Simply build a Docker image from the `DOCKERFILE` or pull the latest Docker image from [Docker Hub](https://hub.docker.com/r/niklasamslgruber/node-red-castle).
 
 Alternatively, you can run the Docker image with `docker run -ti -p 1883:1883 -p 1880:1880 niklasamslgruber/node-red-castle` and navigate to `localhost:1880` to see Node-RED.
