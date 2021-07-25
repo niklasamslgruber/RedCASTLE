@@ -9,9 +9,8 @@
         "quasi_identifiers": ["car_price", "car_brand", "car_modell", "Start_Date___Time", "End_Date___Time", "Address", "Station_Name", "customer_id", "allow_dynamic_charging"],
         "non_categorized_columns": ["car_brand", "car_modell", "Address", "Station_Name", "Start_Date___Time", "End_Date___Time"],
         "pid_column": "ObjectId",
-        "history": true,
+        "history": true
     },
-
     "io": {
         "host": "localhost",
         "port": 1883,
