@@ -14,7 +14,7 @@
     "io": {
         "host": "localhost",
         "port": 1883,
-        "mqtt_topics_in": ["BOULDER/ALPINE_ST1"],
+        "mqtt_topics_in": ["BOULDER/#"],
         "mqtt_topic_out": "TOPIC/CASTLE_OUTPUT"
     }
 }
