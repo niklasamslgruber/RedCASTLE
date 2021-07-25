@@ -12,7 +12,7 @@ class Parameters:
             args: The CLI arguments for the program
 
         """
-        config_path = "config.json"
+        config_path = "CASTLE/src/config.json"
 
         if not os.path.exists(config_path):
             quit("Project needs to include a config.json at source")
@@ -29,13 +29,12 @@ class Parameters:
             self.mu = self.required(params.get("mu"))
             self.sensitive_attribute = self.required(params.get("sensitive_attribute"))
             self.quasi_identifiers = self.required(params.get("quasi_identifiers"))
+            self.non_categorized_columns = self.required(params.get("non_categorized_columns"))
             self.pid = self.required(params.get("pid_column"))
 
             self.seed = self.optional(params.get("seed"), np.random.randint(1e6))
             self.history = self.optional(params.get("history"), False)
-            self.graph = self.optional(params.get("graph"), False)
 
-            self.output_file = self.required(io.get("output_file"))
             self.host = self.optional(io.get("host"), "localhost")
             self.port = self.optional(io.get("port"), 1883)
             self.mqtt_topics = self.required(io.get("mqtt_topics_in"))
