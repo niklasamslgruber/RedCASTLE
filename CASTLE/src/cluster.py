@@ -20,9 +20,10 @@ class Cluster():
 
     """Stores tuples that are considered by the algorithm to be together. """
 
-    def __init__(self, headers: List[str]):
+    def __init__(self, headers: List[str], params):
         """Initialises the cluster. """
         self.identifier = uuid.uuid4()
+        self.params = params
         self.contents: List[Item] = []
         self.ranges: Dict[str, Range] = {}
 
@@ -77,12 +78,15 @@ class Cluster():
             if not header in self.sample_values:
                 self.sample_values[header] = np.random.choice(self.contents)[header]
 
-            gen_tuple.data.loc['min_' + header] = header_range.lower
-            gen_tuple.data.loc['spc_' + header] = self.sample_values[header]
-            gen_tuple.data.loc['max_' + header] = header_range.upper
+            if header not in self.params.non_categorized_columns: # meaning not in non-categorized_columns
+                gen_tuple.data.loc['min_' + header] = header_range.lower
+                gen_tuple.data.loc['max_' + header] = header_range.upper
+            else:
+                gen_tuple.data.loc['array_' + header] = "*".join(str(x) for x in set(header_range.all))
+
 
             gen_tuple.headers.append('min_' + header)
-            gen_tuple.headers.append('spc_' + header)
+            gen_tuple.headers.append('array_' + header)
             gen_tuple.headers.append('max_' + header)
 
             gen_tuple.headers.remove(header)

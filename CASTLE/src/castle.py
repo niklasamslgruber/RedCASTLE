@@ -54,7 +54,6 @@ class CASTLE:
         # Whether we want to store the previously entered tuples
         self.history: bool = params.history
 
-
         # Optionally store all the tuples we have seen
         if self.history:
             self.tuple_history: List[Item] = []
@@ -110,7 +109,7 @@ class CASTLE:
 
         if not cluster:
             # Create a new cluster
-            cluster = Cluster(self.headers)
+            cluster = Cluster(self.headers, self.params)
             self.big_gamma.append(cluster)
 
         cluster.insert(item)
@@ -325,7 +324,7 @@ class CASTLE:
             t = bucket.pop(np.random.randint(0, len(bucket)))
 
             # Create a new subcluster over t
-            cnew = Cluster(self.headers)
+            cnew = Cluster(self.headers, self.params)
             cnew.insert(t)
 
             # Check whether the bucket is empty

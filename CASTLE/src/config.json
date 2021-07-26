@@ -6,15 +6,15 @@
         "mu": 5,
         "seed": 5,
         "sensitive_attribute": "Energy__kWh_",
-        "quasi_identifiers": ["car_price", "car_brand", "car_modell", "Start_Date___Time", "End_Date___Time", "Address", "Station_Name", "customer_id", "allow_dynamic_charging"],
-        "non_categorized_columns": ["car_brand", "car_modell", "Address", "Station_Name", "Start_Date___Time", "End_Date___Time"],
+        "quasi_identifiers": ["car_price_alt", "car_brand", "car_modell", "Start_Date___Time", "End_Date___Time", "customer_id", "allow_dynamic_charging"],
+        "non_categorized_columns": ["car_brand", "car_price_alt", "car_modell"],
         "pid_column": "ObjectId",
         "history": true
     },
     "io": {
         "host": "localhost",
         "port": 1883,
-        "mqtt_topics_in": ["BOULDER/#"],
+        "mqtt_topics_in": ["BOULDER/BASELINE_ST1", "BOULDER/ALPINE_ST1","BOULDER/ANNEX_ST1", "BOULDER/AIRPORT_ST1"],
         "mqtt_topic_out": "TOPIC/CASTLE_OUTPUT"
     }
 }

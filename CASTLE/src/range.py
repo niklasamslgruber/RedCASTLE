@@ -17,6 +17,7 @@ class Range():
         """
         self.lower = lower
         self.upper = upper
+        self.all = []
 
     def update(self, value: float):
         """Updates the range if the given value does not fit within the current
@@ -29,6 +30,7 @@ class Range():
         """
         self.lower = min(self.lower, value) if self.lower is not None else value
         self.upper = max(self.upper, value) if self.upper is not None else value
+        self.all.append(value)
 
     def information_loss(self, other) -> float:
         """Calculates VInfoLoss of other defined on Page 4 of the CASTLE paper

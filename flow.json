@@ -637,7 +637,7 @@
         "y": 840,
         "wires": [
             [
-                "9bb30ca2.d1f6f"
+                "e1fbddd3.cad508"
             ]
         ]
     },
@@ -1744,8 +1744,7 @@
         "y": 920,
         "wires": [
             [
-                "c26eb7cb.5e5418",
-                "872ac22f.a70b5"
+                "f3a5b6a2.833c38"
             ]
         ]
     },
@@ -4672,6 +4671,63 @@
         "wires": [
             [
                 "c39fca7a.8264e8"
+            ]
+        ]
+    },
+    {
+        "id": "f3a5b6a2.833c38",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "name": "convert date string to unix timestamp",
+        "func": "msg[\"Start_Date___Time\"] = Date.parse(msg[\"Start_Date___Time\"]);\nmsg[\"End_Date___Time\"] = Date.parse(msg[\"End_Date___Time\"]);\nmsg[\"Hallo\"] = 1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 1180,
+        "wires": [
+            [
+                "c26eb7cb.5e5418",
+                "872ac22f.a70b5",
+                "dfce66da.a4cb8"
+            ]
+        ]
+    },
+    {
+        "id": "dfce66da.a4cb8",
+        "type": "debug",
+        "z": "ed02ca62.53a888",
+        "name": "Test",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1760,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "e1fbddd3.cad508",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "name": "",
+        "func": "msg.payload[\"Start_Date___Time\"] = Date.parse(msg.payload[\"Start_Date___Time\"]);\nmsg.payload[\"End_Date___Time\"] = Date.parse(msg.payload[\"End_Date___Time\"]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 960,
+        "wires": [
+            [
+                "9bb30ca2.d1f6f"
             ]
         ]
     }

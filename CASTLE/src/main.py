@@ -33,10 +33,13 @@ def main():
     # Init output file
     global publisher
     publisher = Publisher(params.host, params.port, params.output_topic)
-    stream = CASTLE(handler, params)
 
-    _ = Subscriber(params.host, params.port, stream)
+    castle_per_topic = {}
+    for topic in set(params.mqtt_topics):
+        stream = CASTLE(handler, params)
+        castle_per_topic[topic] = stream
 
+    _ = Subscriber(params, castle_per_topic)
 
 
 if __name__ == "__main__":
