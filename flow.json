@@ -16,14 +16,21 @@
     {
         "id": "44f2dba4.713184",
         "type": "tab",
-        "label": "Statistics Test",
+        "label": "Statistics",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d43d7e62.0ae71",
+        "type": "tab",
+        "label": "Filtering",
         "disabled": false,
         "info": ""
     },
     {
         "id": "60da4e27.9e901",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Dashboard entrypoint",
         "disabled": false,
         "info": ""
     },
@@ -1297,14 +1304,14 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "discernibility_metric",
-        "func": "metric = 0;\nk = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\nfor (var value of new Set(dataframe_t[equivalenceClassColumnIndex].slice(1))){\n    counter = 0;\n    for (var entry of dataframe_t[equivalenceClassColumnIndex].slice(1)) {\n        \n        if(entry == value) {\n            counter++;\n        }\n    }\n    \n    eq_class_size = counter;\n    node.warn({\"eq_class_size\": eq_class_size, \"msg\":msg});\n    if (eq_class_size >= k){\n        metric += Math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += dataframe.length * eq_class_size\n    }\n}\n\n//msg.payload.discernibilityMetric = metric;\n\nmsg = {payload: new Object()};\nmsg.payload.discernibilityMetric = metric;\n\nreturn msg;",
+        "func": "metric = 0;\nk = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\n//node.warn({\"dataframe\": dataframe});\n//node.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\nfor (var value of new Set(dataframe_t[equivalenceClassColumnIndex].slice(1))){\n    counter = 0;\n    for (var entry of dataframe_t[equivalenceClassColumnIndex].slice(1)) {\n        \n        if(entry == value) {\n            counter++;\n        }\n    }\n    \n    eq_class_size = counter;\n    //node.warn({\"eq_class_size\": eq_class_size, \"msg\":msg});\n    if (eq_class_size >= k){\n        metric += Math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += dataframe.length * eq_class_size\n    }\n}\n\n//msg.payload.discernibilityMetric = metric;\n\nmsg = {payload: new Object()};\nmsg.payload.discernibilityMetric = metric;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 480,
+        "x": 1510,
+        "y": 740,
         "wires": [
             [
                 "b69cba0d.89a368"
@@ -1319,10 +1326,6 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -1332,8 +1335,8 @@
         "topic": "",
         "payload": "{\t    \"Nachricht\": \"Test\", \t    \"equivalenceClassColumn\":\"equivalenceClass\",\t    \"equivalenceClassColumnIndex\": 3,\t    \"k\": 3,\t    \"quasiIdentifiers\": [\"job\", \"age\", \"pin\"]\t}",
         "payloadType": "jsonata",
-        "x": 410,
-        "y": 540,
+        "x": 730,
+        "y": 820,
         "wires": [
             [
                 "940cf07b.c7c35"
@@ -1352,8 +1355,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1470,
-        "y": 540,
+        "x": 1930,
+        "y": 800,
         "wires": []
     },
     {
@@ -1361,14 +1364,14 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "categorize columns",
-        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"pin\", \"job\", \"age\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [1, 49, 132042, 1],\n    [2, 40, 132021, 0], \n    [3, 44, 132024, 0], \n    [4, 48, 132046, 1],\n    [5, 45, 132045, 1],\n    [6, 43, 132027, 0],\n    ];\n\n\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = (dataframeRowUniqueArray.indexOf(dataframe_t[row][col])) + 1;\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": dataframe, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nmsg.payload.categorizedDataframe = dataframe;\n\nreturn msg;",
+        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"City\", \"State_Province\", \"Zip_Postal_Code\", \"Start_Time_Zone\", \"End_Time_Zone\", \"Total_Duration__hh_mm_ss_\", \"Charging_Time__hh_mm_ss_\", \"Energy__kWh_\", \"GHG_Savings__kg_\", \"Gasoline_Savings__gallons_\", \"Port_Type\", \"car_price_alt\", \"min_car_price\", \"spc_car_price\", \"max_car_price\", \"min_car_brand\", \"spc_car_brand\", \"max_car_brand\", \"min_car_modell\", \"spc_car_modell\", \"max_car_modell\", \"min_Start_Date___Time\", \"spc_Start_Date___Time\", \"max_Start_Date___Time\", \"min_End_Date___Time\", \"spc_End_Date___Time\", \"max_End_Date___Time\", \"min_Address\", \"spc_Address\", \"max_Address\", \"min_Station_Name\", \"spc_Station_Name\", \"max_Station_Name\", \"min_customer_id\", \"spc_customer_id\", \"max_customer_id\", \"min_allow_dynamic_charging\", \"spc_allow_dynamic_charging\", \"max_allow_dynamic_charging\", \"createdAt\", \"outputAt\", \"delay\", \"cluster\"]\n/*\ncolumnNames = [\"job\", \"age\", \"pin\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [1, 49, 132042, 1],\n    [2, 40, 132021, 0], \n    [3, 44, 132024, 0], \n    [4, 48, 132046, 1],\n    [5, 45, 132045, 1],\n    [6, 43, 132027, 0],\n    ];\n*/\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = (dataframeRowUniqueArray.indexOf(dataframe_t[row][col])) + 1;\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": dataframe, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nmsg.payload.categorizedDataframe = dataframe;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 540,
+        "x": 1170,
+        "y": 800,
         "wires": [
             [
                 "8a307ca1.e69e3",
@@ -1382,14 +1385,14 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "average_class_size",
-        "func": "k = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n// get number of unique equivalenceclasses and calculate with them \n// slice because first entry is name\naverageClassSize = (dataframe.length-1) / (new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\nmsg = {payload: {}};\nmsg.payload.averageClassSize = averageClassSize;\n\nreturn msg;",
+        "func": "k = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\n//node.warn({\"dataframe\": dataframe});\n//node.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n// get number of unique equivalenceclasses and calculate with them \n// slice because first entry is name\naverageClassSize = (dataframe.length-1) / (new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\n\nnode.warn(new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\nmsg = {payload: {}};\nmsg.payload.averageClassSize = averageClassSize;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 540,
+        "x": 1510,
+        "y": 800,
         "wires": [
             [
                 "b69cba0d.89a368"
@@ -1401,14 +1404,14 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "generalized_information_loss",
-        "func": "k = msg.payload.k;\nquasiIdentifiers = msg.payload.quasiIdentifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumnIndex;\ndataframe = msg.payload.categorizedDataframe\n\nnode.warn({\"msg\": msg});\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"quasiIdentifiers\": quasiIdentifiers});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\nlet uij = 0;\nlet lij = 0;\nlet ui = 0;\nlet li = 0;\nlet informationLoss = 0\n\n// get the min and max values per categorie. Skip the first as its the name in the transposed array.\nfor (let i = 1; i < dataframe.length; i++) {\n    for (let key = 0; key < quasiIdentifiers.length; key++) {\n        const category = dataframe[i][equivalenceClassColumn];\n        const filtered_array = dataframe.filter((value) => value[equivalenceClassColumn] === category).map((value => value[key]));\n        uij = Math.max.apply(Math, filtered_array);\n        lij = Math.min.apply(Math, filtered_array);\n\n        const filtered_general_array = dataframe.slice(1).map(value => value[key]);\n        ui = Math.max.apply(Math, filtered_general_array);\n        li = Math.min.apply(Math, filtered_general_array);\n        informationLoss = informationLoss + ((uij - lij) / (ui - li))\n    }\n}\nlet factor = 1 / (quasiIdentifiers.length * dataframe.slice(1).length)\nlet result = factor * informationLoss\nmetric = result\n\nnode.warn({\"informationLoss\": informationLoss});\nnode.warn({\"generalized_information_loss\": result});\n\nreturn msg;",
+        "func": "k = msg.payload.k;\nquasiIdentifiers = msg.payload.quasiIdentifiers;\n\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\nnode.warn({\"msg\": msg});\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"quasiIdentifiers\": quasiIdentifiers});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\nnode.warn({\"equivalenceClassColumnIndex\": equivalenceClassColumnIndex});\n\nlet uij = 0;\nlet lij = 0;\nlet ui = 0;\nlet li = 0;\nlet informationLoss = 0\n\n// get the min and max values per categorie. Skip the first as its the name in the transposed array.\nfor (let i = 1; i < dataframe.length; i++) {\n    for (let key = 0; key < quasiIdentifiers.length; key++) {\n        const category = dataframe[i][equivalenceClassColumnIndex];\n        const filtered_array = dataframe.filter((value) => value[equivalenceClassColumnIndex] === category).map((value => value[key]));\n        uij = Math.max.apply(Math, filtered_array);\n        lij = Math.min.apply(Math, filtered_array);\n\n        const filtered_general_array = dataframe.slice(1).map(value => value[key]);\n        node.warn({\"filtered_general_array\": filtered_general_array});\n        ui = Math.max.apply(Math, filtered_general_array);\n        node.warn({\"ui\": ui});\n        li = Math.min.apply(Math, filtered_general_array);\n        node.warn({\"li\": li});\n        informationLoss = informationLoss + ((uij - lij) / (ui - li))\n        node.warn({\"informationLoss\": informationLoss});\n    }\n}\nlet factor = 1 / (quasiIdentifiers.length * dataframe.slice(1).length)\nlet result = factor * informationLoss\nmetric = result\n\nnode.warn({\"informationLoss\": informationLoss});\nnode.warn({\"generalized_information_loss\": result});\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1080,
-        "y": 600,
+        "x": 1540,
+        "y": 860,
         "wires": [
             [
                 "b69cba0d.89a368"
@@ -1461,23 +1464,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "13e41266.74b74e",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2230,
-        "y": 320,
-        "wires": []
     },
     {
         "id": "ff6c83ab.d82a1",
@@ -1574,79 +1560,6 @@
         ]
     },
     {
-        "id": "cd504496.a36a98",
-        "type": "ui_chart",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "group": "18d0f143.d267bf",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "CASTLEGUARD Delay in seconds",
-        "chartType": "line",
-        "legend": "true",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "2",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "60",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 2440,
-        "y": 880,
-        "wires": [
-            [
-                "1cd719aa.137fe6"
-            ]
-        ]
-    },
-    {
-        "id": "8b75bda1.b3a17",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.delay",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1930,
-        "y": 880,
-        "wires": [
-            [
-                "cd504496.a36a98",
-                "879390c9.9afcc"
-            ]
-        ]
-    },
-    {
         "id": "7a11bd0a.384864",
         "type": "ui_button",
         "z": "60da4e27.9e901",
@@ -1718,141 +1631,6 @@
                 "49c088f6.9ba0c8"
             ]
         ]
-    },
-    {
-        "id": "27ab429d.f6275e",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.cluster",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1930,
-        "y": 940,
-        "wires": [
-            [
-                "c61ee392.484ab",
-                "69af811a.f8918"
-            ]
-        ]
-    },
-    {
-        "id": "c61ee392.484ab",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "count messages",
-        "func": "messageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2200,
-        "y": 940,
-        "wires": [
-            [
-                "ea9baaab.93d988",
-                "3300921a.303e9e",
-                "b790a56c.b99c18"
-            ]
-        ]
-    },
-    {
-        "id": "ea9baaab.93d988",
-        "type": "ui_text",
-        "z": "f679c5ec.fb0428",
-        "group": "18d0f143.d267bf",
-        "order": 8,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "generated output",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 2930,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "69af811a.f8918",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "count cluster",
-        "func": "clusterCounterSet = flow.get('clusterCounterSet') || new Set()\n\nclusterCounterSet.add(msg.payload);\n\nflow.set('clusterCounterSet', clusterCounterSet)\n\nreturn {payload: clusterCounterSet.size};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2200,
-        "y": 1080,
-        "wires": [
-            [
-                "3f81e4c1.20ca6c"
-            ]
-        ]
-    },
-    {
-        "id": "3f81e4c1.20ca6c",
-        "type": "ui_text",
-        "z": "f679c5ec.fb0428",
-        "group": "18d0f143.d267bf",
-        "order": 9,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "generated clusters",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 3010,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "879390c9.9afcc",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "calc max delay",
-        "func": "maxDelay = flow.get('maxDelay') || 0\n\nif( maxDelay < msg.payload) {\n    flow.set('maxDelay', msg.payload)\n    return {payload: msg.payload};\n}\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2180,
-        "y": 800,
-        "wires": [
-            [
-                "5f1b98d6.05e408"
-            ]
-        ]
-    },
-    {
-        "id": "5f1b98d6.05e408",
-        "type": "ui_text",
-        "z": "f679c5ec.fb0428",
-        "group": "18d0f143.d267bf",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "max CASTELGUARD delay",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 2460,
-        "y": 800,
-        "wires": []
     },
     {
         "id": "2d317e08.e1f652",
@@ -1931,126 +1709,6 @@
                 "872ac22f.a70b5"
             ]
         ]
-    },
-    {
-        "id": "67337a86.61f764",
-        "type": "subflow:60904c4d.0104c4",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "env": [],
-        "x": 1990,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f139e0c7.a58c8",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "name": "append filterCondition to message",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filterCondition",
-                "pt": "msg",
-                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21}}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1710,
-        "y": 480,
-        "wires": [
-            [
-                "67337a86.61f764"
-            ]
-        ]
-    },
-    {
-        "id": "d4b8115.09962f",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "name": "append filterCondition to message",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filterCondition",
-                "pt": "msg",
-                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1710,
-        "y": 540,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "735d2a1a.515c14",
-        "type": "subflow:19a47153.1035df",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "env": [],
-        "x": 1980,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "191a3997.1bd366",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "name": "append suppressed properties to message",
-        "rules": [
-            {
-                "t": "set",
-                "p": "suppressed_properties",
-                "pt": "msg",
-                "to": "{\"suppressed_properties\":[\"ObjectId\",\"Address\",\"City\"]}",
-                "tot": "json"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1700,
-        "y": 320,
-        "wires": [
-            [
-                "735d2a1a.515c14"
-            ]
-        ]
-    },
-    {
-        "id": "67429175.6c3cf",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2230,
-        "y": 480,
-        "wires": []
     },
     {
         "id": "336e05b2.15e99a",
@@ -2314,106 +1972,6 @@
         ]
     },
     {
-        "id": "8ac17fd0.35d02",
-        "type": "ui_chart",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "group": "18d0f143.d267bf",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "Node-Red Delay in seconds",
-        "chartType": "line",
-        "legend": "true",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "2",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "60",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 2460,
-        "y": 740,
-        "wires": [
-            [
-                "1cd719aa.137fe6"
-            ]
-        ]
-    },
-    {
-        "id": "85f384b4.2a7218",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "calc node-red delay",
-        "func": "outTime = new Date(msg.timestampNodeRedBeforeSendAsSimulatedStation);\ninTime = new Date(msg.timestampNodeRedReturnFromCastleguard);\ndelay = (Math.abs(inTime - outTime)) / 1000;\nreturn {payload: delay};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1970,
-        "y": 740,
-        "wires": [
-            [
-                "8ac17fd0.35d02",
-                "8af35ac9.63d748"
-            ]
-        ]
-    },
-    {
-        "id": "8af35ac9.63d748",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "calc max node-red delay",
-        "func": "maxDelay = flow.get('maxNodeRedDelay') || 0\n\nif( maxDelay < msg.payload) {\n    flow.set('maxNodeRedDelay', msg.payload)\n    return {payload: msg.payload};\n}\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2190,
-        "y": 660,
-        "wires": [
-            [
-                "ea85cd54.4d2d9"
-            ]
-        ]
-    },
-    {
-        "id": "ea85cd54.4d2d9",
-        "type": "ui_text",
-        "z": "f679c5ec.fb0428",
-        "group": "18d0f143.d267bf",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "max Node-Red delay",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 2440,
-        "y": 660,
-        "wires": []
-    },
-    {
         "id": "5266fcf6.288e44",
         "type": "debug",
         "z": "ed02ca62.53a888",
@@ -2583,16 +2141,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1100,
+        "x": 1740,
         "y": 900,
         "wires": [
             [
-                "f139e0c7.a58c8",
-                "191a3997.1bd366",
-                "85f384b4.2a7218",
-                "8b75bda1.b3a17",
-                "27ab429d.f6275e",
-                "e56acd73.b54cb"
+                "d7b2e912.c80db8",
+                "9e3ea463.cad528"
             ]
         ]
     },
@@ -2634,8 +2188,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1040,
-        "y": 660,
+        "x": 1220,
+        "y": 900,
         "wires": [
             [
                 "a56b7842.8c1e28"
@@ -2706,41 +2260,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "1cd719aa.137fe6",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "calc delay between node-red and castleguard",
-        "func": "\nreturn {payload: Math.abs(flow.get('maxNodeRedDelay') - flow.get('maxDelay'))};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2830,
-        "y": 800,
-        "wires": [
-            [
-                "f6d7b381.aa7ce"
-            ]
-        ]
-    },
-    {
-        "id": "f6d7b381.aa7ce",
-        "type": "ui_text",
-        "z": "f679c5ec.fb0428",
-        "group": "fd975b9c.a00f58",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Node-Red <--> Castlegurad Overhead in seconds",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 3210,
-        "y": 800,
-        "wires": []
     },
     {
         "id": "43d65c15.6e5194",
@@ -3884,7 +3403,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1140,
+        "x": 1360,
         "y": 1040,
         "wires": [
             []
@@ -3911,7 +3430,7 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 910,
+        "x": 1030,
         "y": 1040,
         "wires": [
             [
@@ -3924,9 +3443,562 @@
         ]
     },
     {
-        "id": "58343773.548708",
-        "type": "ui_text",
+        "id": "60bbcb8c.168e24",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "g": "19ca91ba.af4a0e",
+        "name": "count number sended messages",
+        "func": "global.set(\"numberSendedMessages\", global.get(\"numberSendedMessages\") + 1)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3590,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "58d0766e.52cdd8",
+        "type": "csv",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 640,
+        "y": 380,
+        "wires": [
+            [
+                "1380d3cd.7c0fcc"
+            ]
+        ]
+    },
+    {
+        "id": "99ce3d72.e613e",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "transform to 2d array",
+        "func": "\nvar attributes = [];\nvar values = []\n\narray2d = flow.get(\"array2d\");\n\nfor (var attribute in msg.payload) { \n    attributes.push(attribute);\n    values.push(msg.payload[attribute])\n}\n\n//node.warn({\"array2d\": array2d})\n\nif(flow.get(\"array2d\") === undefined) {\n    array2d = new Array(attributes);\n    flow.set(\"array2d\", array2d)\n}\n\narray2d.push(values);\nflow.set(\"array2d\", array2d)\n//node.warn({\"array2d\": array2d})\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 380,
+        "wires": [
+            [
+                "b4bcc326.6ac6d"
+            ]
+        ]
+    },
+    {
+        "id": "1bebbd99.356a92",
+        "type": "file in",
+        "z": "44f2dba4.713184",
+        "name": "anonymized_tuples.csv",
+        "filename": "anonymized_tuples.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 430,
+        "y": 380,
+        "wires": [
+            [
+                "58d0766e.52cdd8"
+            ]
+        ]
+    },
+    {
+        "id": "1c171155.0df8df",
+        "type": "inject",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "1bebbd99.356a92",
+                "c4533ca5.75f37"
+            ]
+        ]
+    },
+    {
+        "id": "c4533ca5.75f37",
+        "type": "change",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "array2d",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c66fdcab.5b319",
+        "type": "change",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.dataframe",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.equivalenceClassColumn",
+                "pt": "msg",
+                "to": "cluster",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.quasiIdentifiers",
+                "pt": "msg",
+                "to": "[\"min_car_price\",\"spc_car_price\",\"max_car_price\",\"min_car_brand\",\"spc_car_brand\",\"max_car_brand\",\"min_car_modell\",\"spc_car_modell\",\"max_car_modell\",\"min_Address\",\"spc_Address\",\"max_Address\",\"min_Station_Name\",\"spc_Station_Name\",\"max_Station_Name\",\"min_customer_id\",\"spc_customer_id\",\"max_customer_id\",\"min_allow_dynamic_charging\",\"spc_allow_dynamic_charging\",\"max_allow_dynamic_charging\"]",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload.k",
+                "pt": "msg",
+                "to": "5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 740,
+        "wires": [
+            [
+                "940cf07b.c7c35"
+            ]
+        ]
+    },
+    {
+        "id": "d7b2e912.c80db8",
+        "type": "link out",
         "z": "f679c5ec.fb0428",
+        "name": "statistics",
+        "links": [
+            "dc19c14f.d56c2"
+        ],
+        "x": 1955,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "dc19c14f.d56c2",
+        "type": "link in",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "links": [
+            "d7b2e912.c80db8"
+        ],
+        "x": 215,
+        "y": 1260,
+        "wires": [
+            [
+                "e7cfa66b.1d91d8",
+                "a418eb4b.8f8618",
+                "49fb3a5c.21da44",
+                "4f4b04bd.8d0cfc"
+            ]
+        ]
+    },
+    {
+        "id": "c05609dc.5466e8",
+        "type": "ui_chart",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "group": "18d0f143.d267bf",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "CASTLEGUARD Delay in seconds",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1640,
+        "y": 1220,
+        "wires": [
+            [
+                "5f7d7006.d75ed"
+            ]
+        ]
+    },
+    {
+        "id": "a418eb4b.8f8618",
+        "type": "change",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.delay",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 1220,
+        "wires": [
+            [
+                "c05609dc.5466e8",
+                "fa2f67c2.b3b2e8"
+            ]
+        ]
+    },
+    {
+        "id": "49fb3a5c.21da44",
+        "type": "change",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cluster",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 1280,
+        "wires": [
+            [
+                "6e0a5908.65f388",
+                "c500f150.6e3c3"
+            ]
+        ]
+    },
+    {
+        "id": "6e0a5908.65f388",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "count messages",
+        "func": "messageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1280,
+        "wires": [
+            [
+                "313004a.c1cedfc",
+                "d08c8816.e1c928",
+                "cfcf2562.0d6dd8"
+            ]
+        ]
+    },
+    {
+        "id": "313004a.c1cedfc",
+        "type": "ui_text",
+        "z": "44f2dba4.713184",
+        "group": "18d0f143.d267bf",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "generated output",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1590,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "c500f150.6e3c3",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "count cluster",
+        "func": "clusterCounterSet = flow.get('clusterCounterSet') || new Set()\n\nclusterCounterSet.add(msg.payload);\n\nflow.set('clusterCounterSet', clusterCounterSet)\n\nreturn {payload: clusterCounterSet.size};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1420,
+        "wires": [
+            [
+                "de796a30.f776b8"
+            ]
+        ]
+    },
+    {
+        "id": "de796a30.f776b8",
+        "type": "ui_text",
+        "z": "44f2dba4.713184",
+        "group": "18d0f143.d267bf",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "generated clusters",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1590,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "fa2f67c2.b3b2e8",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "calc max delay",
+        "func": "maxDelay = flow.get('maxDelay') || 0\n\nif( maxDelay < msg.payload) {\n    flow.set('maxDelay', msg.payload)\n    return {payload: msg.payload};\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 1140,
+        "wires": [
+            [
+                "c85f43d8.4a593"
+            ]
+        ]
+    },
+    {
+        "id": "c85f43d8.4a593",
+        "type": "ui_text",
+        "z": "44f2dba4.713184",
+        "group": "18d0f143.d267bf",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "max CASTELGUARD delay",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1620,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "1a123c51.a9f044",
+        "type": "ui_chart",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "group": "18d0f143.d267bf",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Node-Red Delay in seconds",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1620,
+        "y": 1080,
+        "wires": [
+            [
+                "5f7d7006.d75ed"
+            ]
+        ]
+    },
+    {
+        "id": "e7cfa66b.1d91d8",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "calc node-red delay",
+        "func": "outTime = new Date(msg.timestampNodeRedBeforeSendAsSimulatedStation);\ninTime = new Date(msg.timestampNodeRedReturnFromCastleguard);\ndelay = (Math.abs(inTime - outTime)) / 1000;\nreturn {payload: delay};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 1080,
+        "wires": [
+            [
+                "1a123c51.a9f044",
+                "b4c55a92.7cb798"
+            ]
+        ]
+    },
+    {
+        "id": "b4c55a92.7cb798",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "calc max node-red delay",
+        "func": "maxDelay = flow.get('maxNodeRedDelay') || 0\n\nif( maxDelay < msg.payload) {\n    flow.set('maxNodeRedDelay', msg.payload)\n    return {payload: msg.payload};\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 1000,
+        "wires": [
+            [
+                "21f4a4e6.daeebc"
+            ]
+        ]
+    },
+    {
+        "id": "21f4a4e6.daeebc",
+        "type": "ui_text",
+        "z": "44f2dba4.713184",
+        "group": "18d0f143.d267bf",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "max Node-Red delay",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1600,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "5f7d7006.d75ed",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "calc delay between node-red and castleguard",
+        "func": "\nreturn {payload: Math.abs(flow.get('maxNodeRedDelay') - flow.get('maxDelay'))};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2050,
+        "y": 1140,
+        "wires": [
+            [
+                "8133623b.5b86"
+            ]
+        ]
+    },
+    {
+        "id": "8133623b.5b86",
+        "type": "ui_text",
+        "z": "44f2dba4.713184",
+        "group": "fd975b9c.a00f58",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Node-Red <--> Castlegurad Overhead in seconds",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 2450,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "5ae6ad09.f6b9b4",
+        "type": "ui_text",
+        "z": "44f2dba4.713184",
         "group": "18d0f143.d267bf",
         "order": 6,
         "width": 0,
@@ -3935,14 +4007,14 @@
         "label": "messages per second",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 3030,
-        "y": 1060,
+        "x": 1610,
+        "y": 1400,
         "wires": []
     },
     {
-        "id": "3300921a.303e9e",
+        "id": "d08c8816.e1c928",
         "type": "function",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "name": "calc messages per second",
         "func": "firstMessageTimestamp = new Date(flow.get(\"firstMessageTimestamp\"));\nnow = new Date();\n\nelapsedSeconds = Math.abs(now - firstMessageTimestamp) / 1000 ;\n\nnode.warn({\"elapsedSeconds\": elapsedSeconds})\n\nmessagesPerSecond = msg.payload / elapsedSeconds;\n\nreturn {payload: messagesPerSecond};",
         "outputs": 1,
@@ -3950,19 +4022,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2600,
-        "y": 1000,
+        "x": 1180,
+        "y": 1340,
         "wires": [
             [
-                "58343773.548708",
-                "e751e3a5.2293f"
+                "5ae6ad09.f6b9b4",
+                "afad0c4b.df2b9"
             ]
         ]
     },
     {
-        "id": "e751e3a5.2293f",
+        "id": "afad0c4b.df2b9",
         "type": "ui_chart",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "name": "",
         "group": "18d0f143.d267bf",
         "order": 5,
@@ -3996,34 +4068,16 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 3020,
-        "y": 1000,
+        "x": 1600,
+        "y": 1340,
         "wires": [
             []
         ]
     },
     {
-        "id": "60bbcb8c.168e24",
+        "id": "cfcf2562.0d6dd8",
         "type": "function",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "count number sended messages",
-        "func": "global.set(\"numberSendedMessages\", global.get(\"numberSendedMessages\") + 1)\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3590,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b790a56c.b99c18",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "name": "calc message queue",
         "func": "\nnode.warn(global.get(\"numberSendedMessages\"));\nreturn {payload: global.get(\"numberSendedMessages\") - msg.payload};",
         "outputs": 1,
@@ -4031,18 +4085,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2580,
-        "y": 1060,
+        "x": 1160,
+        "y": 1400,
         "wires": [
             [
-                "46775d6e.162f24"
+                "deea057d.314e98"
             ]
         ]
     },
     {
-        "id": "46775d6e.162f24",
+        "id": "deea057d.314e98",
         "type": "ui_chart",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "name": "",
         "group": "fd975b9c.a00f58",
         "order": 1,
@@ -4076,16 +4130,16 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 3020,
-        "y": 1120,
+        "x": 1600,
+        "y": 1460,
         "wires": [
             []
         ]
     },
     {
-        "id": "e56acd73.b54cb",
+        "id": "4f4b04bd.8d0cfc",
         "type": "change",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "name": "",
         "rules": [
             {
@@ -4101,18 +4155,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1930,
-        "y": 1160,
+        "x": 510,
+        "y": 1500,
         "wires": [
             [
-                "75aefb24.1ff7e4"
+                "2434196c.066cb6"
             ]
         ]
     },
     {
-        "id": "75aefb24.1ff7e4",
+        "id": "2434196c.066cb6",
         "type": "ui_text",
-        "z": "f679c5ec.fb0428",
+        "z": "44f2dba4.713184",
         "group": "18d0f143.d267bf",
         "order": 7,
         "width": 0,
@@ -4121,8 +4175,262 @@
         "label": "number of sended messages",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 3040,
-        "y": 1240,
+        "x": 1620,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "9e3ea463.cad528",
+        "type": "link out",
+        "z": "f679c5ec.fb0428",
+        "name": "Filtering",
+        "links": [
+            "554e4f27.81c24"
+        ],
+        "x": 1955,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "68627a4e.8638e4",
+        "type": "debug",
+        "z": "d43d7e62.0ae71",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a8eba8bd.c52f98",
+        "type": "subflow:60904c4d.0104c4",
+        "z": "d43d7e62.0ae71",
+        "name": "",
+        "env": [],
+        "x": 990,
+        "y": 600,
+        "wires": [
+            [
+                "7c225657.2a4948"
+            ]
+        ]
+    },
+    {
+        "id": "c34e2007.cbd71",
+        "type": "change",
+        "z": "d43d7e62.0ae71",
+        "name": "append filterCondition to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "msg",
+                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 600,
+        "wires": [
+            [
+                "a8eba8bd.c52f98"
+            ]
+        ]
+    },
+    {
+        "id": "450ff05e.0f8a1",
+        "type": "change",
+        "z": "d43d7e62.0ae71",
+        "name": "append filterCondition to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "msg",
+                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9228a829.404dd8",
+        "type": "subflow:19a47153.1035df",
+        "z": "d43d7e62.0ae71",
+        "name": "",
+        "env": [],
+        "x": 1020,
+        "y": 440,
+        "wires": [
+            [
+                "68627a4e.8638e4"
+            ]
+        ]
+    },
+    {
+        "id": "c559e025.384de",
+        "type": "change",
+        "z": "d43d7e62.0ae71",
+        "name": "append suppressed properties to message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "suppressed_properties",
+                "pt": "msg",
+                "to": "{\"suppressed_properties\":[\"ObjectId\",\"Address\",\"City\"]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 440,
+        "wires": [
+            [
+                "9228a829.404dd8"
+            ]
+        ]
+    },
+    {
+        "id": "7c225657.2a4948",
+        "type": "debug",
+        "z": "d43d7e62.0ae71",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "554e4f27.81c24",
+        "type": "link in",
+        "z": "d43d7e62.0ae71",
+        "name": "Filtering",
+        "links": [
+            "9e3ea463.cad528"
+        ],
+        "x": 295,
+        "y": 520,
+        "wires": [
+            [
+                "c559e025.384de",
+                "c34e2007.cbd71"
+            ]
+        ]
+    },
+    {
+        "id": "b4bcc326.6ac6d",
+        "type": "join",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 810,
+        "y": 580,
+        "wires": [
+            [
+                "82875bbc.eedde8"
+            ]
+        ]
+    },
+    {
+        "id": "1380d3cd.7c0fcc",
+        "type": "split",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 820,
+        "y": 380,
+        "wires": [
+            [
+                "99ce3d72.e613e"
+            ]
+        ]
+    },
+    {
+        "id": "82875bbc.eedde8",
+        "type": "change",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "array2d",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 580,
+        "wires": [
+            [
+                "c66fdcab.5b319"
+            ]
+        ]
+    },
+    {
+        "id": "a6b8a4bb.44dc18",
+        "type": "comment",
+        "z": "44f2dba4.713184",
+        "name": "todo: dynamic k",
+        "info": "",
+        "x": 1130,
+        "y": 700,
         "wires": []
     }
 ]
