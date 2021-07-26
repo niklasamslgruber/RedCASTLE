@@ -1304,7 +1304,7 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "discernibility_metric",
-        "func": "metric = 0;\nk = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\n//node.warn({\"dataframe\": dataframe});\n//node.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\nfor (var value of new Set(dataframe_t[equivalenceClassColumnIndex].slice(1))){\n    counter = 0;\n    for (var entry of dataframe_t[equivalenceClassColumnIndex].slice(1)) {\n        \n        if(entry == value) {\n            counter++;\n        }\n    }\n    \n    eq_class_size = counter;\n    //node.warn({\"eq_class_size\": eq_class_size, \"msg\":msg});\n    if (eq_class_size >= k){\n        metric += Math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += dataframe.length * eq_class_size\n    }\n}\n\n//msg.payload.discernibilityMetric = metric;\n\nmsg = {payload: new Object()};\nmsg.payload.discernibilityMetric = metric;\n\nreturn msg;",
+        "func": "metric = 0;\nk = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\n//node.warn({\"dataframe\": dataframe});\n//node.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\nfor (var value of new Set(dataframe_t[equivalenceClassColumnIndex].slice(1))){\n    counter = 0;\n    for (var entry of dataframe_t[equivalenceClassColumnIndex].slice(1)) {\n        \n        if(entry == value) {\n            counter++;\n        }\n    }\n    \n    eq_class_size = counter;\n    //node.warn({\"eq_class_size\": eq_class_size, \"msg\":msg});\n    if (eq_class_size >= k){\n        metric += Math.pow(eq_class_size, 2)\n    }\n    else {\n        metric += dataframe.length * eq_class_size\n    }\n}\n\n//msg.payload.discernibilityMetric = metric;\n\nreturn {payload: {\"discernibilityMetric\" : metric}};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1314,7 +1314,7 @@
         "y": 740,
         "wires": [
             [
-                "b69cba0d.89a368"
+                "a0172391.55b4f"
             ]
         ]
     },
@@ -1355,7 +1355,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1930,
+        "x": 2090,
         "y": 800,
         "wires": []
     },
@@ -1364,7 +1364,7 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "categorize columns",
-        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"City\", \"State_Province\", \"Zip_Postal_Code\", \"Start_Time_Zone\", \"End_Time_Zone\", \"Total_Duration__hh_mm_ss_\", \"Charging_Time__hh_mm_ss_\", \"Energy__kWh_\", \"GHG_Savings__kg_\", \"Gasoline_Savings__gallons_\", \"Port_Type\", \"car_price_alt\", \"min_car_price\", \"spc_car_price\", \"max_car_price\", \"min_car_brand\", \"spc_car_brand\", \"max_car_brand\", \"min_car_modell\", \"spc_car_modell\", \"max_car_modell\", \"min_Start_Date___Time\", \"spc_Start_Date___Time\", \"max_Start_Date___Time\", \"min_End_Date___Time\", \"spc_End_Date___Time\", \"max_End_Date___Time\", \"min_Address\", \"spc_Address\", \"max_Address\", \"min_Station_Name\", \"spc_Station_Name\", \"max_Station_Name\", \"min_customer_id\", \"spc_customer_id\", \"max_customer_id\", \"min_allow_dynamic_charging\", \"spc_allow_dynamic_charging\", \"max_allow_dynamic_charging\", \"createdAt\", \"outputAt\", \"delay\", \"cluster\"]\n/*\ncolumnNames = [\"job\", \"age\", \"pin\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [1, 49, 132042, 1],\n    [2, 40, 132021, 0], \n    [3, 44, 132024, 0], \n    [4, 48, 132046, 1],\n    [5, 45, 132045, 1],\n    [6, 43, 132027, 0],\n    ];\n*/\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = (dataframeRowUniqueArray.indexOf(dataframe_t[row][col])) + 1;\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": dataframe, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\nmsg.payload.categorizedDataframe = dataframe;\n\nreturn msg;",
+        "func": "dataframe = msg.payload.dataframe;\ncolumnNames = msg.payload.columnNames;\n\ncolumnNames = [\"City\", \"State_Province\", \"Zip_Postal_Code\", \"Start_Time_Zone\", \"End_Time_Zone\", \"Total_Duration__hh_mm_ss_\", \"Charging_Time__hh_mm_ss_\", \"Energy__kWh_\", \"GHG_Savings__kg_\", \"Gasoline_Savings__gallons_\", \"Port_Type\", \"car_price_alt\", \"min_car_price\", \"spc_car_price\", \"max_car_price\", \"min_car_brand\", \"spc_car_brand\", \"max_car_brand\", \"min_car_modell\", \"spc_car_modell\", \"max_car_modell\", \"min_Start_Date___Time\", \"spc_Start_Date___Time\", \"max_Start_Date___Time\", \"min_End_Date___Time\", \"spc_End_Date___Time\", \"max_End_Date___Time\", \"min_Address\", \"spc_Address\", \"max_Address\", \"min_Station_Name\", \"spc_Station_Name\", \"max_Station_Name\", \"min_customer_id\", \"spc_customer_id\", \"max_customer_id\", \"min_allow_dynamic_charging\", \"spc_allow_dynamic_charging\", \"max_allow_dynamic_charging\", \"createdAt\", \"outputAt\", \"delay\", \"cluster\"]\n/*\ncolumnNames = [\"job\", \"age\", \"pin\"]\n\ndataframe = [\n    [\"job\", \"age\", \"pin\", \"equivalenceClass\"],\n    [1, 49, 132042, 1],\n    [2, 40, 132021, 0], \n    [3, 44, 132024, 0], \n    [4, 48, 132046, 1],\n    [5, 45, 132045, 1],\n    [6, 43, 132027, 0],\n    ];\n*/\n\ndataframeUniqueSet = [];\n\n\ndataframe_t = dataframe;\n\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n\ncategorizedDataframe_t = dataframe_t.map(function(arr) {return arr.slice();});\n\nnode.warn({\"dataframe_t = \": dataframe_t, \"msg\":msg});\nnode.warn({\"dataframe = \": dataframe, \"msg\":msg});\n\ndataframeSet = []\n\nfor (var row = 0; row < dataframe_t.length; row++) {\n    if (columnNames.includes(dataframe_t[row][0])) {\n        // create set to keep only unique entries\n        // slice because the first one is the name\n        dataframeUniqueSet[row] = new Set(dataframe_t[row].slice(1))\n        \n        // set categories based on the unique values\n        // skip first col as it is the name\n        for (var col = 1; col < dataframe_t[row].length; col++) {\n            dataframeRowUniqueArray = Array.from(dataframeUniqueSet[row]);\n            categorizedDataframe_t[row][col] = (dataframeRowUniqueArray.indexOf(dataframe_t[row][col])) + 1;\n        }\n    }\n}\n\nnode.warn({\"categorizedDataframe_t\": dataframe, \"msg\":msg});\nnode.warn({\"dataframe_t\": dataframe_t, \"msg\":msg});\n\n\ncategorizedDataframe = categorizedDataframe_t[0].map((_, colIndex) => categorizedDataframe_t.map(row => row[colIndex]));\n\n//msg.payload.categorizedDataframe = dataframe;\nmsg.payload.categorizedDataframe = categorizedDataframe;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1385,7 +1385,7 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "average_class_size",
-        "func": "k = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\n//node.warn({\"dataframe\": dataframe});\n//node.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n// get number of unique equivalenceclasses and calculate with them \n// slice because first entry is name\naverageClassSize = (dataframe.length-1) / (new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\n\nnode.warn(new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\nmsg = {payload: {}};\nmsg.payload.averageClassSize = averageClassSize;\n\nreturn msg;",
+        "func": "k = msg.payload.k;\n//quasi_identifiers = msg.payload.quasi_identifiers;\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\n//node.warn({\"dataframe\": dataframe});\n//node.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\n\n// get the index of the equivalenc class column\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\n// transpose matrix for easier access\ndataframe_t = dataframe[0].map((_, colIndex) => dataframe.map(row => row[colIndex]));\n\n// get number of unique equivalenceclasses and calculate with them \n// slice because first entry is name\naverageClassSize = (dataframe.length-1) / (new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\n\n//node.warn(new Set(dataframe_t[equivalenceClassColumnIndex].slice(1)).size * k)\n\nmsg = {payload: {}};\nmsg.payload.averageClassSize = averageClassSize;\n\nreturn {payload: {\"averageClassSize\" : averageClassSize}};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1395,7 +1395,7 @@
         "y": 800,
         "wires": [
             [
-                "b69cba0d.89a368"
+                "a0172391.55b4f"
             ]
         ]
     },
@@ -1404,7 +1404,7 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "generalized_information_loss",
-        "func": "k = msg.payload.k;\nquasiIdentifiers = msg.payload.quasiIdentifiers;\n\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n\nnode.warn({\"msg\": msg});\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"quasiIdentifiers\": quasiIdentifiers});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\nnode.warn({\"equivalenceClassColumnIndex\": equivalenceClassColumnIndex});\n\nlet uij = 0;\nlet lij = 0;\nlet ui = 0;\nlet li = 0;\nlet informationLoss = 0\n\n// get the min and max values per categorie. Skip the first as its the name in the transposed array.\nfor (let i = 1; i < dataframe.length; i++) {\n    for (let key = 0; key < quasiIdentifiers.length; key++) {\n        const category = dataframe[i][equivalenceClassColumnIndex];\n        const filtered_array = dataframe.filter((value) => value[equivalenceClassColumnIndex] === category).map((value => value[key]));\n        uij = Math.max.apply(Math, filtered_array);\n        lij = Math.min.apply(Math, filtered_array);\n\n        const filtered_general_array = dataframe.slice(1).map(value => value[key]);\n        node.warn({\"filtered_general_array\": filtered_general_array});\n        ui = Math.max.apply(Math, filtered_general_array);\n        node.warn({\"ui\": ui});\n        li = Math.min.apply(Math, filtered_general_array);\n        node.warn({\"li\": li});\n        informationLoss = informationLoss + ((uij - lij) / (ui - li))\n        node.warn({\"informationLoss\": informationLoss});\n    }\n}\nlet factor = 1 / (quasiIdentifiers.length * dataframe.slice(1).length)\nlet result = factor * informationLoss\nmetric = result\n\nnode.warn({\"informationLoss\": informationLoss});\nnode.warn({\"generalized_information_loss\": result});\n\nreturn msg;",
+        "func": "k = msg.payload.k;\nquasiIdentifiers = msg.payload.quasiIdentifiers;\n\nequivalenceClassColumn = msg.payload.equivalenceClassColumn;\ndataframe = msg.payload.categorizedDataframe\n\nequivalenceClassColumnIndex = dataframe[0].indexOf(equivalenceClassColumn);\n/*\nnode.warn({\"msg\": msg});\nnode.warn({\"dataframe\": dataframe});\nnode.warn({\"quasiIdentifiers\": quasiIdentifiers});\nnode.warn({\"equivalenceClassColumn\": equivalenceClassColumn});\nnode.warn({\"equivalenceClassColumnIndex\": equivalenceClassColumnIndex});\n*/\n\nlet uij = 0;\nlet lij = 1;\nlet ui = 0;\nlet li = 1;\nlet informationLoss = 0\n\n// get the min and max values per categorie. Skip the first as its the name in the transposed array.\nfor (let i = 1; i < dataframe.length; i++) {\n    for (let key = 0; key < quasiIdentifiers.length; key++) {\n        const category = dataframe[i][equivalenceClassColumnIndex];\n        const filtered_array = dataframe.filter((value) => value[equivalenceClassColumnIndex] === category).map((value => value[key]));\n        uij = Math.max.apply(Math, filtered_array);\n        lij = Math.min.apply(Math, filtered_array);\n        //node.warn({\"uij\": uij});\n        //node.warn({\"uij\": uij});\n        const filtered_general_array = dataframe.slice(1).map(value => value[key]);\n        //node.warn({\"filtered_general_array\": filtered_general_array});\n        ui = Math.max.apply(Math, filtered_general_array);\n        //node.warn({\"ui\": ui});\n        li = Math.min.apply(Math, filtered_general_array);\n        //node.warn({\"li\": li});\n        informationLoss = informationLoss + ((uij - lij) / (ui - li))\n        //node.warn({\"(uij - lij)\": (uij - lij)});\n        //node.warn({\"(ui - li)\": (ui - li)});\n        //node.warn({\"informationLoss\": informationLoss});\n    }\n}\nlet factor = 1 / (quasiIdentifiers.length * dataframe.slice(1).length)\nlet result = factor * informationLoss\nmetric = result\n\n//node.warn({\"informationLoss\": informationLoss});\n//node.warn({\"generalized_information_loss\": result});\n\nreturn {payload: {\"informationLoss\" : informationLoss, \"generalized_information_loss\" : result}};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1414,7 +1414,7 @@
         "y": 860,
         "wires": [
             [
-                "b69cba0d.89a368"
+                "a0172391.55b4f"
             ]
         ]
     },
@@ -1535,7 +1535,7 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 1570,
+        "x": 2030,
         "y": 1280,
         "wires": [
             [
@@ -1553,7 +1553,7 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 1990,
+        "x": 2230,
         "y": 1280,
         "wires": [
             []
@@ -1607,12 +1607,12 @@
         "links": [
             "750a44e0.0e6acc"
         ],
-        "x": 215,
+        "x": 255,
         "y": 1280,
         "wires": [
             [
                 "f6fed640.1136b8",
-                "b3f80bd3.168bb8"
+                "e846aeff.2c3b3"
             ]
         ]
     },
@@ -2146,7 +2146,8 @@
         "wires": [
             [
                 "d7b2e912.c80db8",
-                "9e3ea463.cad528"
+                "9e3ea463.cad528",
+                "eb697a48.ed8c28"
             ]
         ]
     },
@@ -2194,71 +2195,6 @@
             [
                 "a56b7842.8c1e28"
             ]
-        ]
-    },
-    {
-        "id": "b3f80bd3.168bb8",
-        "type": "change",
-        "z": "f679c5ec.fb0428",
-        "name": "reset statistics",
-        "rules": [
-            {
-                "t": "set",
-                "p": "maxDelay",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "maxNodeRedDelay",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "messageCounter",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "clusterCounterSet",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "delete",
-                "p": "firstMessageTimestamp",
-                "pt": "flow"
-            },
-            {
-                "t": "set",
-                "p": "messageCounterForUpdateIntervall",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "numberSendedMessages",
-                "pt": "global",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 620,
-        "y": 1220,
-        "wires": [
-            []
         ]
     },
     {
@@ -3393,7 +3329,7 @@
             {
                 "t": "set",
                 "p": "firstMessageTimestamp",
-                "pt": "flow",
+                "pt": "global",
                 "to": "",
                 "tot": "date"
             }
@@ -3415,7 +3351,7 @@
         "z": "f679c5ec.fb0428",
         "name": "firstMessage",
         "property": "firstMessageTimestamp",
-        "propertyType": "flow",
+        "propertyType": "global",
         "rules": [
             {
                 "t": "null"
@@ -4016,7 +3952,7 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "calc messages per second",
-        "func": "firstMessageTimestamp = new Date(flow.get(\"firstMessageTimestamp\"));\nnow = new Date();\n\nelapsedSeconds = Math.abs(now - firstMessageTimestamp) / 1000 ;\n\nnode.warn({\"elapsedSeconds\": elapsedSeconds})\n\nmessagesPerSecond = msg.payload / elapsedSeconds;\n\nreturn {payload: messagesPerSecond};",
+        "func": "firstMessageTimestamp = new Date(global.get(\"firstMessageTimestamp\"));\nnow = new Date();\n\nelapsedSeconds = Math.abs(now - firstMessageTimestamp) / 1000 ;\n\nnode.warn({\"elapsedSeconds\": elapsedSeconds})\n\nmessagesPerSecond = msg.payload / elapsedSeconds;\n\nreturn {payload: messagesPerSecond};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4155,8 +4091,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 510,
-        "y": 1500,
+        "x": 770,
+        "y": 1520,
         "wires": [
             [
                 "2434196c.066cb6"
@@ -4432,5 +4368,126 @@
         "x": 1130,
         "y": 700,
         "wires": []
+    },
+    {
+        "id": "e846aeff.2c3b3",
+        "type": "link out",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "links": [
+            "3b2b54c5.78bbdc"
+        ],
+        "x": 565,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "5732b882.5fff48",
+        "type": "change",
+        "z": "44f2dba4.713184",
+        "name": "reset statistics",
+        "rules": [
+            {
+                "t": "set",
+                "p": "maxDelay",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "maxNodeRedDelay",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "messageCounter",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "clusterCounterSet",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "delete",
+                "p": "firstMessageTimestamp",
+                "pt": "global"
+            },
+            {
+                "t": "set",
+                "p": "messageCounterForUpdateIntervall",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "numberSendedMessages",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3b2b54c5.78bbdc",
+        "type": "link in",
+        "z": "44f2dba4.713184",
+        "name": "reset statistics",
+        "links": [
+            "e846aeff.2c3b3"
+        ],
+        "x": 215,
+        "y": 1740,
+        "wires": [
+            [
+                "5732b882.5fff48"
+            ]
+        ]
+    },
+    {
+        "id": "a0172391.55b4f",
+        "type": "join",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "4",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1830,
+        "y": 800,
+        "wires": [
+            [
+                "b69cba0d.89a368"
+            ]
+        ]
     }
 ]
