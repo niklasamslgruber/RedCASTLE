@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 
 # Node-RED project as working directory
 WORKDIR /k-anonymity-env
-COPY /k-anonymity /k-anonymity-env
+COPY . /k-anonymity-env
 
 # Install basic packages for Ubuntu
 RUN apt update
