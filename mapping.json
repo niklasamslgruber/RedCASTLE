@@ -1,0 +1,44 @@
+{
+    "car_brand": {
+        "0": "Tesla",
+        "1": "Hyundai",
+        "2": "Volkswagen",
+        "3": "Jaguar",
+        "4": "Mercedes-Benz",
+        "5": "Peugeot",
+        "6": "Ford",
+        "7": "Renault",
+        "8": "Audi",
+        "9": "BMW"
+    },
+    "car_modell": {
+        "0": "Model S",
+        "1": "Kona Electric",
+        "2": "Model X",
+        "3": "ID.4",
+        "4": "e-up!",
+        "5": "I-Pace",
+        "6": "Model Y",
+        "7": "EQC",
+        "8": "Model 3",
+        "9": "Peugeot iOn",
+        "10": "Mustang Mach-E",
+        "11": "Ford F-150 Lightning electric pickup",
+        "12": "Kangoo Z.E.",
+        "13": "Focus Electric",
+        "14": "e-tron 55",
+        "15": "Ioniq Electric",
+        "16": "e208",
+        "17": "ID.3",
+        "18": "e-tron 50",
+        "19": "B-Class Electric Drive",
+        "20": "i3",
+        "21": "SM3 Z.E.",
+        "22": "e2008",
+        "23": "Twizy"
+    },
+    "car_price_alt": {
+        "0": "expensive",
+        "1": "cheap"
+    }
+}
