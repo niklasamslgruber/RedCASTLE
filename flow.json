@@ -637,7 +637,7 @@
         "y": 840,
         "wires": [
             [
-                "9bb30ca2.d1f6f"
+                "e4a7462b.53c9e8"
             ]
         ]
     },
@@ -5093,6 +5093,77 @@
         "wires": [
             [
                 "5ae6ad09.f6b9b4"
+            ]
+        ]
+    },
+    {
+        "id": "83d61710.40a4c8",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "name": "get all topics",
+        "func": "if( flow.get(\"topics\") === undefined) {\n    flow.set(\"topics\", new Set())\n}\n\nflow.set(\"topics\", flow.get(\"topics\").add(msg.topic))\n\nreturn {payload : Array.from(flow.get(\"topics\"))};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3810,
+        "y": 1420,
+        "wires": [
+            [
+                "63e756b7.c68988"
+            ]
+        ]
+    },
+    {
+        "id": "63e756b7.c68988",
+        "type": "json",
+        "z": "ed02ca62.53a888",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 4030,
+        "y": 1420,
+        "wires": [
+            [
+                "523430c8.9d725"
+            ]
+        ]
+    },
+    {
+        "id": "523430c8.9d725",
+        "type": "debug",
+        "z": "ed02ca62.53a888",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 4220,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "e4a7462b.53c9e8",
+        "type": "function",
+        "z": "ed02ca62.53a888",
+        "name": "change date to unix format",
+        "func": "msg.payload[\"Start_Date___Time\"] = Date.parse(msg.payload[\"Start_Date___Time\"]);\nmsg.payload[\"End_Date___Time\"] = Date.parse(msg.payload[\"End_Date___Time\"]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 980,
+        "wires": [
+            [
+                "9bb30ca2.d1f6f"
             ]
         ]
     }
