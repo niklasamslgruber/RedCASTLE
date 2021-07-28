@@ -548,6 +548,31 @@
         "width": 6
     },
     {
+        "id": "97adf7dd.fd5ab8",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "34.89.168.68",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
@@ -1324,8 +1349,8 @@
         "broker": "261b9b5a.56f684",
         "nl": false,
         "rap": false,
-        "rh": "0",
-        "x": 330,
+        "rh": "2",
+        "x": 310,
         "y": 900,
         "wires": [
             [
@@ -1508,10 +1533,10 @@
         "id": "ff6c83ab.d82a1",
         "type": "comment",
         "z": "f679c5ec.fb0428",
-        "name": "todo: aggregation, performance benchmark",
-        "info": "",
-        "x": 200,
-        "y": 460,
+        "name": "todo: performance benchmark mit unterschiedlichen durchsätzen",
+        "info": "10k einträge",
+        "x": 1110,
+        "y": 780,
         "wires": []
     },
     {
@@ -2070,8 +2095,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 990,
-        "y": 600,
+        "x": 960,
+        "y": 580,
         "wires": [
             [
                 "5266fcf6.288e44"
@@ -3321,13 +3346,18 @@
                 "t": "null"
             },
             {
+                "t": "head",
+                "v": "4000",
+                "vt": "num"
+            },
+            {
                 "t": "else"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 3,
-        "x": 540,
+        "outputs": 4,
+        "x": 550,
         "y": 980,
         "wires": [
             [
@@ -3335,6 +3365,9 @@
             ],
             [
                 "226d3241.e3a83e"
+            ],
+            [
+                "9aa878b2.7e4fc8"
             ],
             [
                 "9aa878b2.7e4fc8"
@@ -4659,7 +4692,7 @@
         "y": 1320,
         "wires": [
             [
-                "47c0427d.a2cb5c"
+                "5104a326.b585ec"
             ]
         ]
     },
@@ -4682,11 +4715,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 3560,
+        "x": 3960,
         "y": 1320,
         "wires": [
             [
-                "5104a326.b585ec"
+                "71d7feb0.6c40b"
             ]
         ]
     },
@@ -4697,14 +4730,14 @@
         "name": "",
         "topic": "",
         "qos": "2",
-        "retain": "true",
+        "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 4110,
+        "x": 4270,
         "y": 1320,
         "wires": []
     },
@@ -4716,19 +4749,19 @@
         "pauseType": "rate",
         "timeout": "10",
         "timeoutUnits": "milliseconds",
-        "rate": "40",
+        "rate": "100",
         "nbRateUnits": "1",
         "rateUnits": "second",
         "randomFirst": "1",
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 3840,
+        "x": 3610,
         "y": 1320,
         "wires": [
             [
-                "71d7feb0.6c40b",
-                "12a8b73a.4304b9"
+                "12a8b73a.4304b9",
+                "47c0427d.a2cb5c"
             ]
         ]
     },
@@ -5144,7 +5177,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 4220,
+        "x": 4230,
         "y": 1420,
         "wires": []
     },
@@ -5164,6 +5197,38 @@
         "wires": [
             [
                 "9bb30ca2.d1f6f"
+            ]
+        ]
+    },
+    {
+        "id": "ddadc3e5.42071",
+        "type": "inject",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 1290,
+        "y": 920,
+        "wires": [
+            [
+                "1a123c51.a9f044",
+                "c05609dc.5466e8",
+                "afad0c4b.df2b9",
+                "deea057d.314e98"
             ]
         ]
     }
