@@ -134,63 +134,6 @@
         "color": "#DDAA99"
     },
     {
-        "id": "19ca91ba.af4a0e",
-        "type": "group",
-        "z": "ed02ca62.53a888",
-        "name": "Emulate Streaming Data behavior",
-        "style": {
-            "fill": "#ffdf7f",
-            "label": true,
-            "stroke": "#ffcf3f",
-            "stroke-opacity": "0.9",
-            "color": "#000000",
-            "fill-opacity": "0.54"
-        },
-        "nodes": [
-            "e037e8eb.0ee838",
-            "64956d74.3c8114",
-            "dea57652.5dd918",
-            "af7a7e82.6723",
-            "e40e3cc8.f834a",
-            "cd3849d4.f79028",
-            "28a756fd.4545fa",
-            "32da1711.188a98",
-            "c31fb50a.688e08",
-            "ea0e6436.fe7f48",
-            "ba07826a.d32f7",
-            "6b539d68.cb4084",
-            "a959b3c1.798d9",
-            "f693f0a.47f881",
-            "e09eb717.fa45b8",
-            "8174f40c.6028c8",
-            "37f1ba8b.669dd6",
-            "662a9b9d.ee6c94",
-            "336e05b2.15e99a",
-            "a4bd1cda.a1012",
-            "cce3e34b.014b3",
-            "54b39c7a.85fc44",
-            "20744371.286cac",
-            "78f2d218.f17c1c",
-            "9795c84e.414a28",
-            "a736ddf2.a8f88",
-            "c98b2d22.5194f",
-            "823ba3c8.21647",
-            "641acf84.f005d",
-            "229b79e8.7b8126",
-            "654f3a99.58aee4",
-            "3265ef6c.64d51",
-            "30d43126.1cfa7e",
-            "7cd7f126.df78f",
-            "1254bb0d.f4bed5",
-            "35d218ec.92f1a8",
-            "60bbcb8c.168e24"
-        ],
-        "x": 2594,
-        "y": 599,
-        "w": 1392,
-        "h": 602
-    },
-    {
         "id": "e18cf721.789868",
         "type": "group",
         "z": "ed02ca62.53a888",
@@ -299,60 +242,21 @@
         "y": 219
     },
     {
-        "id": "1251c9e0.4168a6",
+        "id": "7c1a5935.6513c8",
         "type": "group",
-        "z": "ed02ca62.53a888",
-        "name": "Emulate Streaming Data behavior",
+        "z": "f679c5ec.fb0428",
+        "name": "write to static file",
         "style": {
-            "fill": "#ffdf7f",
-            "label": true,
-            "stroke": "#ffcf3f",
-            "stroke-opacity": "0.9",
-            "color": "#000000",
-            "fill-opacity": "0.54"
+            "label": true
         },
         "nodes": [
-            "43d65c15.6e5194",
-            "640d7e6b.b1796",
-            "275eec01.e45c24",
-            "58b30238.68b0ec",
-            "4dbba865.5f37b8",
-            "5cb16c94.16e734",
-            "aa964d77.8e6bd",
-            "457f6967.6ae808",
-            "58fa716e.cd4ac",
-            "71d93ed9.4676c",
-            "7ed3b8b0.62f368",
-            "e8c4603.ff038a",
-            "78b80a12.56e114",
-            "3951789f.90cd98",
-            "c15ae301.a608",
-            "225aafb5.80358",
-            "9a4e9ef3.02f8f",
-            "84fd5f08.e54be",
-            "ded62288.92ee1",
-            "3cd87ace.a97c56",
-            "67d1bd0c.5756c4",
-            "d9ecf505.f051b8",
-            "21d84b40.a8dfe4",
-            "fedd020d.d4a34",
-            "41a4f93e.021a68",
-            "2c0c8327.be42ec",
-            "a849158c.1a6978",
-            "4ecb6195.ce9f",
-            "ebf1941a.fb3508",
-            "492bb9d8.d91228",
-            "4cae94d.1c60f6c",
-            "da46792f.73d818",
-            "e836ee6d.8bec",
-            "e0939da5.e5942",
-            "be82e07.8ecb12",
-            "ad020e8d.468f1"
+            "eb697a48.ed8c28",
+            "85605a5e.e5e3b8"
         ],
-        "x": 2354,
-        "y": -1,
-        "w": 972,
-        "h": 562
+        "x": 2334,
+        "y": 839,
+        "w": 412,
+        "h": 82
     },
     {
         "id": "261b9b5a.56f684",
@@ -583,8 +487,8 @@
         "timer": "",
         "oldrc": false,
         "name": "run CASTLEGUARD ",
-        "x": 860,
-        "y": 1340,
+        "x": 600,
+        "y": 1220,
         "wires": [
             [
                 "cf0b65f9.007318"
@@ -610,15 +514,15 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1590,
-        "y": 1340,
+        "x": 870,
+        "y": 1220,
         "wires": []
     },
     {
         "id": "b61e65dd.8c1408",
         "type": "inject",
         "z": "f679c5ec.fb0428",
-        "name": "not the start",
+        "name": "manual start",
         "props": [
             {
                 "p": "payload"
@@ -635,8 +539,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 430,
-        "y": 1340,
+        "x": 310,
+        "y": 1220,
         "wires": [
             [
                 "f6fed640.1136b8"
@@ -688,7 +592,7 @@
         "id": "abe891b5.42669",
         "type": "inject",
         "z": "ed02ca62.53a888",
-        "name": "click to start",
+        "name": "manual emulation start",
         "props": [
             {
                 "p": "payload"
@@ -705,595 +609,12 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
+        "x": 120,
         "y": 720,
         "wires": [
             [
-                "49c088f6.9ba0c8"
-            ]
-        ]
-    },
-    {
-        "id": "c26eb7cb.5e5418",
-        "type": "switch",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "property": "payload.Station_Name",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "BOULDER / AIRPORT ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / ALPINE ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / ANNEX ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / ATRIUM ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / BASELINE ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / BOULDER PARK S1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / BOULDER PARK S2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / CARPENTER PARK1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / CARPENTER PARK2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / EAST REC",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / FACILITIES ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / JUNCTION ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / N BOULDER REC 1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / REC CENTER ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / REC CENTER ST2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / RESERVOIR ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDER / RESERVOIR ST2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "BOULDERJUNCTION / JUNCTION ST1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1000WALNUT1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1000WALNUT2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1100WALNUT1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1104 SPRUCE1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1400 WALNUT1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1500PEARL1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 1500PEARL2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / 2200 BROADWAY1",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "COMM VITALITY / BOULDER JCTN",
-                "vt": "str"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 27,
-        "x": 2030,
-        "y": 840,
-        "wires": [
-            [
-                "e40e3cc8.f834a"
-            ],
-            [
-                "cd3849d4.f79028"
-            ],
-            [
-                "28a756fd.4545fa"
-            ],
-            [
-                "32da1711.188a98"
-            ],
-            [
-                "ea0e6436.fe7f48"
-            ],
-            [
-                "6b539d68.cb4084"
-            ],
-            [
-                "f693f0a.47f881"
-            ],
-            [
-                "8174f40c.6028c8"
-            ],
-            [
-                "662a9b9d.ee6c94"
-            ],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "e037e8eb.0ee838",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/AIRPORT_ST1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3840,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "64956d74.3c8114",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/ALPINE_ST1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3850,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "dea57652.5dd918",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/ANNEX_ST1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3850,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "af7a7e82.6723",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/ATRIUM_ST1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3850,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "e40e3cc8.f834a",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 680,
-        "wires": [
-            [
-                "35d218ec.92f1a8"
-            ]
-        ]
-    },
-    {
-        "id": "cd3849d4.f79028",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 740,
-        "wires": [
-            [
-                "1254bb0d.f4bed5"
-            ]
-        ]
-    },
-    {
-        "id": "28a756fd.4545fa",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 800,
-        "wires": [
-            [
-                "7cd7f126.df78f"
-            ]
-        ]
-    },
-    {
-        "id": "32da1711.188a98",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 860,
-        "wires": [
-            [
-                "30d43126.1cfa7e"
-            ]
-        ]
-    },
-    {
-        "id": "c31fb50a.688e08",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/BASELINE_ST1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3840,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "ea0e6436.fe7f48",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 920,
-        "wires": [
-            [
-                "3265ef6c.64d51"
-            ]
-        ]
-    },
-    {
-        "id": "ba07826a.d32f7",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/BOULDER_PARK/S1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3820,
-        "y": 980,
-        "wires": []
-    },
-    {
-        "id": "6b539d68.cb4084",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 980,
-        "wires": [
-            [
-                "654f3a99.58aee4"
-            ]
-        ]
-    },
-    {
-        "id": "a959b3c1.798d9",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/BOULDER_PARK/S2",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3820,
-        "y": 1040,
-        "wires": []
-    },
-    {
-        "id": "f693f0a.47f881",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 1040,
-        "wires": [
-            [
-                "229b79e8.7b8126"
-            ]
-        ]
-    },
-    {
-        "id": "e09eb717.fa45b8",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/CARPENTER_PARK/1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3820,
-        "y": 1100,
-        "wires": []
-    },
-    {
-        "id": "8174f40c.6028c8",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 1100,
-        "wires": [
-            [
-                "641acf84.f005d"
-            ]
-        ]
-    },
-    {
-        "id": "37f1ba8b.669dd6",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "topic": "BOULDER/CARPENTER_PARK/2",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3820,
-        "y": 1160,
-        "wires": []
-    },
-    {
-        "id": "662a9b9d.ee6c94",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2670,
-        "y": 1160,
-        "wires": [
-            [
-                "823ba3c8.21647"
+                "49c088f6.9ba0c8",
+                "d8931186.f646c"
             ]
         ]
     },
@@ -1313,8 +634,7 @@
         "y": 740,
         "wires": [
             [
-                "cb546c79.86a36",
-                "6a458242.7b952c"
+                "cb546c79.86a36"
             ]
         ]
     },
@@ -1333,8 +653,7 @@
         "y": 840,
         "wires": [
             [
-                "36a1d79b.ecb2c8",
-                "a4e4b49.8ff8548"
+                "36a1d79b.ecb2c8"
             ]
         ]
     },
@@ -1350,7 +669,7 @@
         "nl": false,
         "rap": false,
         "rh": "2",
-        "x": 310,
+        "x": 290,
         "y": 900,
         "wires": [
             [
@@ -1530,16 +849,6 @@
         ]
     },
     {
-        "id": "ff6c83ab.d82a1",
-        "type": "comment",
-        "z": "f679c5ec.fb0428",
-        "name": "todo: performance benchmark mit unterschiedlichen durchsätzen",
-        "info": "10k einträge",
-        "x": 1110,
-        "y": 780,
-        "wires": []
-    },
-    {
         "id": "36a1d79b.ecb2c8",
         "type": "change",
         "z": "ed02ca62.53a888",
@@ -1588,6 +897,7 @@
         "id": "eb697a48.ed8c28",
         "type": "csv",
         "z": "f679c5ec.fb0428",
+        "g": "7c1a5935.6513c8",
         "name": "",
         "sep": ",",
         "hdrin": "",
@@ -1599,8 +909,8 @@
         "strings": true,
         "include_empty_strings": "",
         "include_null_values": "",
-        "x": 2210,
-        "y": 1000,
+        "x": 2410,
+        "y": 880,
         "wires": [
             [
                 "85605a5e.e5e3b8"
@@ -1611,14 +921,15 @@
         "id": "85605a5e.e5e3b8",
         "type": "file",
         "z": "f679c5ec.fb0428",
+        "g": "7c1a5935.6513c8",
         "name": "",
         "filename": "anonymized_tuples.csv",
         "appendNewline": false,
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 2410,
-        "y": 1000,
+        "x": 2610,
+        "y": 880,
         "wires": [
             []
         ]
@@ -1671,8 +982,8 @@
         "links": [
             "750a44e0.0e6acc"
         ],
-        "x": 475,
-        "y": 1280,
+        "x": 255,
+        "y": 1160,
         "wires": [
             [
                 "f6fed640.1136b8",
@@ -1689,7 +1000,7 @@
         "links": [
             "750a44e0.0e6acc"
         ],
-        "x": 135,
+        "x": 95,
         "y": 960,
         "wires": [
             [
@@ -1754,8 +1065,7 @@
         "y": 740,
         "wires": [
             [
-                "2d317e08.e1f652",
-                "aa45a735.7be958"
+                "2d317e08.e1f652"
             ]
         ]
     },
@@ -1770,422 +1080,9 @@
         "y": 920,
         "wires": [
             [
-                "872ac22f.a70b5",
                 "a26554d9.b78e68"
             ]
         ]
-    },
-    {
-        "id": "336e05b2.15e99a",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 680,
-        "wires": [
-            [
-                "e037e8eb.0ee838",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "a4bd1cda.a1012",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 740,
-        "wires": [
-            [
-                "64956d74.3c8114",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "cce3e34b.014b3",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 800,
-        "wires": [
-            [
-                "dea57652.5dd918",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "54b39c7a.85fc44",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 860,
-        "wires": [
-            [
-                "af7a7e82.6723",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "20744371.286cac",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 920,
-        "wires": [
-            [
-                "c31fb50a.688e08",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "78f2d218.f17c1c",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 980,
-        "wires": [
-            [
-                "ba07826a.d32f7",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "c98b2d22.5194f",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 1040,
-        "wires": [
-            [
-                "a959b3c1.798d9",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "9795c84e.414a28",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 1100,
-        "wires": [
-            [
-                "e09eb717.fa45b8",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "a736ddf2.a8f88",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 3120,
-        "y": 1160,
-        "wires": [
-            [
-                "37f1ba8b.669dd6",
-                "60bbcb8c.168e24"
-            ]
-        ]
-    },
-    {
-        "id": "5266fcf6.288e44",
-        "type": "debug",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1430,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "a4e4b49.8ff8548",
-        "type": "trigger",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "op1": "Change car prices",
-        "op2": "0",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "250",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "hr",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 1270,
-        "y": 600,
-        "wires": [
-            [
-                "5266fcf6.288e44"
-            ]
-        ]
-    },
-    {
-        "id": "6a458242.7b952c",
-        "type": "trigger",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "op1": "Assign car owners",
-        "op2": "0",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "250",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "hr",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 960,
-        "y": 580,
-        "wires": [
-            [
-                "5266fcf6.288e44"
-            ]
-        ]
-    },
-    {
-        "id": "aa45a735.7be958",
-        "type": "trigger",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "op1": "change car price class",
-        "op2": "0",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "250",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 1280,
-        "y": 1080,
-        "wires": [
-            [
-                "49227b5b.ee0374"
-            ]
-        ]
-    },
-    {
-        "id": "49227b5b.ee0374",
-        "type": "debug",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1570,
-        "y": 1080,
-        "wires": []
-    },
-    {
-        "id": "872ac22f.a70b5",
-        "type": "trigger",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "op1": "split data to different stations",
-        "op2": "0",
-        "op1type": "str",
-        "op2type": "str",
-        "duration": "250",
-        "extend": false,
-        "overrideDelay": false,
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 1780,
-        "y": 1260,
-        "wires": [
-            [
-                "2a343d2f.d54f02"
-            ]
-        ]
-    },
-    {
-        "id": "2a343d2f.d54f02",
-        "type": "debug",
-        "z": "ed02ca62.53a888",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1970,
-        "y": 1260,
-        "wires": []
     },
     {
         "id": "a56b7842.8c1e28",
@@ -2206,7 +1103,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1960,
+        "x": 1820,
         "y": 900,
         "wires": [
             [
@@ -2252,1082 +1149,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1440,
+        "x": 1420,
         "y": 900,
         "wires": [
             [
                 "a56b7842.8c1e28"
-            ]
-        ]
-    },
-    {
-        "id": "43d65c15.6e5194",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 40,
-        "wires": [
-            [
-                "4ecb6195.ce9f"
-            ]
-        ]
-    },
-    {
-        "id": "640d7e6b.b1796",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/AIRPORT_ST1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3180,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "275eec01.e45c24",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "30",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 100,
-        "wires": [
-            [
-                "ebf1941a.fb3508"
-            ]
-        ]
-    },
-    {
-        "id": "58b30238.68b0ec",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/ALPINE_ST1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3190,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "4dbba865.5f37b8",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 160,
-        "wires": [
-            [
-                "492bb9d8.d91228"
-            ]
-        ]
-    },
-    {
-        "id": "5cb16c94.16e734",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/ANNEX_ST1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3190,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "aa964d77.8e6bd",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 220,
-        "wires": [
-            [
-                "4cae94d.1c60f6c"
-            ]
-        ]
-    },
-    {
-        "id": "457f6967.6ae808",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/ATRIUM_ST1",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3190,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "58fa716e.cd4ac",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 40,
-        "wires": [
-            [
-                "43d65c15.6e5194"
-            ]
-        ]
-    },
-    {
-        "id": "71d93ed9.4676c",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 100,
-        "wires": [
-            [
-                "275eec01.e45c24"
-            ]
-        ]
-    },
-    {
-        "id": "7ed3b8b0.62f368",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 160,
-        "wires": [
-            [
-                "4dbba865.5f37b8"
-            ]
-        ]
-    },
-    {
-        "id": "e8c4603.ff038a",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 220,
-        "wires": [
-            [
-                "aa964d77.8e6bd"
-            ]
-        ]
-    },
-    {
-        "id": "78b80a12.56e114",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "30",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 280,
-        "wires": [
-            [
-                "da46792f.73d818"
-            ]
-        ]
-    },
-    {
-        "id": "3951789f.90cd98",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/BASELINE_ST1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3180,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "c15ae301.a608",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 280,
-        "wires": [
-            [
-                "78b80a12.56e114"
-            ]
-        ]
-    },
-    {
-        "id": "225aafb5.80358",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 340,
-        "wires": [
-            [
-                "e836ee6d.8bec"
-            ]
-        ]
-    },
-    {
-        "id": "9a4e9ef3.02f8f",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/BOULDER_PARK/S1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3160,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "84fd5f08.e54be",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 340,
-        "wires": [
-            [
-                "225aafb5.80358"
-            ]
-        ]
-    },
-    {
-        "id": "ded62288.92ee1",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 400,
-        "wires": [
-            [
-                "ad020e8d.468f1"
-            ]
-        ]
-    },
-    {
-        "id": "3cd87ace.a97c56",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/BOULDER_PARK/S2",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3160,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "67d1bd0c.5756c4",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 400,
-        "wires": [
-            [
-                "ded62288.92ee1"
-            ]
-        ]
-    },
-    {
-        "id": "d9ecf505.f051b8",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 460,
-        "wires": [
-            [
-                "e0939da5.e5942"
-            ]
-        ]
-    },
-    {
-        "id": "21d84b40.a8dfe4",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/CARPENTER_PARK/1",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3160,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "fedd020d.d4a34",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 460,
-        "wires": [
-            [
-                "d9ecf505.f051b8"
-            ]
-        ]
-    },
-    {
-        "id": "41a4f93e.021a68",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "5",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2620,
-        "y": 520,
-        "wires": [
-            [
-                "be82e07.8ecb12"
-            ]
-        ]
-    },
-    {
-        "id": "2c0c8327.be42ec",
-        "type": "mqtt out",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "topic": "BOULDER/CARPENTER_PARK/2",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "261b9b5a.56f684",
-        "x": 3160,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "a849158c.1a6978",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "",
-        "pauseType": "random",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2430,
-        "y": 520,
-        "wires": [
-            [
-                "41a4f93e.021a68"
-            ]
-        ]
-    },
-    {
-        "id": "4ecb6195.ce9f",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 40,
-        "wires": [
-            [
-                "640d7e6b.b1796"
-            ]
-        ]
-    },
-    {
-        "id": "ebf1941a.fb3508",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 100,
-        "wires": [
-            [
-                "58b30238.68b0ec"
-            ]
-        ]
-    },
-    {
-        "id": "492bb9d8.d91228",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 160,
-        "wires": [
-            [
-                "5cb16c94.16e734"
-            ]
-        ]
-    },
-    {
-        "id": "4cae94d.1c60f6c",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 220,
-        "wires": [
-            [
-                "457f6967.6ae808"
-            ]
-        ]
-    },
-    {
-        "id": "da46792f.73d818",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 280,
-        "wires": [
-            [
-                "3951789f.90cd98"
-            ]
-        ]
-    },
-    {
-        "id": "e836ee6d.8bec",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 340,
-        "wires": [
-            [
-                "9a4e9ef3.02f8f"
-            ]
-        ]
-    },
-    {
-        "id": "e0939da5.e5942",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 460,
-        "wires": [
-            [
-                "21d84b40.a8dfe4"
-            ]
-        ]
-    },
-    {
-        "id": "be82e07.8ecb12",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 520,
-        "wires": [
-            [
-                "2c0c8327.be42ec"
-            ]
-        ]
-    },
-    {
-        "id": "ad020e8d.468f1",
-        "type": "change",
-        "z": "ed02ca62.53a888",
-        "g": "1251c9e0.4168a6",
-        "name": "add benchmark timestamp",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2860,
-        "y": 400,
-        "wires": [
-            [
-                "3cd87ace.a97c56"
-            ]
-        ]
-    },
-    {
-        "id": "823ba3c8.21647",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 1160,
-        "wires": [
-            [
-                "a736ddf2.a8f88"
-            ]
-        ]
-    },
-    {
-        "id": "641acf84.f005d",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 1100,
-        "wires": [
-            [
-                "9795c84e.414a28"
-            ]
-        ]
-    },
-    {
-        "id": "229b79e8.7b8126",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 1040,
-        "wires": [
-            [
-                "c98b2d22.5194f"
-            ]
-        ]
-    },
-    {
-        "id": "654f3a99.58aee4",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 980,
-        "wires": [
-            [
-                "78f2d218.f17c1c"
-            ]
-        ]
-    },
-    {
-        "id": "3265ef6c.64d51",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 920,
-        "wires": [
-            [
-                "20744371.286cac"
-            ]
-        ]
-    },
-    {
-        "id": "30d43126.1cfa7e",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 860,
-        "wires": [
-            [
-                "54b39c7a.85fc44"
-            ]
-        ]
-    },
-    {
-        "id": "7cd7f126.df78f",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 800,
-        "wires": [
-            [
-                "cce3e34b.014b3"
-            ]
-        ]
-    },
-    {
-        "id": "1254bb0d.f4bed5",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 740,
-        "wires": [
-            [
-                "a4bd1cda.a1012"
-            ]
-        ]
-    },
-    {
-        "id": "35d218ec.92f1a8",
-        "type": "delay",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "10",
-        "timeoutUnits": "milliseconds",
-        "rate": "10",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 2860,
-        "y": 680,
-        "wires": [
-            [
-                "336e05b2.15e99a"
             ]
         ]
     },
@@ -3446,24 +1272,6 @@
             [
                 "64b2736e.6b7d1c"
             ],
-            []
-        ]
-    },
-    {
-        "id": "60bbcb8c.168e24",
-        "type": "function",
-        "z": "ed02ca62.53a888",
-        "g": "19ca91ba.af4a0e",
-        "name": "count number sended messages",
-        "func": "global.set(\"numberSendedMessages\", global.get(\"numberSendedMessages\") + 1)\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3830,
-        "y": 640,
-        "wires": [
             []
         ]
     },
@@ -3637,7 +1445,7 @@
         "links": [
             "dc19c14f.d56c2"
         ],
-        "x": 2175,
+        "x": 2035,
         "y": 940,
         "wires": []
     },
@@ -4195,8 +2003,8 @@
         "links": [
             "554e4f27.81c24"
         ],
-        "x": 2175,
-        "y": 860,
+        "x": 2035,
+        "y": 880,
         "wires": []
     },
     {
@@ -4208,7 +2016,9 @@
         "x": 990,
         "y": 600,
         "wires": [
-            []
+            [
+                "14c63ea5.087c11"
+            ]
         ]
     },
     {
@@ -4272,7 +2082,9 @@
         "x": 1020,
         "y": 440,
         "wires": [
-            []
+            [
+                "14c63ea5.087c11"
+            ]
         ]
     },
     {
@@ -4306,7 +2118,7 @@
         "id": "554e4f27.81c24",
         "type": "link in",
         "z": "d43d7e62.0ae71",
-        "name": "Filtering",
+        "name": "Filtering in",
         "links": [
             "9e3ea463.cad528"
         ],
@@ -4411,8 +2223,8 @@
         "links": [
             "3b2b54c5.78bbdc"
         ],
-        "x": 785,
-        "y": 1260,
+        "x": 515,
+        "y": 1140,
         "wires": []
     },
     {
@@ -4486,7 +2298,8 @@
         "z": "44f2dba4.713184",
         "name": "reset statistics",
         "links": [
-            "e846aeff.2c3b3"
+            "e846aeff.2c3b3",
+            "d8931186.f646c"
         ],
         "x": 215,
         "y": 1740,
@@ -4500,14 +2313,14 @@
         "id": "852efd4a.f3e55",
         "type": "function",
         "z": "f679c5ec.fb0428",
-        "name": "",
+        "name": "count messages",
         "func": "messageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 620,
         "y": 800,
         "wires": [
             []
@@ -4654,7 +2467,7 @@
         "id": "a26554d9.b78e68",
         "type": "change",
         "z": "ed02ca62.53a888",
-        "name": "",
+        "name": "set topic to station name",
         "rules": [
             {
                 "t": "set",
@@ -4669,8 +2482,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2980,
-        "y": 1320,
+        "x": 2090,
+        "y": 920,
         "wires": [
             [
                 "907878d0.1c7368"
@@ -4688,8 +2501,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3250,
-        "y": 1320,
+        "x": 2390,
+        "y": 920,
         "wires": [
             [
                 "5104a326.b585ec"
@@ -4715,8 +2528,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 3960,
-        "y": 1320,
+        "x": 3040,
+        "y": 920,
         "wires": [
             [
                 "71d7feb0.6c40b"
@@ -4737,8 +2550,8 @@
         "correl": "",
         "expiry": "",
         "broker": "261b9b5a.56f684",
-        "x": 4270,
-        "y": 1320,
+        "x": 3410,
+        "y": 920,
         "wires": []
     },
     {
@@ -4756,8 +2569,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 3610,
-        "y": 1320,
+        "x": 2690,
+        "y": 920,
         "wires": [
             [
                 "12a8b73a.4304b9",
@@ -4784,8 +2597,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 840,
-        "y": 1180,
+        "x": 620,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -4801,8 +2614,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 4170,
-        "y": 1220,
+        "x": 3250,
+        "y": 820,
         "wires": [
             []
         ]
@@ -5140,8 +2953,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3810,
-        "y": 1420,
+        "x": 3010,
+        "y": 1020,
         "wires": [
             [
                 "63e756b7.c68988"
@@ -5156,8 +2969,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 4030,
-        "y": 1420,
+        "x": 3230,
+        "y": 1020,
         "wires": [
             [
                 "523430c8.9d725"
@@ -5168,7 +2981,7 @@
         "id": "523430c8.9d725",
         "type": "debug",
         "z": "ed02ca62.53a888",
-        "name": "",
+        "name": "print all topics",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -5177,8 +2990,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 4230,
-        "y": 1420,
+        "x": 3440,
+        "y": 1020,
         "wires": []
     },
     {
@@ -5204,7 +3017,7 @@
         "id": "ddadc3e5.42071",
         "type": "inject",
         "z": "44f2dba4.713184",
-        "name": "",
+        "name": "reset statistics",
         "props": [
             {
                 "p": "payload"
@@ -5221,7 +3034,7 @@
         "topic": "",
         "payload": "[]",
         "payloadType": "json",
-        "x": 1290,
+        "x": 1310,
         "y": 920,
         "wires": [
             [
@@ -5229,6 +3042,75 @@
                 "c05609dc.5466e8",
                 "afad0c4b.df2b9",
                 "deea057d.314e98"
+            ]
+        ]
+    },
+    {
+        "id": "d8931186.f646c",
+        "type": "link out",
+        "z": "ed02ca62.53a888",
+        "name": "",
+        "links": [
+            "3b2b54c5.78bbdc"
+        ],
+        "x": 305,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "64f5fe48.c5aca",
+        "type": "link in",
+        "z": "f679c5ec.fb0428",
+        "name": "main mqqt bypass",
+        "links": [
+            "5fe6e580.1bcd4c"
+        ],
+        "x": 915,
+        "y": 640,
+        "wires": [
+            [
+                "eb1c3b1e.bfd068",
+                "eca54672.498798"
+            ]
+        ]
+    },
+    {
+        "id": "5fe6e580.1bcd4c",
+        "type": "link out",
+        "z": "ed02ca62.53a888",
+        "name": "emulator mqqt bypass",
+        "links": [
+            "64f5fe48.c5aca"
+        ],
+        "x": 3375,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "14c63ea5.087c11",
+        "type": "link out",
+        "z": "d43d7e62.0ae71",
+        "name": "filtering out",
+        "links": [
+            "3bebd1b1.20451e"
+        ],
+        "x": 1265,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "3bebd1b1.20451e",
+        "type": "link in",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "links": [
+            "14c63ea5.087c11"
+        ],
+        "x": 2255,
+        "y": 880,
+        "wires": [
+            [
+                "eb697a48.ed8c28"
             ]
         ]
     }
