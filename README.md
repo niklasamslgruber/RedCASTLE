@@ -1,22 +1,32 @@
-<center> <img width="500" src="images/castle_logo.jpg" alt="logo"> </center>
+<center> <img width="200" src="images/castle_logo.jpg" alt="logo"> </center>
 
 
-# RedCASTLE - k-Anonymity for Streaming Data in Node-RED
+# RedCASTLE
+### k-Anonymity for Streaming Data in Node-RED
 
 ## Summary
-This is a project work done during the Summer Semester 2021 at the Technical University Berlin in the module Privacy Engineering. The goal is to implement privacy related features in an actual use case to provide value for others in the future. In this project k-Anonymity is implemented in a streaming data use case in the Node-Red environment. 
+This is a project done during the Summer Semester 2021 at the Technical University Berlin in the module Privacy Engineering. 
+The goal was to implement privacy related features in an actual use case to provide value for others in the future. In this project k-Anonymity for streaming data is implemented in the Node-Red environment. 
 
-This work is based on [CASTLEGUARD](https://github.com/hallnath1/CASTLEGUARD), which based on the [CASTLE (Continuously Anonymizing STreaming data via adaptive cLustEring)](https://ieeexplore.ieee.org/abstract/document/5374415) by J. Cao, B. Carminati, E. Ferrari and K. Tan. 
-The CASTLEGUARD algorithm has been modified to work with MQTT for input and output data as well as several other modification options.
+This repository is based on [CASTLEGUARD](https://github.com/hallnath1/CASTLEGUARD), which implements the [CASTLE (Continuously Anonymizing STreaming data via adaptive cLustEring)](https://ieeexplore.ieee.org/abstract/document/5374415) algorithm by J. Cao, B. Carminati, E. Ferrari and K. Tan. 
 
-# How to run it
 
-We have prepared three different ways to run this.
-1. manual, installing all needed dependencies and start it locally
-2. docker, use a pre-configured docker image
-3. cloud deployment, deploy and provision a cloud vm
+## Contributions
+The CASTLEGUARD algorithm has been extended by several features:
+* Integrated streaming interface for input and output data based on MQTT
+* Support for non-numerical data through automatic conversion
+* No constraints regarding the number of senders
+* High Configurability
+* Multiple deployment options
 
-## Manual
+## How to run it
+
+There are three possible options for running the system:
+1. **Manually:** Install all needed dependencies and start it locally
+2. **Docker:** Build a Docker image from the `DOCKERFILE` or use the pre-configured docker image from DockerHub
+3. **Cloud deployment:** Deploy and provision the code on a Cloud VM with TerraForm
+
+### Manual
 To run the project you need to install these dependencies:
 * Node-Red
 * MQTT Mosquitto
@@ -30,14 +40,14 @@ For starting both Mosquitto and Node-Red you can simple execute the `setup.sh` s
 You can access Node-RED on `localhost:1880`.
 In order to inject external data in 
 
-## Docker
+### Docker
 The example setup can also be run using Docker. Simply build a Docker image from the `DOCKERFILE` or pull the latest Docker image from [Docker Hub](https://hub.docker.com/r/niklasamslgruber/node-red-castle).
 
 Alternatively, you can run the Docker image with `docker run -ti -p 1883:1883 -p 1880:1880 niklasamslgruber/node-red-castle` and navigate to `localhost:1880` to see Node-RED.
 
 
 
-## Cloud Deployment
+### Cloud Deployment
 We prepared a Terrafrom deployment to easily deploy RedCASTLE in the cloud. 
 1. You need to install Terraform and the [GCloud SDK](https://cloud.google.com/sdk/docs/quickstart). 
 2. Configure GCloud with `gcloud init` and set it as the default login mechanism `gcloud auth application-default login`
@@ -46,12 +56,12 @@ We prepared a Terrafrom deployment to easily deploy RedCASTLE in the cloud.
 
 To cleanup you need to run `terraform destroy`.
 
-# How to configure
+## How to configure
 You can modify the default configuration by adjusting the `config.json` file in `CASTLE/src/config.json`. The config file should be kept in the `src` directory. The config.json file is split into two parts (`params` and `io`). 
 
-## `params`
+### `params`
 * `k`: Value for k-anonymity
-* `delta`: 
+* `delta`: Maximum number of tuples
 * `beta`: Number of non-k-anonymized clusters in memory
 * `mu`: Threshold for deciding whether to push a new datapoint into an existing cluster or create a new one
 * `seed`: Random seed *(optional)*
@@ -61,44 +71,44 @@ You can modify the default configuration by adjusting the `config.json` file in 
 * `pid_column`: Name of the column with a unique identifier
 * `history`: Whether CASTLE should record all input tuples *(optional)*
 
-## `io`
+### `io`
 * `host`: Host of your MQTT server (default: localhost) *(optional)*
 * `port`: Port of your MQTT server (localhost: 1883) *(optional)*
 * `mqtt_topics_in`: All MQTT topics the system should subscribe on 
-* `mqtt_topic_out`: The topic to publish the output data
+* `mqtt_topic_out`: The topic to publish the output data on
 
-# Performance Impact
+## Performance Impact
 
 Depending on the used machine and the throughput rate you have to expect **multiple seconds to minutes** overhead.
 
 Higher throughput lowers the added delay. [sic] This is because the algorithm needs to collect a specific amount of data to achieve the set privacy constraint. With lower throughput the data have to sit longer inside the algorithms clusters to wait until they can get released.
 
-## Benchmark
+## Benchmarks
 We performed some benchmarks on a n2-standard-2 GCloud Compute Engine with 2 vCPUs and 8 GB RAM.
 
 <img width="900" src="images/benchmark/40msg_s_delay_in_seconds.png" alt="40msg_s">
 
-40 msg per second are send and processed.
+**Throughput:** 40 messages per second were sent and processed.
 
 <img width="900" src="images/benchmark/8msg_s_delay_in_seconds.png" alt="8msg_s">
 
-8 msg per second are send and processed.
+**Throughput:** 8 messages per second were sent and processed.
 
 Note the differences in the axis scale.
 
-On the n2-standard-2 GCloud Compute Engine with 2 vCPUs and 8 GB RAM we achieved a maximum of 45 messages per second. Further research showed, that without the use of the modified castleguard algorithm node-red and mosquitto can deal with 95 mqtt messages per second but slowly trends towards 45 msg/s when the message queue fills. Without the use of a message queue or broker and without the modified castleguard algorithm, we where able to measure a constant throughput of 195 messages per second. 
+On the n2-standard-2 GCloud Compute Engine with 2 vCPUs and 8 GB RAM we achieved a maximum of 45 messages per second. Further research showed, that without the use of the modified CASTLEGUARD algorithm, Node-Red and Mosquitto can deal with 95 MQTT messages per second but slowly trends towards 45 msg/s when the message queue fills up. Without the use of a message queue or broker and without the modified CASTLEGUARD algorithm, we where able to measure a constant throughput of 195 messages per second. 
 
 These findings indicate that the used message broker may be a possible bottleneck in the current implementation state.
 
-# Example Dataset
+## Example Dataset
 
-The used validation use case is a dataset with electric vehicle charging data. The data used is provided by the city of Boulder in Colorado (USA) via their [Open Data Plattform](https://open-data.bouldercolorado.gov/datasets/4368ba17948c459c813734bd78b3a355_0) in a CC0 1.0 Public Domain Dedication licence model. To spice up the dataset, a number of fake persons with specific vehicle models and unique ids are generated and used to enrich the original dataset.
-| Station Name           | Address          | Zip/Postal Code | Start Date & Time | End Date & Time | Total Duration (hh:mm:ss) | Charging Time (hh:mm:ss) | Energy (kWh) | GHG Savings (kg) | Gasoline Savings (gallons) | customer id | allow dynamic charging | car brand | car modell |
+The used validation use case is a dataset with electric vehicle charging data. The data used is provided by the city of Boulder in Colorado (USA) via their [Open Data Plattform](https://open-data.bouldercolorado.gov/datasets/4368ba17948c459c813734bd78b3a355_0) in a CC0 1.0 Public Domain Dedication license model. To spice up the dataset, a number of fake persons with specific vehicle models and unique ids are generated and used to enrich the original dataset.
+| Station Name           | Address          | Zip/Postal Code | Start Date & Time | End Date & Time | Total Duration (hh:mm:ss) | Charging Time (hh:mm:ss) | Energy (kWh) | GHG Savings (kg) | Gasoline Savings (gallons) | customer id | allow dynamic charging | car brand | car model |
 |------------------------|------------------|-----------------|-------------------|-----------------|---------------------------|--------------------------|--------------|------------------|----------------------------|-------------|------------------------|-----------|------------|
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/1/2018 17:49    | 1/1/2018 19:52  | 2:03:02                   | 2:02:44                  | 6.504        | 2.732            | 0.816                      | 1006        | true                   | Tesla     | Model Y    |
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/2/2018 8:52     | 1/2/2018 9:16   | 0:24:34                   | 0:24:19                  | 2.481        | 1.042            | 0.311                      | 1052        | true                   | BMW       | i3         |
 
-# Data manipulation
+## Data manipulation
 
 Additionally a few functionalities were added to assist further to achieve privacy when working with personal data. Fro this a filter, reduce and a change function are implemented.
 
@@ -119,7 +129,7 @@ Suppressed specific properties:
 message object structure for this example: msg.suppressed_properties.suppressed_properties (array[3])
 
 
-Filter for specfic conditions. Currenty supported are range filtering as well as whitelist and blacklist filtering. A entry has to pass all filter conditions, otherwise the entry is removed from the set. You could also use only one or two of the filter conditions.
+Filter for specific conditions. Currently supported are range filtering as well as whitelist and blacklist filtering. A entry has to pass all filter conditions, otherwise the entry is removed from the set. You could also use only one or two of the filter conditions.
 ```json
 {
     "filterCondition": {
@@ -150,7 +160,7 @@ message object structure for this example: msg.filterCondition.rangeFilter (obje
 
 Change or append new properties based on existing properties. 
 
-Add a car_price property based on a given mapping of car_modell names and prices.
+Add a car_price property based on a given mapping of car_model names and prices.
 ```json
 {
     "changeStringEqual": {
