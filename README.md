@@ -1,15 +1,22 @@
-# k-Anonymity for Streaming Data in Node-RED
+<center> <img width="500" src="images/castle_logo.jpg" alt="Awesome"> </center>
+
+
+# RedCASTLE - k-Anonymity for Streaming Data in Node-RED
 
 ## Summary
 This is a project work done during the Summer Semester 2021 at the Technical University Berlin in the module Privacy Engineering. The goal is to implement privacy related features in an actual use case to provide value for others in the future. In this project k-Anonymity is implemented in a streaming data use case in the Node-Red environment. 
 
-#### Basis
-The used k-Anonymity Algorithm is [CASTLEGUARD](https://github.com/hallnath1/CASTLEGUARD), which based on the [CASTLE (Continuously Anonymizing STreaming data via adaptive cLustEring)](https://ieeexplore.ieee.org/abstract/document/5374415) by J. Cao, B. Carminati, E. Ferrari and K. Tan. 
+This work is based on [CASTLEGUARD](https://github.com/hallnath1/CASTLEGUARD), which based on the [CASTLE (Continuously Anonymizing STreaming data via adaptive cLustEring)](https://ieeexplore.ieee.org/abstract/document/5374415) by J. Cao, B. Carminati, E. Ferrari and K. Tan. 
 The CASTLEGUARD algorithm has been modified to work with MQTT for input and output data as well as several other modification options.
 
-Running
--------
-### Manual
+# How to run it
+
+We have prepared three different was to run this.
+1. manual, installing all needed dependencies and start it locally
+2. docker, use a pre-configured docker image
+3. cloud deployment, deploy and provision a cloud vm
+
+## Manual
 To run the project you need to install these dependencies:
 * Node-Red
 * MQTT Mosquitto
@@ -23,19 +30,26 @@ For starting both Mosquitto and Node-Red you can simple execute the `setup.sh` s
 You can access Node-RED on `localhost:1880`.
 In order to inject external data in 
 
-### Docker
+## Docker
 The example setup can also be run using Docker. Simply build a Docker image from the `DOCKERFILE` or pull the latest Docker image from [Docker Hub](https://hub.docker.com/r/niklasamslgruber/node-red-castle).
 
 Alternatively, you can run the Docker image with `docker run -ti -p 1883:1883 -p 1880:1880 niklasamslgruber/node-red-castle` and navigate to `localhost:1880` to see Node-RED.
 
-Configuration
---------
-You can modify the default configuration by adjusting the `config.json` file in `CASTLE/src/config.json`. The config file should be kept in the `src` directory.
 
-### Parameters
-The config.json file is split into two parts (`params` and `io`). 
 
-##### `params`
+## Cloud Deployment
+We prepared a Terrafrom deployment to easily deploy RedCASTLE in the cloud. 
+1. You need to install Terraform and the [GCloud SDK](https://cloud.google.com/sdk/docs/quickstart). 
+2. Configure GCloud with `gcloud init` and set it as the default login mechanism `gcloud auth application-default login`
+3. Then run ones `terraform init` in the root directory of this repository.
+4. Afterwards you can start the deployment with `terraform apply`.
+
+To cleanup you need to run `terraform destroy`.
+
+# How to configure
+You can modify the default configuration by adjusting the `config.json` file in `CASTLE/src/config.json`. The config file should be kept in the `src` directory. The config.json file is split into two parts (`params` and `io`). 
+
+## `params`
 * `k`: Value for k-anonymity
 * `delta`: 
 * `beta`: Number of non-k-anonymized clusters in memory
@@ -47,14 +61,14 @@ The config.json file is split into two parts (`params` and `io`).
 * `pid_column`: Name of the column with a unique identifier
 * `history`: Whether CASTLE should record all input tuples *(optional)*
 
-##### `io`
+## `io`
 * `host`: Host of your MQTT server (default: localhost) *(optional)*
 * `port`: Port of your MQTT server (localhost: 1883) *(optional)*
 * `mqtt_topics_in`: All MQTT topics the system should subscribe on 
 * `mqtt_topic_out`: The topic to publish the output data
 
-Example Dataset
---------
+# Example Dataset
+
 The used validation use case is a dataset with electric vehicle charging data. The data used is provided by the city of Boulder in Colorado (USA) via their [Open Data Plattform](https://open-data.bouldercolorado.gov/datasets/4368ba17948c459c813734bd78b3a355_0) in a CC0 1.0 Public Domain Dedication licence model. To spice up the dataset, a number of fake persons with specific vehicle models and unique ids are generated and used to enrich the original dataset.
 | Station Name           | Address          | Zip/Postal Code | Start Date & Time | End Date & Time | Total Duration (hh:mm:ss) | Charging Time (hh:mm:ss) | Energy (kWh) | GHG Savings (kg) | Gasoline Savings (gallons) | customer id | allow dynamic charging | car brand | car modell |
 |------------------------|------------------|-----------------|-------------------|-----------------|---------------------------|--------------------------|--------------|------------------|----------------------------|-------------|------------------------|-----------|------------|
