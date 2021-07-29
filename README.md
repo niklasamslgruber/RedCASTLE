@@ -1,4 +1,4 @@
-<center> <img width="500" src="images/castle_logo.jpg" alt="Awesome"> </center>
+<center> <img width="500" src="images/castle_logo.jpg" alt="logo"> </center>
 
 
 # RedCASTLE - k-Anonymity for Streaming Data in Node-RED
@@ -66,6 +66,29 @@ You can modify the default configuration by adjusting the `config.json` file in 
 * `port`: Port of your MQTT server (localhost: 1883) *(optional)*
 * `mqtt_topics_in`: All MQTT topics the system should subscribe on 
 * `mqtt_topic_out`: The topic to publish the output data
+
+# Performance Impact
+
+Depending on the used machine and the throughput rate you have to expect **multiple seconds to minutes** overhead.
+
+Higher throughput lowers the added delay. [sic] This is because the algorithm needs to collect a specific amount of data to achieve the set privacy constraint. With lower throughput the data have to sit longer inside the algorithms clusters to wait until they can get released.
+
+## Benchmark
+We performed some benchmarks on a n2-standard-2 GCloud Compute Engine with 2 vCPUs and 8 GB RAM.
+
+<img width="900" src="images/benchmark/40msg_s_delay_in_seconds.png" alt="40msg_s">
+
+40 msg per second are send and processed.
+
+<img width="900" src="images/benchmark/8msg_s_delay_in_seconds.png" alt="8msg_s">
+
+8 msg per second are send and processed.
+
+Note the differences in the axis scale.
+
+On the n2-standard-2 GCloud Compute Engine with 2 vCPUs and 8 GB RAM we achieved a maximum of 45 messages per second. Further research showed, that without the use of the modified castleguard algorithm node-red and mosquitto can deal with 95 mqtt messages per second but slowly trends towards 45 msg/s when the message queue fills. Without the use of a message queue or broker and without the modified castleguard algorithm, we where able to measure a constant throughput of 195 messages per second. 
+
+These findings indicate that the used message broker may be a possible bottleneck in the current implementation state.
 
 # Example Dataset
 
