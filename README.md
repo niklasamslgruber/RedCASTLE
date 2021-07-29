@@ -11,7 +11,7 @@ The CASTLEGUARD algorithm has been modified to work with MQTT for input and outp
 
 # How to run it
 
-We have prepared three different was to run this.
+We have prepared three different ways to run this.
 1. manual, installing all needed dependencies and start it locally
 2. docker, use a pre-configured docker image
 3. cloud deployment, deploy and provision a cloud vm
@@ -75,13 +75,13 @@ The used validation use case is a dataset with electric vehicle charging data. T
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/1/2018 17:49    | 1/1/2018 19:52  | 2:03:02                   | 2:02:44                  | 6.504        | 2.732            | 0.816                      | 1006        | true                   | Tesla     | Model Y    |
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/2/2018 8:52     | 1/2/2018 9:16   | 0:24:34                   | 0:24:19                  | 2.481        | 1.042            | 0.311                      | 1052        | true                   | BMW       | i3         |
 
---------
+# Data manipulation
 
-Additionally a few functionalities were added to assist further to achieve privacy when working with personal data. Fro this a filter and a reduce function are implemented.
+Additionally a few functionalities were added to assist further to achieve privacy when working with personal data. Fro this a filter, reduce and a change function are implemented.
 
 These functions can be configured via a json object. This configuration object has to be added to the message object, not the msg.payload object.
 
-Example configurations for filter and reduce:
+Example configurations for filter, reduce and changes:
 --------
 Suppressed specific properties:
 ```json
