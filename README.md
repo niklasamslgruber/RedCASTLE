@@ -119,6 +119,8 @@ On the n2-standard-2 GCloud Compute Engine with 2 vCPUs and 8 GB RAM we achieved
 
 These findings indicate that the used message broker may be a possible bottleneck in the current implementation state.
 
+The benchmark images are screenshots from the integrated Node-RED dashboard. (accessible under `<ip-address>:1880/ui`)
+
 ## Example Dataset
 
 The used validation use case is a dataset with electric vehicle charging data. The data used is provided by the city of Boulder in Colorado (USA) via their [Open Data Plattform](https://open-data.bouldercolorado.gov/datasets/4368ba17948c459c813734bd78b3a355_0) in a CC0 1.0 Public Domain Dedication license model. To spice up the dataset, a number of fake persons with specific vehicle models and unique ids are generated and used to enrich the original dataset.
