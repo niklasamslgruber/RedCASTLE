@@ -145,9 +145,7 @@
             "9aa878b2.7e4fc8"
         ],
         "x": 514,
-        "y": 699,
-        "w": 252,
-        "h": 82
+        "y": 699
     },
     {
         "id": "cd180a4c.27e908",
@@ -182,9 +180,7 @@
             "42403d84.0c7cd4"
         ],
         "x": 1154,
-        "y": 879,
-        "w": 732,
-        "h": 82
+        "y": 879
     },
     {
         "id": "8f7d71c7.eca34",
@@ -219,9 +215,7 @@
             "4439c462.3a2c8c"
         ],
         "x": 1174,
-        "y": 699,
-        "w": 682,
-        "h": 82
+        "y": 699
     },
     {
         "id": "e68402fe.4fdb1",
@@ -418,31 +412,6 @@
         "width": 19
     },
     {
-        "id": "cee8d6f2.f39938",
-        "type": "mqtt-broker",
-        "name": "roschy.net",
-        "broker": "roschy.net",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
         "id": "3956295b.f852b6",
         "type": "ui_group",
         "name": "Group 3",
@@ -450,31 +419,6 @@
         "order": 3,
         "disp": true,
         "width": 6
-    },
-    {
-        "id": "97adf7dd.fd5ab8",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "34.89.168.68",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
     },
     {
         "id": "f6fed640.1136b8",
@@ -539,11 +483,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 310,
+        "x": 210,
         "y": 1220,
         "wires": [
             [
-                "f6fed640.1136b8"
+                "f6fed640.1136b8",
+                "e846aeff.2c3b3",
+                "5864379a.27cfd8"
             ]
         ]
     },
@@ -668,7 +614,7 @@
         "broker": "261b9b5a.56f684",
         "nl": false,
         "rap": false,
-        "rh": "2",
+        "rh": "0",
         "x": 290,
         "y": 900,
         "wires": [
