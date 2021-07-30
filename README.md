@@ -37,8 +37,7 @@ The required Python packages can be installed automatically with `pip install -r
 To pass and retrieve data from the component, you need to specify the host and port of your MQTT server in the `config.json` or use the default configuration on `localhost:1883`.
 
 For starting both Mosquitto and Node-Red you can simple execute the `setup.sh` script *(macOS & Linux only)*
-You can access Node-RED on `localhost:1880`.
-In order to inject external data in 
+You can access Node-RED on `localhost:1880`. 
 
 ### Docker
 The example setup can also be run using Docker. Simply build a Docker image from the `DOCKERFILE` or pull the latest Docker image from [Docker Hub](https://hub.docker.com/r/niklasamslgruber/node-red-castle).
