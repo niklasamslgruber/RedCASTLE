@@ -1,4 +1,4 @@
-<center> <img width="200" src="images/castle_logo.jpg" alt="logo"> </center>
+<img width="200" src="images/castle_logo.jpg" alt="logo"> 
 
 
 # RedCASTLE
@@ -77,6 +77,25 @@ You can modify the default configuration by adjusting the `config.json` file in 
 * `mqtt_topics_in`: All MQTT topics the system should subscribe on 
 * `mqtt_topic_out`: The topic to publish the output data on
 
+## How to use
+When starting the project over one of the three ways shown above, you should be able to access the Node-RED web ui under `<ip-address>:1880`, the Node-Red dashboard under `<ip-address>:1880/ui` and the mqtt broker via `<ip-address>:1883`.
+
+### Quickstart
+To run our validation test scenario browse to `<ip-address>:1880/ui` and press the button "start simulation and castleguard".
+
+### Use your own data
+1. change the `CASTLE/src/config.json` accordingly to your data. 
+2. click the "manual start" node in the ks-Anonymization tab of Node-REDs web ui.
+3. Send your data to the mqtt broker `<ip-address>:1883`
+4. now the anonymized data should be written to the file anonymized_tuples.csv
+
+### Overview
+When accessing the Node-RED web ui at `<ip-address>:1880` you should see the nodes and relations of the current flow. There are 5 flows represented by the tabs at the top: *ks-Anonymization, Charging Station Emulator, Statistics, Filtering, Dashboard entrypoint*.
+
+*ks-Anonymization* and *Charging Station Emulator* are the core flows that will run in parallel. The *Charging Station Emulator* flow finish by publish to the MQTT broker and *ks-Anonymization* is triggers by receive a message from the MQTT subscriber node. *Statistics* is always called as one of the final steps of *ks-Anonymization* to generate statistics shown in the Node-RED Dashboard (`<ip-address>:1880/ui`). There are implemented subflows to manipulate data, that can also be found in the node selection of the left side. These manipulations are currently used during the generation of you test data and in the normal executing process at the end of *ks-Anonymization* when the flow *Filtering* is called. See section Data manipulation for further information how to use this.
+
+Data send to the MQTT broker have to be in JSON format. In order to deal with this data, you need to make changes to `CASTLE/src/config.json`. The `sensitive_attribute`, `quasi_identifiers` and `non_categorized_columns` have to be changed in respond to the data you expect to be sent to the MQTT broker. Without these changes, the chances are high that the Castleguard backend will immediately crash when unknown data arrives. A Castleguard crash can be detected by having a look at the *"run CASTLEGUARD"* node in the *ks-Anonymization* flow. When this node is running correctly, it should show a blue dot with `pid: <number>`. `rc: <number>` means the background process has crashed. For further debugging purposes you could also simply run CASTLEGUARD in a command line and stop Node-RED von starting it by deleting ingoing lines to the *"run CASTLEGUARD"* node.
+
 ## Performance Impact
 
 Depending on the used machine and the throughput rate you have to expect **multiple seconds to minutes** overhead.
@@ -107,6 +126,13 @@ The used validation use case is a dataset with electric vehicle charging data. T
 |------------------------|------------------|-----------------|-------------------|-----------------|---------------------------|--------------------------|--------------|------------------|----------------------------|-------------|------------------------|-----------|------------|
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/1/2018 17:49    | 1/1/2018 19:52  | 2:03:02                   | 2:02:44                  | 6.504        | 2.732            | 0.816                      | 1006        | true                   | Tesla     | Model Y    |
 | BOULDER / JUNCTION ST1 | 2280 Junction Pl | 80301           | 1/2/2018 8:52     | 1/2/2018 9:16   | 0:24:34                   | 0:24:19                  | 2.481        | 1.042            | 0.311                      | 1052        | true                   | BMW       | i3         |
+
+
+## What output you can expect
+These are just a compressed version of the Data above to show what transformations are made during the k-anonymization process.
+
+The list of ids, for example for *Car Brand* can be mapped back to the corresponding strings via the generated `mapping.json`.
+<img width="900" src="images/expected_input_output.png" alt="expected_input_output">
 
 ## Data manipulation
 

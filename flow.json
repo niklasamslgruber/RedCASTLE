@@ -9,7 +9,7 @@
     {
         "id": "ed02ca62.53a888",
         "type": "tab",
-        "label": "Smart Metering Emulator",
+        "label": "Charging Station Emulator",
         "disabled": false,
         "info": ""
     },
@@ -145,7 +145,9 @@
             "9aa878b2.7e4fc8"
         ],
         "x": 514,
-        "y": 699
+        "y": 699,
+        "w": 252,
+        "h": 82
     },
     {
         "id": "cd180a4c.27e908",
@@ -180,7 +182,9 @@
             "42403d84.0c7cd4"
         ],
         "x": 1154,
-        "y": 879
+        "y": 879,
+        "w": 732,
+        "h": 82
     },
     {
         "id": "8f7d71c7.eca34",
@@ -215,7 +219,9 @@
             "4439c462.3a2c8c"
         ],
         "x": 1174,
-        "y": 699
+        "y": 699,
+        "w": 682,
+        "h": 82
     },
     {
         "id": "e68402fe.4fdb1",
@@ -2266,7 +2272,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
+        "x": 600,
         "y": 800,
         "wires": [
             []
