@@ -1,4 +1,5 @@
-[{
+[
+    {
         "id": "f679c5ec.fb0428",
         "type": "tab",
         "label": "ks-Anonymization",
@@ -39,21 +40,29 @@
         "name": "Conditional Changes",
         "info": "",
         "category": "",
-        "in": [{
-            "x": 680,
-            "y": 280,
-            "wires": [{
-                "id": "faddfcbc.ef93f"
-            }]
-        }],
-        "out": [{
-            "x": 1020,
-            "y": 280,
-            "wires": [{
-                "id": "faddfcbc.ef93f",
-                "port": 0
-            }]
-        }],
+        "in": [
+            {
+                "x": 680,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "faddfcbc.ef93f"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1020,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "faddfcbc.ef93f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
@@ -64,21 +73,29 @@
         "name": "Conditional Filter",
         "info": "",
         "category": "",
-        "in": [{
-            "x": 200,
-            "y": 160,
-            "wires": [{
-                "id": "6f6c2af1.9f6e64"
-            }]
-        }],
-        "out": [{
-            "x": 540,
-            "y": 160,
-            "wires": [{
-                "id": "6f6c2af1.9f6e64",
-                "port": 0
-            }]
-        }],
+        "in": [
+            {
+                "x": 200,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "6f6c2af1.9f6e64"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 540,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "6f6c2af1.9f6e64",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
@@ -89,21 +106,29 @@
         "name": "Suppress Properties",
         "info": "",
         "category": "",
-        "in": [{
-            "x": 60,
-            "y": 300,
-            "wires": [{
-                "id": "f960e58b.28ccf8"
-            }]
-        }],
-        "out": [{
-            "x": 1300,
-            "y": 300,
-            "wires": [{
-                "id": "f960e58b.28ccf8",
-                "port": 0
-            }]
-        }],
+        "in": [
+            {
+                "x": 60,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "f960e58b.28ccf8"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1300,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "f960e58b.28ccf8",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
         "env": [],
         "meta": {},
         "color": "#DDAA99"
@@ -461,6 +486,31 @@
         "sessionExpiry": ""
     },
     {
+        "id": "8d767608.3873e8",
+        "type": "mqtt-broker",
+        "name": "cloud broker",
+        "broker": "34.141.107.101",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
@@ -507,7 +557,8 @@
         "type": "inject",
         "z": "f679c5ec.fb0428",
         "name": "manual start",
-        "props": [{
+        "props": [
+            {
                 "p": "payload"
             },
             {
@@ -578,7 +629,8 @@
         "type": "inject",
         "z": "ed02ca62.53a888",
         "name": "manual emulation start",
-        "props": [{
+        "props": [
+            {
                 "p": "payload"
             },
             {
@@ -687,9 +739,11 @@
         "type": "inject",
         "z": "44f2dba4.713184",
         "name": "",
-        "props": [{
-            "p": "payload"
-        }],
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": false,
@@ -836,13 +890,15 @@
         "z": "ed02ca62.53a888",
         "g": "75d75513.333d1c",
         "name": "append changeConditions to message",
-        "rules": [{
-            "t": "set",
-            "p": "changeConditions",
-            "pt": "msg",
-            "to": "{\"changeStringEqual\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
-            "tot": "json"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "changeConditions",
+                "pt": "msg",
+                "to": "{\"changeStringEqual\":{\"sourceAttributeName\":\"car_modell\",\"changeAttributeName\":\"car_price\",\"change\":[{\"conditionStringEqual\":\"e-tron 55\",\"valueForChangeAttributeName\":84459},{\"conditionStringEqual\":\"e-tron 50\",\"valueForChangeAttributeName\":69100},{\"conditionStringEqual\":\"i3\",\"valueForChangeAttributeName\":39000},{\"conditionStringEqual\":\"Focus Electric\",\"valueForChangeAttributeName\":34900},{\"conditionStringEqual\":\"Mustang Mach-E\",\"valueForChangeAttributeName\":46900},{\"conditionStringEqual\":\"Ford F-150 Lightning electric pickup\",\"valueForChangeAttributeName\":43400},{\"conditionStringEqual\":\"Ioniq Electric\",\"valueForChangeAttributeName\":32363},{\"conditionStringEqual\":\"Kona Electric\",\"valueForChangeAttributeName\":41850},{\"conditionStringEqual\":\"I-Pace\",\"valueForChangeAttributeName\":77300},{\"conditionStringEqual\":\"B-Class Electric Drive\",\"valueForChangeAttributeName\":39151},{\"conditionStringEqual\":\"EQC\",\"valueForChangeAttributeName\":66068},{\"conditionStringEqual\":\"Peugeot iOn\",\"valueForChangeAttributeName\":21800},{\"conditionStringEqual\":\"e208\",\"valueForChangeAttributeName\":29682},{\"conditionStringEqual\":\"e2008\",\"valueForChangeAttributeName\":35250},{\"conditionStringEqual\":\"Fluence Z.E.\",\"valueForChangeAttributeName\":25690},{\"conditionStringEqual\":\"SM3 Z.E.\",\"valueForChangeAttributeName\":32000},{\"conditionStringEqual\":\"Zoe\",\"valueForChangeAttributeName\":29990},{\"conditionStringEqual\":\"Twizy\",\"valueForChangeAttributeName\":6950},{\"conditionStringEqual\":\"Kangoo Z.E.\",\"valueForChangeAttributeName\":20820},{\"conditionStringEqual\":\"Model S\",\"valueForChangeAttributeName\":86990},{\"conditionStringEqual\":\"Model X\",\"valueForChangeAttributeName\":95990},{\"conditionStringEqual\":\"Model 3\",\"valueForChangeAttributeName\":43560},{\"conditionStringEqual\":\"Model Y\",\"valueForChangeAttributeName\":58620},{\"conditionStringEqual\":\"e-up!\",\"valueForChangeAttributeName\":21421},{\"conditionStringEqual\":\"ID.4\",\"valueForChangeAttributeName\":37415},{\"conditionStringEqual\":\"ID.3\",\"valueForChangeAttributeName\":31960}]}}",
+                "tot": "json"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -994,13 +1050,15 @@
         "z": "ed02ca62.53a888",
         "g": "b1ae5997.ec6898",
         "name": "append changeConditions to message",
-        "rules": [{
-            "t": "set",
-            "p": "changeConditions",
-            "pt": "msg",
-            "to": "{\"changeRangeBased\":{\"sourceAttributeName\":\"car_price\",\"changeAttributeName\":\"car_price_alt\",\"change\":[{\"conditionMin\":40000,\"conditionMax\":120000,\"valueForChangeAttributeName\":\"expensive\"},{\"conditionMin\":0,\"conditionMax\":39999,\"valueForChangeAttributeName\":\"cheap\"}]}}",
-            "tot": "json"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "changeConditions",
+                "pt": "msg",
+                "to": "{\"changeRangeBased\":{\"sourceAttributeName\":\"car_price\",\"changeAttributeName\":\"car_price_alt\",\"change\":[{\"conditionMin\":40000,\"conditionMax\":120000,\"valueForChangeAttributeName\":\"expensive\"},{\"conditionMin\":0,\"conditionMax\":39999,\"valueForChangeAttributeName\":\"cheap\"}]}}",
+                "tot": "json"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1067,13 +1125,15 @@
         "type": "change",
         "z": "f679c5ec.fb0428",
         "name": "add benchmark timestamp",
-        "rules": [{
-            "t": "set",
-            "p": "timestampNodeRedReturnFromCastleguard",
-            "pt": "msg",
-            "to": "",
-            "tot": "date"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestampNodeRedReturnFromCastleguard",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1112,13 +1172,15 @@
         "type": "change",
         "z": "f679c5ec.fb0428",
         "name": "",
-        "rules": [{
-            "t": "move",
-            "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-            "pt": "msg",
-            "to": "timestampNodeRedBeforeSendAsSimulatedStation",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
+                "pt": "msg",
+                "to": "timestampNodeRedBeforeSendAsSimulatedStation",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1139,7 +1201,8 @@
         "name": "",
         "property": "payload.End_Date___Time",
         "propertyType": "msg",
-        "rules": [{
+        "rules": [
+            {
                 "t": "empty"
             },
             {
@@ -1196,13 +1259,15 @@
         "type": "change",
         "z": "f679c5ec.fb0428",
         "name": "set firstMessageTimestamp",
-        "rules": [{
-            "t": "set",
-            "p": "firstMessageTimestamp",
-            "pt": "global",
-            "to": "",
-            "tot": "date"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "firstMessageTimestamp",
+                "pt": "global",
+                "to": "",
+                "tot": "date"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1221,7 +1286,8 @@
         "name": "firstMessage",
         "property": "firstMessageTimestamp",
         "propertyType": "global",
-        "rules": [{
+        "rules": [
+            {
                 "t": "null"
             },
             {
@@ -1312,7 +1378,8 @@
         "type": "inject",
         "z": "44f2dba4.713184",
         "name": "",
-        "props": [{
+        "props": [
+            {
                 "p": "payload"
             },
             {
@@ -1341,11 +1408,13 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "delete",
-            "p": "array2d",
-            "pt": "flow"
-        }],
+        "rules": [
+            {
+                "t": "delete",
+                "p": "array2d",
+                "pt": "flow"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1362,7 +1431,8 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
+        "rules": [
+            {
                 "t": "move",
                 "p": "payload",
                 "pt": "msg",
@@ -1483,13 +1553,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "payload.delay",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.delay",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1509,13 +1581,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "payload.cluster",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cluster",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1915,13 +1989,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "numberSendedMessages",
-            "tot": "global"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "numberSendedMessages",
+                "tot": "global"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -1982,13 +2058,15 @@
         "type": "change",
         "z": "d43d7e62.0ae71",
         "name": "append filterCondition to message",
-        "rules": [{
-            "t": "set",
-            "p": "filterCondition",
-            "pt": "msg",
-            "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21}}",
-            "tot": "json"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "msg",
+                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21}}",
+                "tot": "json"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2007,13 +2085,15 @@
         "type": "change",
         "z": "d43d7e62.0ae71",
         "name": "append filterCondition to message",
-        "rules": [{
-            "t": "set",
-            "p": "filterCondition",
-            "pt": "msg",
-            "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}",
-            "tot": "json"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "filterCondition",
+                "pt": "msg",
+                "to": "{\"rangeFilter\":{\"columnName\":\"Energy__kWh_\",\"minValue\":10,\"maxValue\":21},\"whitelistFilter\":{\"columnName\":\"ObjectId\",\"whitelistValues\":[10459,22794,20286,872]},\"blacklistFilter\":{\"columnName\":\"ObjectId\",\"blacklistValues\":[22794]}}",
+                "tot": "json"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2044,13 +2124,15 @@
         "type": "change",
         "z": "d43d7e62.0ae71",
         "name": "append suppressed properties to message",
-        "rules": [{
-            "t": "set",
-            "p": "suppressed_properties",
-            "pt": "msg",
-            "to": "{\"suppressed_properties\":[\"ObjectId\",\"Address\",\"City\"]}",
-            "tot": "json"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "suppressed_properties",
+                "pt": "msg",
+                "to": "{\"suppressed_properties\":[\"ObjectId\",\"Address\",\"City\"]}",
+                "tot": "json"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2132,13 +2214,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "array2d",
-            "tot": "flow"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "array2d",
+                "tot": "flow"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2179,7 +2263,8 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "reset statistics",
-        "rules": [{
+        "rules": [
+            {
                 "t": "set",
                 "p": "maxDelay",
                 "pt": "flow",
@@ -2388,13 +2473,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "successfully loaded data",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "successfully loaded data",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2413,13 +2500,15 @@
         "type": "change",
         "z": "ed02ca62.53a888",
         "name": "set topic to station name",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "payload.Station_Name",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload.Station_Name",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2457,13 +2546,15 @@
         "type": "change",
         "z": "ed02ca62.53a888",
         "name": "add benchmark timestamp",
-        "rules": [{
-            "t": "set",
-            "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
-            "pt": "msg",
-            "to": "",
-            "tot": "date"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.timestampNodeRedBeforeSendAsSimulatedStation",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2490,7 +2581,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "a6ecbc8b.5b201",
+        "broker": "8d767608.3873e8",
         "x": 3410,
         "y": 920,
         "wires": []
@@ -2524,13 +2615,15 @@
         "type": "change",
         "z": "f679c5ec.fb0428",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "messageCounter",
-            "pt": "flow",
-            "to": "0",
-            "tot": "num"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "messageCounter",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2727,7 +2820,8 @@
         "type": "inject",
         "z": "44f2dba4.713184",
         "name": "reset statistics",
-        "props": [{
+        "props": [
+            {
                 "p": "payload"
             },
             {
@@ -2829,13 +2923,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "maxNodeRedDelay",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "maxNodeRedDelay",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2854,13 +2950,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "nodeRedDelay",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "nodeRedDelay",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2880,13 +2978,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "maxRedCastleDelay",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "maxRedCastleDelay",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2905,13 +3005,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "redCastleDelay",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "redCastleDelay",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2931,13 +3033,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "messagesPerSecond",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "messagesPerSecond",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2956,13 +3060,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "differenceSendReceived",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "differenceSendReceived",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -2981,13 +3087,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "clusterCount",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "clusterCount",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3006,13 +3114,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "numberSendedMessages",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "numberSendedMessages",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3059,13 +3169,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "messageCounter",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "messageCounter",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3084,13 +3196,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "topic",
-            "pt": "msg",
-            "to": "differenceNodeRedDelayAndRedCasteDelay",
-            "tot": "str"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "differenceNodeRedDelayAndRedCasteDelay",
+                "tot": "str"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3109,13 +3223,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "payload.differenceSendReceived",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.differenceSendReceived",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3134,13 +3250,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "payload.messagesPerSecond",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.messagesPerSecond",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3159,13 +3277,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "payload.redCastleDelay",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.redCastleDelay",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3184,13 +3304,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "payload",
-            "pt": "msg",
-            "to": "payload.nodeRedDelay",
-            "tot": "msg"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.nodeRedDelay",
+                "tot": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3209,11 +3331,13 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "delete",
-            "p": "topic",
-            "pt": "msg"
-        }],
+        "rules": [
+            {
+                "t": "delete",
+                "p": "topic",
+                "pt": "msg"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3313,13 +3437,15 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "set",
-            "p": "complete",
-            "pt": "msg",
-            "to": "true",
-            "tot": "bool"
-        }],
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
@@ -3417,11 +3543,13 @@
         "type": "change",
         "z": "44f2dba4.713184",
         "name": "",
-        "rules": [{
-            "t": "delete",
-            "p": "statisticFileName",
-            "pt": "flow"
-        }],
+        "rules": [
+            {
+                "t": "delete",
+                "p": "statisticFileName",
+                "pt": "flow"
+            }
+        ],
         "action": "",
         "property": "",
         "from": "",
