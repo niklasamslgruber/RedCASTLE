@@ -10,6 +10,7 @@ class Publisher:
         self.port = port
         self.output_topic = output_topic
         self.client = mqtt.Client()
+        self.client.username_pw_set(username="mqtt-test",password="mqtt-test")
         self.client.connect(self.host, self.port, 60)
         self.counter = 0
 
@@ -26,6 +27,7 @@ class Subscriber:
         self.params = params
         self.castles = castles
         self.client = mqtt.Client()
+        self.client.username_pw_set(username="mqtt-test",password="mqtt-test")
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
         self.categories = {}
