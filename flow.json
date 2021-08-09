@@ -243,9 +243,7 @@
             "faddfcbc.ef93f"
         ],
         "x": 714,
-        "y": 239,
-        "w": 272,
-        "h": 82
+        "y": 239
     },
     {
         "id": "75d75513.333d1c",
@@ -743,7 +741,7 @@
         "z": "f679c5ec.fb0428",
         "name": "",
         "topic": "TOPIC/CASTLE_OUTPUT",
-        "qos": "0",
+        "qos": "2",
         "datatype": "auto",
         "broker": "a6ecbc8b.5b201",
         "nl": false,
@@ -2618,14 +2616,14 @@
         "z": "ed02ca62.53a888",
         "name": "",
         "topic": "",
-        "qos": "0",
+        "qos": "2",
         "retain": "false",
         "respTopic": "",
         "contentType": "",
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "8d767608.3873e8",
+        "broker": "a6ecbc8b.5b201",
         "x": 3410,
         "y": 920,
         "wires": []
