@@ -49,30 +49,32 @@ resource "google_compute_instance" "node_red_cloud" {
 
   # Run without docker on dev branche
   inline = [
-    "sudo apt update && sudo apt upgrade -y",
-    "sudo apt install git nodejs npm python3-pip screen -y",
-    "pip3 install --upgrade pip",
-    "sudo npm install -g --unsafe-perm node-red",
-    "git clone https://github.com/niklasamslgruber/RedCASTLE.git",
-    "cd RedCASTLE",
-    "git checkout dev_advanced_benchmark", # change branche accordingly to needs
-    "chmod +x setup.sh",
-    "pip3 install -r requirements.txt",
-    # install RedCastle npm dependencies
-    "npm install package.json",
-    # TODO: why is 'npm install package.json' not enough?
-    "cd ~/.node-red/",
-    "sudo npm install node-red-dashboard",
-    "npm install node-red-dashboard",
-    "cd ~/RedCASTLE/",
-    # inject broker ip in the redcastle config file 
-    # TODO: only work if the config is not changed to something else then localhost
-    "sed -i 's/localhost/${google_compute_instance.mqtt_broker_cloud.network_interface.0.access_config.0.nat_ip}/g' CASTLE/src/config.json",
-    # inject broker ip in the flow file directly changing the mqtt node config
-    # TODO: only work if the config is not changed to something else then localhost
-    "sed -i 's/localhost/${google_compute_instance.mqtt_broker_cloud.network_interface.0.access_config.0.nat_ip}/g' flow.json",
-    # TODO: make it run in the background. Had errors with screen and '&' and i dont know why its not working as expected
-    "node-red flow.json"
+      "sudo apt update && sudo apt upgrade -y",
+      "sudo apt install git nodejs npm python3-pip screen -y",
+      "sudo npm install npm@latest -g",
+      "pip3 install --upgrade pip",
+      "sudo npm install -g pm2",
+      "sudo npm install -g --unsafe-perm node-red",
+      "git clone https://github.com/niklasamslgruber/RedCASTLE.git",
+      "cd RedCASTLE",
+      "git checkout dev_advanced_benchmark", # change branche accordingly to needs
+      "chmod +x setup.sh",
+      "pip3 install -r requirements.txt",
+      # inject broker ip in the redcastle config file 
+      # TODO: only work if the config is not changed to something else then localhost
+      "sed -i 's/localhost/${google_compute_instance.mqtt_broker_cloud.network_interface.0.access_config.0.nat_ip}/g' CASTLE/src/config.json",
+      # inject broker ip in the flow file directly changing the mqtt node config
+      # TODO: only work if the config is not changed to something else then localhost
+      "sed -i 's/localhost/${google_compute_instance.mqtt_broker_cloud.network_interface.0.access_config.0.nat_ip}/g' flow.json",
+      "pm2 start /usr/local/bin/node-red -- ~/RedCASTLE/flow.json",
+      "sleep 10s",
+      # install RedCastle npm dependencies
+      "cd ~/.node-red/",
+      "sudo npm install node-red-dashboard",
+      "sudo npm install node-red-contrib-zeromq",
+      "pm2 restart node-red",
+      "sleep 10s",
+      "pm2 logs node-red --nostream --lines 50"
    ]
   }
 }
@@ -120,8 +122,10 @@ resource "google_compute_instance" "mqtt_broker_cloud" {
       "sudo rabbitmq-plugins enable rabbitmq_mqtt",
       "sudo rabbitmq-plugins enable rabbitmq_management",
       "sudo service rabbitmq-server restart",
+      # TODO: create correct user with the right credentials  
       "sudo rabbitmqctl add_user peng peng",
       "sudo rabbitmqctl set_user_tags peng administrator",
+      "sudo rabbitmqctl set_permissions 'peng' '.*' '.*' '.*'",
       "echo 'Management UI should now be available via http://${self.network_interface.0.access_config.0.nat_ip}:15672'"
    ]
   }  
@@ -163,33 +167,34 @@ resource "google_compute_instance" "emulator_cloud" {
     inline = [
       "sudo apt update && sudo apt upgrade -y",
       "sudo apt install git nodejs npm python3-pip screen -y",
-      "npm install npm@latest -g",
+      "sudo npm install npm@latest -g",
       "pip3 install --upgrade pip",
-      "npm install -g --unsafe-perm node-red",
+      "sudo npm install -g pm2",
+      "sudo npm install -g --unsafe-perm node-red",
       "git clone https://github.com/niklasamslgruber/RedCASTLE.git",
       "cd RedCASTLE",
       "git checkout dev_advanced_benchmark", # change branche accordingly to needs
       "chmod +x setup.sh",
       "pip3 install -r requirements.txt",
-      # install RedCastle npm dependencies
-      "npm install package.json",
-      # TODO: why is 'npm install package.json' not enough?
-      "cd ~/.node-red/",
-      "npm install node-red-dashboard",
-      #"sudo chown -R peng ./*",
-      "npm install node-red-dashboard",
-      "cd ~/RedCASTLE/",
       # inject broker ip in the redcastle config file 
       # TODO: only work if the config is not changed to something else then localhost
       "sed -i 's/localhost/${google_compute_instance.mqtt_broker_cloud.network_interface.0.access_config.0.nat_ip}/g' CASTLE/src/config.json",
       # inject broker ip in the flow file directly changing the mqtt node config
       # TODO: only work if the config is not changed to something else then localhost
       "sed -i 's/localhost/${google_compute_instance.mqtt_broker_cloud.network_interface.0.access_config.0.nat_ip}/g' flow.json",
-      # TODO: make it run in the background. Had errors with screen and '&' and i dont know why its not working as expected
-      "node-red flow.json"
+      "pm2 start /usr/local/bin/node-red -- ~/RedCASTLE/flow.json",
+      "sleep 10s",
+      # install RedCastle npm dependencies
+      "cd ~/.node-red/",
+      "sudo npm install node-red-dashboard",
+      "sudo npm install node-red-contrib-zeromq",
+      "pm2 restart node-red",
+      "sleep 10s",
+      "pm2 logs node-red --nostream --lines 50"
    ]
   }  
 }
+
 
 resource "google_compute_network" "vpc_network" {
   name                    = "cloud-network"
