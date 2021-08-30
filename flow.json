@@ -187,9 +187,7 @@
             "9aa878b2.7e4fc8"
         ],
         "x": 514,
-        "y": 699,
-        "w": 252,
-        "h": 82
+        "y": 699
     },
     {
         "id": "cd180a4c.27e908",
@@ -224,9 +222,7 @@
             "42403d84.0c7cd4"
         ],
         "x": 1154,
-        "y": 879,
-        "w": 732,
-        "h": 82
+        "y": 879
     },
     {
         "id": "8f7d71c7.eca34",
@@ -261,9 +257,7 @@
             "4439c462.3a2c8c"
         ],
         "x": 1174,
-        "y": 699,
-        "w": 682,
-        "h": 82
+        "y": 699
     },
     {
         "id": "e68402fe.4fdb1",
@@ -556,25 +550,27 @@
         "id": "f6fed640.1136b8",
         "type": "exec",
         "z": "f679c5ec.fb0428",
-        "command": "python CASTLE/src/main.py",
+        "command": "python3 CASTLE/src/main.py",
         "addpay": "",
         "append": "",
         "useSpawn": "true",
         "timer": "",
-        "winHide": false,
         "oldrc": false,
         "name": "run CASTLEGUARD ",
         "x": 600,
         "y": 1220,
         "wires": [
             [
-                "cf0b65f9.007318"
+                "cf0b65f9.007318",
+                "2fc289b2.a57b96"
             ],
             [
-                "cf0b65f9.007318"
+                "cf0b65f9.007318",
+                "2fc289b2.a57b96"
             ],
             [
-                "cf0b65f9.007318"
+                "cf0b65f9.007318",
+                "2fc289b2.a57b96"
             ]
         ]
     },
@@ -584,14 +580,14 @@
         "z": "f679c5ec.fb0428",
         "name": "",
         "active": true,
-        "tosidebar": false,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
         "statusType": "auto",
-        "x": 870,
+        "x": 850,
         "y": 1220,
         "wires": []
     },
@@ -659,7 +655,6 @@
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "allProps": false,
         "x": 160,
         "y": 840,
         "wires": [
@@ -3700,10 +3695,48 @@
         "z": "f679c5ec.fb0428",
         "name": "",
         "env": [],
-        "x": 580,
-        "y": 1360,
+        "x": 810,
+        "y": 1560,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "2fc289b2.a57b96",
+        "type": "function",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "if (flow.get(\"retryCounter\")===undefined) {\n    flow.set(\"retryCounter\", 1)\n}\nelse if (flow.get(\"retryCounter\") <= 3) {\n    flow.set(\"retryCounter\", flow.get(\"retryCounter\") + 1)\n}\nreturn flow.get(\"retryCounter\");",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1400,
+        "wires": [
+            [
+                "c5067459.ce4468"
+            ]
+        ]
+    },
+    {
+        "id": "c5067459.ce4468",
+        "type": "rbe",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "func": "narrowband",
+        "gap": "4",
+        "start": "",
+        "inout": "in",
+        "septopics": true,
+        "property": "payload",
+        "x": 350,
+        "y": 1400,
+        "wires": [
+            [
+                "f6fed640.1136b8"
+            ]
         ]
     }
 ]
