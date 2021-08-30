@@ -560,10 +560,7 @@
         "x": 600,
         "y": 1220,
         "wires": [
-            [
-                "cf0b65f9.007318",
-                "2fc289b2.a57b96"
-            ],
+            [],
             [
                 "cf0b65f9.007318",
                 "2fc289b2.a57b96"
@@ -587,7 +584,7 @@
         "targetType": "full",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 850,
+        "x": 870,
         "y": 1220,
         "wires": []
     },
