@@ -3703,7 +3703,7 @@
         "type": "function",
         "z": "f679c5ec.fb0428",
         "name": "",
-        "func": "if (flow.get(\"retryCounter\")===undefined) {\n    flow.set(\"retryCounter\", 1)\n}\nelse if (flow.get(\"retryCounter\") <= 3) {\n    flow.set(\"retryCounter\", flow.get(\"retryCounter\") + 1)\n}\nreturn flow.get(\"retryCounter\");",
+        "func": "if (flow.get(\"retryCounter\")===undefined) {\n    flow.set(\"retryCounter\", 1)\n}\nelse if (flow.get(\"retryCounter\") <= 3) {\n    flow.set(\"retryCounter\", flow.get(\"retryCounter\") + 1)\n}\nreturn {payload: flow.get(\"retryCounter\")};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
