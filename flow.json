@@ -141,39 +141,68 @@
         "category": "",
         "in": [
             {
-                "x": 220,
-                "y": 320,
+                "x": 640,
+                "y": 400,
                 "wires": [
+                    {
+                        "id": "fd53fb23.54d6e8"
+                    },
                     {
                         "id": "8b908c57.5c8ff"
                     },
                     {
-                        "id": "39fdfd8a.e5e462"
+                        "id": "18f2f42aa54b7f19"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 1300,
-                "y": 260,
+                "x": 2140,
+                "y": 220,
                 "wires": [
                     {
-                        "id": "6809299b.422308",
+                        "id": "77f16291.d802ac",
                         "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 2140,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "917f0236.1816e",
+                        "port": 1
+                    },
+                    {
+                        "id": "917f0236.1816e",
+                        "port": 2
                     }
                 ]
             }
         ],
-        "env": [
-            {
-                "name": "Test",
-                "type": "str",
-                "value": ""
-            }
-        ],
+        "env": [],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "status": {
+            "x": 2200,
+            "y": 900,
+            "wires": [
+                {
+                    "id": "889655ce.1af3a8",
+                    "port": 0
+                },
+                {
+                    "id": "eecbab44.fe2358",
+                    "port": 0
+                },
+                {
+                    "id": "de6eb866.fbcb78",
+                    "port": 0
+                }
+            ]
+        }
     },
     {
         "id": "e18cf721.789868",
@@ -472,31 +501,6 @@
         "hidden": false
     },
     {
-        "id": "a6ecbc8b.5b201",
-        "type": "mqtt-broker",
-        "name": "rabbitmq",
-        "broker": "localhost",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
         "id": "6d3f056b.e24a2c",
         "type": "mqtt-broker",
         "name": "mosca",
@@ -547,48 +551,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "f6fed640.1136b8",
-        "type": "exec",
-        "z": "f679c5ec.fb0428",
-        "command": "python3 CASTLE/src/main.py",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "true",
-        "timer": "",
-        "oldrc": false,
-        "name": "run CASTLEGUARD ",
-        "x": 600,
-        "y": 1220,
-        "wires": [
-            [],
-            [
-                "cf0b65f9.007318",
-                "2fc289b2.a57b96"
-            ],
-            [
-                "cf0b65f9.007318",
-                "2fc289b2.a57b96"
-            ]
-        ]
-    },
-    {
-        "id": "cf0b65f9.007318",
-        "type": "debug",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": true,
-        "tostatus": true,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 870,
-        "y": 1220,
-        "wires": []
-    },
-    {
         "id": "b61e65dd.8c1408",
         "type": "inject",
         "z": "f679c5ec.fb0428",
@@ -609,13 +571,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 1220,
+        "x": 130,
+        "y": 1280,
         "wires": [
             [
-                "f6fed640.1136b8",
                 "e846aeff.2c3b3",
-                "5864379a.27cfd8"
+                "5864379a.27cfd8",
+                "e559349b.fc7138"
             ]
         ]
     },
@@ -647,11 +609,12 @@
         "type": "file in",
         "z": "ed02ca62.53a888",
         "name": "load file example csv",
-        "filename": "Electric_Vehicle_Charging_Station_Energy_Consumption_extended.csv",
+        "filename": "Electric_Vehicle_Charging_Station_Energy_Consumption (1).csv",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
+        "allProps": false,
         "x": 160,
         "y": 840,
         "wires": [
@@ -726,27 +689,6 @@
         "wires": [
             [
                 "36a1d79b.ecb2c8"
-            ]
-        ]
-    },
-    {
-        "id": "bcab5cd0.2e945",
-        "type": "mqtt in",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "topic": "TOPIC/CASTLE_OUTPUT",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "a6ecbc8b.5b201",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 290,
-        "y": 900,
-        "wires": [
-            [
-                "852efd4a.f3e55",
-                "7b7bd8aa.432ac8"
             ]
         ]
     },
@@ -949,23 +891,6 @@
         ]
     },
     {
-        "id": "632b2112.8cbef",
-        "type": "json",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 1070,
-        "y": 900,
-        "wires": [
-            [
-                "eb1c3b1e.bfd068",
-                "eca54672.498798"
-            ]
-        ]
-    },
-    {
         "id": "eb697a48.ed8c28",
         "type": "csv",
         "z": "f679c5ec.fb0428",
@@ -1054,11 +979,10 @@
         "links": [
             "750a44e0.0e6acc"
         ],
-        "x": 255,
-        "y": 1160,
+        "x": 275,
+        "y": 1440,
         "wires": [
             [
-                "f6fed640.1136b8",
                 "e846aeff.2c3b3",
                 "5864379a.27cfd8"
             ]
@@ -1185,25 +1109,6 @@
         ]
     },
     {
-        "id": "7b7bd8aa.432ac8",
-        "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "replace some python specific json things to node red parsable json",
-        "func": "msg.payload = msg.payload.replace(/'/g,'\"');\nmsg.payload = msg.payload.replace(/True/g,true);\nmsg.payload = msg.payload.replace(/False/g,false);\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 900,
-        "wires": [
-            [
-                "632b2112.8cbef"
-            ]
-        ]
-    },
-    {
         "id": "eb1c3b1e.bfd068",
         "type": "change",
         "z": "f679c5ec.fb0428",
@@ -1222,7 +1127,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1420,
+        "x": 1160,
         "y": 900,
         "wires": [
             [
@@ -2290,8 +2195,8 @@
         "links": [
             "3b2b54c5.78bbdc"
         ],
-        "x": 515,
-        "y": 1140,
+        "x": 535,
+        "y": 1420,
         "wires": []
     },
     {
@@ -2388,8 +2293,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 800,
+        "x": 980,
+        "y": 860,
         "wires": [
             []
         ]
@@ -2617,9 +2522,9 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "a6ecbc8b.5b201",
-        "x": 3410,
-        "y": 920,
+        "broker": "8d767608.3873e8",
+        "x": 3510,
+        "y": 940,
         "wires": []
     },
     {
@@ -2665,8 +2570,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
-        "y": 1060,
+        "x": 600,
+        "y": 1320,
         "wires": [
             []
         ]
@@ -3602,35 +3507,18 @@
         "type": "zeromq in",
         "z": "aaf1335a.c3997",
         "name": "",
-        "topic": "",
+        "topic": "TOPIC/CASTLE_OUTPUT",
         "fields": "topic,payload",
-        "server": "tcp://127.0.0.1:5555",
+        "server": "tcp://127.0.0.1:5557",
         "output": "string",
         "isserver": false,
         "intype": "sub",
-        "x": 970,
-        "y": 260,
+        "x": 1290,
+        "y": 220,
         "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5fe311ef.1d9ee",
-        "type": "exec",
-        "z": "aaf1335a.c3997",
-        "command": "python CASTLE/src/main.py",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "true",
-        "timer": "",
-        "oldrc": false,
-        "name": "run CASTLEGUARD ",
-        "x": 780,
-        "y": 360,
-        "wires": [
-            [],
-            [],
-            []
+            [
+                "5717e5bd.13704c"
+            ]
         ]
     },
     {
@@ -3640,31 +3528,12 @@
         "name": "",
         "topic": "",
         "fields": "topic,payload",
-        "server": "tcp://*:5555",
+        "server": "tcp://*:5554",
         "isserver": true,
         "intype": "pub",
-        "x": 570,
-        "y": 260,
+        "x": 880,
+        "y": 500,
         "wires": []
-    },
-    {
-        "id": "39fdfd8a.e5e462",
-        "type": "function",
-        "z": "aaf1335a.c3997",
-        "name": "TODO: start if not started",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 490,
-        "y": 360,
-        "wires": [
-            [
-                "5fe311ef.1d9ee"
-            ]
-        ]
     },
     {
         "id": "6533e467.b82dec",
@@ -3672,8 +3541,8 @@
         "z": "aaf1335a.c3997",
         "name": "send data to casleguard",
         "info": "",
-        "x": 620,
-        "y": 200,
+        "x": 920,
+        "y": 540,
         "wires": []
     },
     {
@@ -3682,8 +3551,8 @@
         "z": "aaf1335a.c3997",
         "name": "receive data from casleguard",
         "info": "",
-        "x": 1040,
-        "y": 200,
+        "x": 1300,
+        "y": 160,
         "wires": []
     },
     {
@@ -3692,48 +3561,792 @@
         "z": "f679c5ec.fb0428",
         "name": "",
         "env": [],
-        "x": 810,
-        "y": 1560,
+        "x": 290,
+        "y": 900,
         "wires": [
-            []
+            [
+                "eb1c3b1e.bfd068",
+                "852efd4a.f3e55"
+            ],
+            [
+                "2194dfa24a11853e"
+            ]
         ]
     },
     {
-        "id": "2fc289b2.a57b96",
+        "id": "5717e5bd.13704c",
         "type": "function",
-        "z": "f679c5ec.fb0428",
-        "name": "",
-        "func": "if (flow.get(\"retryCounter\")===undefined) {\n    flow.set(\"retryCounter\", 1)\n}\nelse if (flow.get(\"retryCounter\") <= 3) {\n    flow.set(\"retryCounter\", flow.get(\"retryCounter\") + 1)\n}\nreturn {payload: flow.get(\"retryCounter\")};",
+        "z": "aaf1335a.c3997",
+        "name": "replace some python specific json things to node red parsable json",
+        "func": "msg.payload = msg.payload.replace(/'/g,'\"');\nmsg.payload = msg.payload.replace(/True/g,true);\nmsg.payload = msg.payload.replace(/False/g,false);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 1400,
+        "x": 1660,
+        "y": 220,
         "wires": [
             [
-                "c5067459.ce4468"
+                "77f16291.d802ac"
             ]
         ]
     },
     {
-        "id": "c5067459.ce4468",
-        "type": "rbe",
-        "z": "f679c5ec.fb0428",
+        "id": "77f16291.d802ac",
+        "type": "json",
+        "z": "aaf1335a.c3997",
         "name": "",
-        "func": "narrowband",
-        "gap": "4",
-        "start": "",
-        "inout": "in",
-        "septopics": true,
         "property": "payload",
-        "x": 350,
-        "y": 1400,
+        "action": "",
+        "pretty": false,
+        "x": 1970,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fd53fb23.54d6e8",
+        "type": "switch",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "property": "castleguardPID",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "undefined",
+                "vt": "undefined"
+            },
+            {
+                "t": "istype",
+                "v": "null",
+                "vt": "null"
+            },
+            {
+                "t": "null"
+            },
+            {
+                "t": "empty"
+            },
+            {
+                "t": "eq",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 6,
+        "x": 870,
+        "y": 400,
         "wires": [
             [
-                "f6fed640.1136b8"
+                "39c42862abf1c7ac"
+            ],
+            [
+                "39c42862abf1c7ac"
+            ],
+            [
+                "39c42862abf1c7ac"
+            ],
+            [
+                "39c42862abf1c7ac"
+            ],
+            [
+                "39c42862abf1c7ac"
+            ],
+            [
+                "84073b60916399f1",
+                "2f1429046122b52c"
             ]
         ]
+    },
+    {
+        "id": "889655ce.1af3a8",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"fill\":\"green\",\"shape\":\"dot\",\"text\":\"running and connected\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1750,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a33885a1.063e58",
+        "type": "status",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "scope": [
+            "917f0236.1816e"
+        ],
+        "x": 700,
+        "y": 920,
+        "wires": [
+            [
+                "3ef3d11c.40cdce",
+                "c363b24e80ed77a6"
+            ]
+        ]
+    },
+    {
+        "id": "b9237fc.e26088",
+        "type": "switch",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "property": "exec.status.text",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "pid",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "rc",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1350,
+        "y": 820,
+        "wires": [
+            [
+                "3c48412604f15e61",
+                "98a016600411fbbe"
+            ],
+            [
+                "eecbab44.fe2358",
+                "5bbda90eec273536"
+            ]
+        ]
+    },
+    {
+        "id": "eecbab44.fe2358",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"fill\":\"red\",\"shape\":\"dot\",\"text\":\"crashed\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1750,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ef3d11c.40cdce",
+        "type": "debug",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "status",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "de6eb866.fbcb78",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"fill\":\"red\",\"shape\":\"ring\",\"text\":\"error with ZeroMQ connection\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1750,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "917f0236.1816e",
+        "type": "exec",
+        "z": "aaf1335a.c3997",
+        "command": "python CASTLE\\src\\main.py",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "run RedCASTLE",
+        "x": 1910,
+        "y": 400,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bcab5cd0.2e945",
+        "type": "mqtt in",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "8d767608.3873e8",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "x": 110,
+        "y": 800,
+        "wires": [
+            [
+                "5ad2ccaf91d59969"
+            ]
+        ]
+    },
+    {
+        "id": "5ad2ccaf91d59969",
+        "type": "subflow:19a47153.1035df",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "x": 340,
+        "y": 740,
+        "wires": [
+            [
+                "24562832646655c6"
+            ]
+        ]
+    },
+    {
+        "id": "24562832646655c6",
+        "type": "subflow:60904c4d.0104c4",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "x": 330,
+        "y": 780,
+        "wires": [
+            [
+                "4129c2b8ee6428f4"
+            ]
+        ]
+    },
+    {
+        "id": "4129c2b8ee6428f4",
+        "type": "subflow:2bd5e7f7.0b5858",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "e559349b.fc7138"
+            ]
+        ]
+    },
+    {
+        "id": "3c48412604f15e61",
+        "type": "switch",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "property": "zeromq.status.text",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "bound",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1530,
+        "y": 800,
+        "wires": [
+            [
+                "889655ce.1af3a8"
+            ]
+        ]
+    },
+    {
+        "id": "c363b24e80ed77a6",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "status",
+                "pt": "msg",
+                "to": "exec.status",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 920,
+        "wires": [
+            [
+                "71b14988de0122cd"
+            ]
+        ]
+    },
+    {
+        "id": "7fa38937327455e5",
+        "type": "status",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "scope": [
+            "8b908c57.5c8ff",
+            "6809299b.422308"
+        ],
+        "x": 700,
+        "y": 720,
+        "wires": [
+            [
+                "f6ee7532c567b5e5"
+            ]
+        ]
+    },
+    {
+        "id": "f6ee7532c567b5e5",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "status",
+                "pt": "msg",
+                "to": "zeromq.status",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 720,
+        "wires": [
+            [
+                "71b14988de0122cd"
+            ]
+        ]
+    },
+    {
+        "id": "71b14988de0122cd",
+        "type": "join",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 820,
+        "wires": [
+            [
+                "b9237fc.e26088",
+                "2c199d3a2c95bcdb"
+            ]
+        ]
+    },
+    {
+        "id": "2c199d3a2c95bcdb",
+        "type": "switch",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "property": "zeromq.status.fill",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "red",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1350,
+        "y": 860,
+        "wires": [
+            [
+                "de6eb866.fbcb78"
+            ]
+        ]
+    },
+    {
+        "id": "2194dfa24a11853e",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "98a016600411fbbe",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "castleguardPID",
+                "pt": "flow",
+                "to": "$substringAfter(exec.status.text, \"pid:\")\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1590,
+        "y": 660,
+        "wires": [
+            [
+                "ddcdf4a1c6e6f3db"
+            ]
+        ]
+    },
+    {
+        "id": "5bbda90eec273536",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "castleguardPID",
+                "pt": "flow",
+                "to": "-1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1590,
+        "y": 720,
+        "wires": [
+            [
+                "ddcdf4a1c6e6f3db"
+            ]
+        ]
+    },
+    {
+        "id": "39c42862abf1c7ac",
+        "type": "delay",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "20",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 1510,
+        "y": 400,
+        "wires": [
+            [
+                "917f0236.1816e"
+            ]
+        ]
+    },
+    {
+        "id": "75e6bd6e0efa6be2",
+        "type": "exec",
+        "z": "aaf1335a.c3997",
+        "command": "pgrep -f CASTLE",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1590,
+        "y": 480,
+        "wires": [
+            [
+                "5f27fbde16b2231b",
+                "aa0ad9d0522e1f62"
+            ],
+            [
+                "5f27fbde16b2231b"
+            ],
+            [
+                "5f27fbde16b2231b"
+            ]
+        ]
+    },
+    {
+        "id": "84073b60916399f1",
+        "type": "change",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "castleguardPID",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 480,
+        "wires": [
+            [
+                "3e03f8b7995f05bd"
+            ]
+        ]
+    },
+    {
+        "id": "3e03f8b7995f05bd",
+        "type": "delay",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "20",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 1350,
+        "y": 480,
+        "wires": [
+            [
+                "75e6bd6e0efa6be2"
+            ]
+        ]
+    },
+    {
+        "id": "f49a1115a74871d4",
+        "type": "debug",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1890,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "5f27fbde16b2231b",
+        "type": "debug",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1850,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "131a44de91baf277",
+        "type": "debug",
+        "z": "f679c5ec.fb0428",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "aa0ad9d0522e1f62",
+        "type": "switch",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1870,
+        "y": 480,
+        "wires": [
+            [
+                "917f0236.1816e",
+                "9c0447124ec4c7b7"
+            ]
+        ]
+    },
+    {
+        "id": "2f1429046122b52c",
+        "type": "debug",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "18f2f42aa54b7f19",
+        "type": "function",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "func": "node.warn({payload: flow.get(\"castleguardPID\")})\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ddcdf4a1c6e6f3db",
+        "type": "debug",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "9c0447124ec4c7b7",
+        "type": "debug",
+        "z": "aaf1335a.c3997",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2120,
+        "y": 480,
+        "wires": []
     }
 ]
