@@ -145,13 +145,10 @@
                 "y": 400,
                 "wires": [
                     {
-                        "id": "fd53fb23.54d6e8"
-                    },
-                    {
                         "id": "8b908c57.5c8ff"
                     },
                     {
-                        "id": "18f2f42aa54b7f19"
+                        "id": "39c42862abf1c7ac"
                     }
                 ]
             }
@@ -169,7 +166,7 @@
             },
             {
                 "x": 2140,
-                "y": 300,
+                "y": 400,
                 "wires": [
                     {
                         "id": "917f0236.1816e",
@@ -216,7 +213,9 @@
             "9aa878b2.7e4fc8"
         ],
         "x": 514,
-        "y": 699
+        "y": 699,
+        "w": 252,
+        "h": 82
     },
     {
         "id": "cd180a4c.27e908",
@@ -233,7 +232,9 @@
             "6f6c2af1.9f6e64"
         ],
         "x": 254,
-        "y": 119
+        "y": 119,
+        "w": 232,
+        "h": 82
     },
     {
         "id": "b1ae5997.ec6898",
@@ -251,7 +252,9 @@
             "42403d84.0c7cd4"
         ],
         "x": 1154,
-        "y": 879
+        "y": 879,
+        "w": 732,
+        "h": 82
     },
     {
         "id": "8f7d71c7.eca34",
@@ -286,7 +289,9 @@
             "4439c462.3a2c8c"
         ],
         "x": 1174,
-        "y": 699
+        "y": 699,
+        "w": 682,
+        "h": 82
     },
     {
         "id": "e68402fe.4fdb1",
@@ -3531,8 +3536,8 @@
         "server": "tcp://*:5554",
         "isserver": true,
         "intype": "pub",
-        "x": 880,
-        "y": 500,
+        "x": 1000,
+        "y": 220,
         "wires": []
     },
     {
@@ -3541,8 +3546,8 @@
         "z": "aaf1335a.c3997",
         "name": "send data to casleguard",
         "info": "",
-        "x": 920,
-        "y": 540,
+        "x": 1040,
+        "y": 160,
         "wires": []
     },
     {
@@ -3604,66 +3609,6 @@
         "y": 220,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "fd53fb23.54d6e8",
-        "type": "switch",
-        "z": "aaf1335a.c3997",
-        "name": "",
-        "property": "castleguardPID",
-        "propertyType": "flow",
-        "rules": [
-            {
-                "t": "istype",
-                "v": "undefined",
-                "vt": "undefined"
-            },
-            {
-                "t": "istype",
-                "v": "null",
-                "vt": "null"
-            },
-            {
-                "t": "null"
-            },
-            {
-                "t": "empty"
-            },
-            {
-                "t": "eq",
-                "v": "-1",
-                "vt": "num"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 6,
-        "x": 870,
-        "y": 400,
-        "wires": [
-            [
-                "39c42862abf1c7ac"
-            ],
-            [
-                "39c42862abf1c7ac"
-            ],
-            [
-                "39c42862abf1c7ac"
-            ],
-            [
-                "39c42862abf1c7ac"
-            ],
-            [
-                "39c42862abf1c7ac"
-            ],
-            [
-                "84073b60916399f1",
-                "2f1429046122b52c"
-            ]
         ]
     },
     {
@@ -3814,15 +3759,15 @@
         "id": "917f0236.1816e",
         "type": "exec",
         "z": "aaf1335a.c3997",
-        "command": "python CASTLE\\src\\main.py",
+        "command": "python3 CASTLE/src/main.py",
         "addpay": "",
         "append": "",
         "useSpawn": "true",
         "timer": "",
         "winHide": false,
         "oldrc": false,
-        "name": "run RedCASTLE",
-        "x": 1910,
+        "name": "run CASTLEGUARD",
+        "x": 1920,
         "y": 400,
         "wires": [
             [],
@@ -3855,6 +3800,7 @@
         "type": "subflow:19a47153.1035df",
         "z": "f679c5ec.fb0428",
         "name": "",
+        "env": [],
         "x": 340,
         "y": 740,
         "wires": [
@@ -3868,6 +3814,7 @@
         "type": "subflow:60904c4d.0104c4",
         "z": "f679c5ec.fb0428",
         "name": "",
+        "env": [],
         "x": 330,
         "y": 780,
         "wires": [
@@ -4125,11 +4072,11 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "x": 1510,
+        "x": 1130,
         "y": 400,
         "wires": [
             [
-                "917f0236.1816e"
+                "75e6bd6e0efa6be2"
             ]
         ]
     },
@@ -4138,15 +4085,15 @@
         "type": "exec",
         "z": "aaf1335a.c3997",
         "command": "pgrep -f CASTLE",
-        "addpay": "payload",
+        "addpay": "",
         "append": "",
         "useSpawn": "false",
         "timer": "",
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 1590,
-        "y": 480,
+        "x": 1350,
+        "y": 400,
         "wires": [
             [
                 "5f27fbde16b2231b",
@@ -4157,57 +4104,6 @@
             ],
             [
                 "5f27fbde16b2231b"
-            ]
-        ]
-    },
-    {
-        "id": "84073b60916399f1",
-        "type": "change",
-        "z": "aaf1335a.c3997",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "castleguardPID",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1110,
-        "y": 480,
-        "wires": [
-            [
-                "3e03f8b7995f05bd"
-            ]
-        ]
-    },
-    {
-        "id": "3e03f8b7995f05bd",
-        "type": "delay",
-        "z": "aaf1335a.c3997",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "20",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "allowrate": false,
-        "x": 1350,
-        "y": 480,
-        "wires": [
-            [
-                "75e6bd6e0efa6be2"
             ]
         ]
     },
@@ -4239,8 +4135,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1850,
-        "y": 580,
+        "x": 1890,
+        "y": 520,
         "wires": []
     },
     {
@@ -4275,46 +4171,13 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1870,
-        "y": 480,
+        "x": 1630,
+        "y": 400,
         "wires": [
             [
                 "917f0236.1816e",
                 "9c0447124ec4c7b7"
             ]
-        ]
-    },
-    {
-        "id": "2f1429046122b52c",
-        "type": "debug",
-        "z": "aaf1335a.c3997",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1270,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "18f2f42aa54b7f19",
-        "type": "function",
-        "z": "aaf1335a.c3997",
-        "name": "",
-        "func": "node.warn({payload: flow.get(\"castleguardPID\")})\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 830,
-        "y": 280,
-        "wires": [
-            []
         ]
     },
     {
@@ -4342,11 +4205,52 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 2120,
         "y": 480,
+        "wires": []
+    },
+    {
+        "id": "424dae7b8ef1c704",
+        "type": "comment",
+        "z": "aaf1335a.c3997",
+        "name": "check for running instance (only works on linux)",
+        "info": "",
+        "x": 1440,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d979d51171821c9b",
+        "type": "comment",
+        "z": "aaf1335a.c3997",
+        "name": "Managing the different status shown on the outside node",
+        "info": "",
+        "x": 850,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "c6957301ce3cea89",
+        "type": "comment",
+        "z": "aaf1335a.c3997",
+        "name": "Error Output",
+        "info": "",
+        "x": 2250,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "3557a49a46084b9a",
+        "type": "comment",
+        "z": "aaf1335a.c3997",
+        "name": "Output of anonymized messages",
+        "info": "",
+        "x": 2320,
+        "y": 220,
         "wires": []
     }
 ]
