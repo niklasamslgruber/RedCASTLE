@@ -23,7 +23,7 @@ RUN apt install -y mosquitto
 RUN apt install -y  python3-pip
 RUN pip3 install pandas
 RUN pip3 install numpy
-RUN pip3 install paho-mqtt
+RUN pip3 install zmq
 RUN pip3 install matplotlib
 
 EXPOSE 1883
