@@ -232,9 +232,7 @@
             "6f6c2af1.9f6e64"
         ],
         "x": 254,
-        "y": 119,
-        "w": 232,
-        "h": 82
+        "y": 119
     },
     {
         "id": "b1ae5997.ec6898",
@@ -3533,7 +3531,7 @@
         "name": "",
         "topic": "",
         "fields": "topic,payload",
-        "server": "tcp://*:5554",
+        "server": "tcp://*:5556",
         "isserver": true,
         "intype": "pub",
         "x": 1000,
