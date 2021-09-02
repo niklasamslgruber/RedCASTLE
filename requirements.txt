@@ -1,4 +1,4 @@
 pandas
 numpy
-paho-mqtt
 matplotlib
+zmq

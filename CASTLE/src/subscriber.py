@@ -1,7 +1,6 @@
-import paho.mqtt.client as mqtt
 import pandas as pd
 import json
-
+import zmq
 
 class Publisher:
 
@@ -9,12 +8,14 @@ class Publisher:
         self.host = host
         self.port = port
         self.output_topic = output_topic
-        self.client = mqtt.Client()
-        self.client.connect(self.host, self.port, 60)
+        self.context = zmq.Context()
+        self.client = self.context.socket(zmq.PUB)
+        self.client.bind(f"tcp://127.0.0.1:5557")
         self.counter = 0
 
     def publish(self, payload: dict):
-        self.client.publish(self.output_topic, str(payload))
+        multipart_msg = [str(self.output_topic).encode(), str(payload).encode()]
+        self.client.send_multipart(multipart_msg)
         self.counter += 1
 
 
@@ -25,31 +26,31 @@ class Subscriber:
         self.port = params.port
         self.params = params
         self.castles = castles
-        self.client = mqtt.Client()
-        self.client.on_connect = self.on_connect
-        self.client.on_message = self.on_message
+        self.context = zmq.Context()
+        self.client = self.context.socket(zmq.SUB)
+        self.client.connect(f"tcp://localhost:{self.port}")
+        for topic in self.params.mqtt_topics:
+            self.client.subscribe(topic)
         self.categories = {}
         self.counter = 0
 
-        self.start()
+        while True: 
+            topic, msg = self.client.recv_multipart()
+            topic = topic.decode()
+
+            # Insert to CASTLE
+            series = self.parse_response(msg)
+            self.update_mapping()
+
+            if topic in self.castles:
+                self.castles[topic].insert(series)
+                self.counter += 1
+            else:
+                print(f"ERROR: {topic}")
 
     def on_connect(self, client, userdata, flags, rc):
         for topic in self.params.mqtt_topics:
             client.subscribe(topic)
-
-    # The callback for when a PUBLISH message is received from the server.
-    def on_message(self, client, userdata, msg):
-        print(msg.topic + " " + str(msg.payload))
-
-        # Insert to CASTLE
-        series = self.parse_response(msg.payload)
-        self.update_mapping()
-
-        if msg.topic in self.castles:
-            self.castles[msg.topic].insert(series)
-            self.counter += 1
-        else:
-            print(f"ERROR: {msg.topic}")
 
     def start(self):
         self.client.connect(self.host, self.port, 60)
