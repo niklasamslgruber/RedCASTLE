@@ -72,6 +72,7 @@ resource "google_compute_instance" "node_red_cloud" {
       "cd ~/.node-red/",
       "sudo npm install node-red-dashboard",
       "sudo npm install node-red-contrib-zeromq",
+      "sudo npm install node-red-contrib-msg-speed",
       "pm2 restart node-red",
       "sleep 10s",
       "pm2 logs node-red --nostream --lines 50"
@@ -188,6 +189,7 @@ resource "google_compute_instance" "emulator_cloud" {
       "cd ~/.node-red/",
       "sudo npm install node-red-dashboard",
       "sudo npm install node-red-contrib-zeromq",
+      "sudo npm install node-red-contrib-msg-speed",
       "pm2 restart node-red",
       "sleep 10s",
       "pm2 logs node-red --nostream --lines 50"

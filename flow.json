@@ -1563,9 +1563,9 @@
         "y": 1280,
         "wires": [
             [
-                "d08c8816.e1c928",
                 "cfcf2562.0d6dd8",
-                "f096e5bc.cd6498"
+                "f096e5bc.cd6498",
+                "13556012dbeb296d"
             ]
         ]
     },
@@ -1803,25 +1803,6 @@
         "x": 2650,
         "y": 1400,
         "wires": []
-    },
-    {
-        "id": "d08c8816.e1c928",
-        "type": "function",
-        "z": "44f2dba4.713184",
-        "name": "calc messages per second",
-        "func": "firstMessageTimestamp = new Date(global.get(\"firstMessageTimestamp\"));\nnow = new Date();\n\nelapsedSeconds = Math.abs(now - firstMessageTimestamp) / 1000 ;\n\n//node.warn({\"elapsedSeconds\": elapsedSeconds})\n\nmessagesPerSecond = msg.payload / elapsedSeconds;\n\nreturn {payload: messagesPerSecond};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1040,
-        "y": 1340,
-        "wires": [
-            [
-                "adb84fe2.a3e78"
-            ]
-        ]
     },
     {
         "id": "afad0c4b.df2b9",
@@ -4251,5 +4232,25 @@
         "x": 2320,
         "y": 220,
         "wires": []
+    },
+    {
+        "id": "13556012dbeb296d",
+        "type": "msg-speed",
+        "z": "44f2dba4.713184",
+        "name": "",
+        "frequency": "min",
+        "interval": 1,
+        "estimation": false,
+        "ignore": false,
+        "pauseAtStartup": false,
+        "topicDependent": false,
+        "x": 1030,
+        "y": 1340,
+        "wires": [
+            [
+                "adb84fe2.a3e78"
+            ],
+            []
+        ]
     }
 ]
