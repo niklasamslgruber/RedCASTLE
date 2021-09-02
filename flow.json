@@ -1217,8 +1217,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1580,
-        "y": 1040,
+        "x": 1220,
+        "y": 960,
         "wires": [
             []
         ]
@@ -1244,8 +1244,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 1250,
-        "y": 1040,
+        "x": 970,
+        "y": 960,
         "wires": [
             [
                 "64b2736e.6b7d1c"
@@ -1553,7 +1553,7 @@
         "type": "function",
         "z": "44f2dba4.713184",
         "name": "count messages",
-        "func": "messageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
+        "func": "if(flow.get('messageCounter') === undefined) {\n    flow.set('messageCounter', 1);\n}\nmessageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2290,7 +2290,7 @@
         "type": "function",
         "z": "f679c5ec.fb0428",
         "name": "count messages",
-        "func": "messageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
+        "func": "if(flow.get('messageCounter') === undefined) {\n    flow.set('messageCounter', 1);\n}\nmessageCounter = flow.get('messageCounter')\nflow.set('messageCounter', messageCounter + 1);\n\nreturn {payload: flow.get('messageCounter')}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3569,7 +3569,8 @@
         "wires": [
             [
                 "eb1c3b1e.bfd068",
-                "852efd4a.f3e55"
+                "852efd4a.f3e55",
+                "eca54672.498798"
             ],
             [
                 "2194dfa24a11853e"
@@ -3996,8 +3997,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 530,
-        "y": 940,
+        "x": 510,
+        "y": 1020,
         "wires": []
     },
     {
