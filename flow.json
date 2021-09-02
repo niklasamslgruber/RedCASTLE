@@ -1858,7 +1858,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
+        "x": 980,
         "y": 1380,
         "wires": [
             [
@@ -4244,13 +4244,32 @@
         "ignore": false,
         "pauseAtStartup": false,
         "topicDependent": false,
-        "x": 1030,
+        "x": 950,
+        "y": 1340,
+        "wires": [
+            [
+                "3b94605041515bb2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3b94605041515bb2",
+        "type": "function",
+        "z": "44f2dba4.713184",
+        "name": "msg/m to msg/s",
+        "func": "return {payload: (msg.payload / 60)};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
         "y": 1340,
         "wires": [
             [
                 "adb84fe2.a3e78"
-            ],
-            []
+            ]
         ]
     }
 ]
