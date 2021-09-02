@@ -14,10 +14,7 @@ class Publisher:
         self.counter = 0
 
     def publish(self, payload: dict):
-        print("publish now")
-        print(((self.output_topic).encode()).decode())
         multipart_msg = [str(self.output_topic).encode(), str(payload).encode()]
-        print("published")
         self.client.send_multipart(multipart_msg)
         self.counter += 1
 
@@ -39,8 +36,6 @@ class Subscriber:
 
         while True: 
             topic, msg = self.client.recv_multipart()
-            #print(topic)
-            #print(msg)
             topic = topic.decode()
 
             # Insert to CASTLE
